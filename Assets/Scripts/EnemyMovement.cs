@@ -53,22 +53,4 @@ public class EnemyMovement : MonoBehaviour
         }
     }
 
-    public void Damage(int amount)
-    {
-        health -= amount;
-        if (health <= 0)
-        {
-            Die();
-        }
-    }
-
-    private void Die()
-    {
-        // REDO POINTS
-        em.AddScore(maxHealth);
-        em.AddPoints(maxHealth / 2);
-        Destroy(Instantiate(explodeEffect, transform.position, Quaternion.identity).Explode(), 6);
-
-        Destroy(gameObject);
-    }
 }

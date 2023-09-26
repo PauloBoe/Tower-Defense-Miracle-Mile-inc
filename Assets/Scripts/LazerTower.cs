@@ -32,7 +32,7 @@ public class LazerTower : TowerBase
         isShooting = true;
         lazer.SetPosition(1, target.transform.position);
         lazer.enabled = true;
-        target.GetComponent<EnemyMovement>().Damage(1);
+        target.GetComponent<Health>().TakeDamage(1);
         yield return new WaitForSeconds(fireRate);
         lazer.enabled = false;
         isShooting = false;
