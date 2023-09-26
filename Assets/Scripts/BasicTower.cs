@@ -6,49 +6,72 @@ using UnityEngine.UI;
 
 #nullable enable
 
-public class BasicTower : TowerBase
+public class BasicTower : MonoBehaviour
 {
-    [SerializeField] Projectile bulletPrefab;
-    [SerializeField] GameObject shootingPoint; [SerializeField] protected Canvas canvas;
-    [SerializeField] protected Button lazerTower;
-    [SerializeField] protected Button sniperTower;
-    [SerializeField] protected Button rocketTower;
+      public GameObject projectilePrefab;
+    public float projectileSpeed = 10.0f;
+    public float fireRate = 1.0f;
+    public float maxTargetRange = 10.0f;
 
-    protected void Awake()
-    {
-        base.Init();
-        canvas = transform.GetChild(0).GetComponent<Canvas>();
-        lazerTower = canvas.transform.GetChild(0).GetComponent<Button>();
-        sniperTower = canvas.transform.GetChild(1).GetComponent<Button>();
-        rocketTower = canvas.transform.GetChild(2).GetComponent<Button>();
-    }
-    [SerializeField] Animator animator;
+    protected Transform currentTarget;
 
-    protected void Update()
+    protected virtual void Start()
     {
-        if (enemyManager != null)
-            AquireTarget();
+        StartCoroutine(FireCoroutine());
     }
 
-    protected override IEnumerator FireCoroutine(GameObject target)
+    protected virtual void Update()
     {
-        if (isShooting) yield break;
+        FindNearestTarget();
+    }
 
-        isShooting = true;
-        var newBullet = Instantiate(bulletPrefab, shootingPoint.transform.position, transform.rotation);
-        newBullet.damage = (int)damage;
-        newBullet.SetTarget(target.transform);
-        newBullet.speed = firePower;
-        animator.SetTrigger("Shoot");
-        ShploofEffect();
-        Rigidbody rb = newBullet.GetComponent<Rigidbody>();
+    protected void FindNearestTarget()
+    {
+        Collider[] colliders = Physics.OverlapSphere(transform.position, maxTargetRange);
 
-        float travelTime = Vector3.Distance(target.transform.position, transform.position) / (firePower * 1);
+        float closestDistance = Mathf.Infinity;
+        Transform closestTarget = null;
 
-        Destroy(newBullet.gameObject, 5f);
+        foreach (Collider collider in colliders)
+        {
+            if (collider.CompareTag("Enemy")) // Change "Enemy" to the appropriate tag for your targets
+            {
+                Transform targetTransform = collider.transform;
+                float distance = Vector3.Distance(transform.position, targetTransform.position);
 
-        yield return new WaitForSeconds(fireRate);
+                if (distance < closestDistance)
+                {
+                    closestDistance = distance;
+                    closestTarget = targetTransform;
+                }
+            }
+        }
 
-        isShooting = false;
+        currentTarget = closestTarget;
+    }
+
+    protected virtual IEnumerator FireCoroutine()
+    {
+        while (true)
+        {
+            if (currentTarget != null)
+            {
+                Vector3 targetDirection = currentTarget.position - transform.position;
+                float timeOfFlight = targetDirection.magnitude / projectileSpeed;
+                Vector3 initialVelocity = targetDirection / timeOfFlight;
+
+                GameObject projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
+                Rigidbody projectileRigidbody = projectile.GetComponent<Rigidbody>();
+
+                if (projectileRigidbody != null)
+                {
+                    projectileRigidbody.velocity = initialVelocity;
+                }
+
+                Destroy(projectile, timeOfFlight);
+            }
+
+            yield return new WaitForSeconds(1.0f / fireRate);
+        }
     }
 }
