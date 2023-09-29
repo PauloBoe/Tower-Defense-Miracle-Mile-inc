@@ -9,7 +9,7 @@ public static class RigidbodyExtentions
     {
         var predicted = Mathf.Lerp(0, 100000, time);
 
-        return enemy.transform.position + enemy.velocity * predicted;
+        //return enemy.transform.position + enemy.velocity * predicted;
 
 
 
@@ -17,12 +17,12 @@ public static class RigidbodyExtentions
         Vector3 pPos = enemy.transform.position;
 
         // How much velocity is added per frame
-        Vector3 velocityPerFrame = enemy.velocity;
+        //Vector3 velocityPerFrame = enemy.velocity;
 
         // How many frames are going to pass in the given time
         for (int i = 0; i < time / Time.fixedDeltaTime; i++)
         {
-            pPos += (velocityPerFrame * Time.fixedDeltaTime);
+            //pPos += (velocityPerFrame * Time.fixedDeltaTime);
         }
 
         return pPos;

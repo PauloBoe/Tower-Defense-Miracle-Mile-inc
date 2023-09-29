@@ -4875,7 +4875,7 @@ GameObject:
   - component: {fileID: 2240696378470764719}
   - component: {fileID: 9106118583083023101}
   m_Layer: 3
-  m_Name: BasicTurret
+  m_Name: NewTurret
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4890,7 +4890,7 @@ Transform:
   m_GameObject: {fileID: 5749415741583908006}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 20, y: 20, z: 20}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 8385644420501011196}
@@ -5009,10 +5009,6 @@ PrefabInstance:
     - target: {fileID: 147555694355085958, guid: 302efd6943f129848bbc41d85dcff6d5, type: 3}
       propertyPath: m_Name
       value: UpgradeUi
-      objectReference: {fileID: 0}
-    - target: {fileID: 147555694355085958, guid: 302efd6943f129848bbc41d85dcff6d5, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 304952989692887443, guid: 302efd6943f129848bbc41d85dcff6d5, type: 3}
       propertyPath: m_Layer

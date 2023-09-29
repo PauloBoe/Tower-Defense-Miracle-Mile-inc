@@ -26,6 +26,8 @@ public class CircleSpawner : MonoBehaviour {
     private bool isSpawningWave = false;
     private int currentWave = 1;
 
+    [SerializeField]private GameObject attackPoint;
+
     private void Start() {
         waveSize = initialWaveSize;
         spawnCoroutine = StartCoroutine(SpawnWaves());
@@ -52,6 +54,7 @@ public class CircleSpawner : MonoBehaviour {
                     if (currentWave >= spawnInfo.enemyType.SpawnableInWave) {
                         GameObject enemyPrefab = spawnInfo.enemyType.Model;
                         GameObject spawnedEnemy = Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
+                        spawnedEnemy = LoadData(spawnedEnemy, spawnInfo);
                         spawnedEnemies.Add(spawnedEnemy);
                     }
                     yield return new WaitForSeconds(timeBetweenSpawns);
@@ -80,6 +83,17 @@ public class CircleSpawner : MonoBehaviour {
             }
         }
     }
+
+    private GameObject LoadData(GameObject enemy, EnemySpawnInfo spawnInfo) {
+        Health enemyHealth = enemy.GetComponent<Health>();
+        EnemyMovement enemyMovement = enemy.GetComponent<EnemyMovement>();
+        enemyMovement.Target = attackPoint;
+        enemyMovement.MovementSpeed = spawnInfo.enemyType.MoveSpeed;
+        enemyHealth.HealthValue = spawnInfo.enemyType.Health;
+
+        return enemy;    
+    }
+
     private bool AllEnemiesEliminated() {
         foreach (var enemy in spawnedEnemies) {
             if (enemy != null) {

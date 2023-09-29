@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,42 +7,80 @@ using UnityEngine;
 public class GameManager : MonoBehaviour {
     [SerializeField] private Camera cam;
     [SerializeField] private GameObject _prefab;
-
-    private RaycastHit _hit;
-    private Vector3 _movePoint;
-    private bool _isPlaceable;
-    private GameObject slot;
-
     private PointManager pointManager;
 
+    public event Action OnBuildEnter = delegate { };
+    private Vector3 startingPoint;
+    private bool isBuilding = false;
     private void Awake() {
         pointManager = gameObject.GetComponent<PointManager>();
     }
     void Start() {
-        _movePoint = Input.mousePosition;
-        Ray ray = cam.ScreenPointToRay(Input.mousePosition);
-        if (Physics.Raycast(ray, out _hit, 500f))
-            _movePoint = _hit.point;
+
     }
 
 
-    private void FixedUpdate() {
-        if (Input.GetMouseButtonDown(0)) {
-            Ray ray = cam.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(ray, out _hit, 5000f)) {
-                transform.position = _hit.point;
-                if (_hit.collider is BoxCollider) {
-                    slot = _hit.collider.gameObject;
-                    PlaceTower();
+    private void Update() {
+        if (isBuilding) {
+            if (Input.GetMouseButtonDown(0)) {
+                CheckTileSelection();
+                if (CheckTileSelection() != null) {
+                    //place the tower in the top 
+                    Vector3 offset = new Vector3(CheckTileSelection().transform.localScale.x * 10, 0, CheckTileSelection().transform.localScale.z * 10);
+                    GameObject clone = Instantiate(_prefab, CheckTileSelection().transform.position + offset, Quaternion.identity);
                 }
+                isBuilding = false;
             }
         }
     }
-
-    public void PlaceTower() {
-        GameObject tower = Instantiate(_prefab, slot.transform.position, slot.transform.rotation);
-        tower.transform.SetParent(slot.transform, true);
-        slot.GetComponent<BoxCollider>().enabled = false;
-        Destroy(gameObject);
+    //Button fuction
+    public void StartBulding() {
+        isBuilding = true;
+        OnBuildEnter.Invoke();
     }
+    //button clicked
+    //event firing when ever tapped on on a tile
+    //place placeholder on tapped postion
+    //snap placeholder
+    //Confirm posistion? --> yes? --> place tower
+    // --> no? nothing and check if new position is tapped.
+
+    // Ooccupy the tiles with the size/ tile count cost of tower size.
+    // rule out the ring size around the tile.
+
+    private GameObject CheckTileSelection() {
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+
+        if (Physics.Raycast(ray, out hit)) {
+            Tile tileComponent = hit.collider.GetComponent<Tile>();
+
+            if (tileComponent != null) {
+                Debug.Log("Selected a tile within the range.");
+                return hit.collider.gameObject;
+            }
+            else {
+                Debug.Log("Selected a tile outside of the range.");
+                return null; // Return null to indicate tile selection outside of the range
+            }
+        }
+        else {
+            Debug.Log("Clicked on something other than a tile.");
+            return null; // Return null for non-tile objects
+        }
+        return null; // Return null if no object was hit
+    }
+
+    public void EndBuilding() {
+        isBuilding = false;
+        Hide();
+    }
+
+    public void Show() {
+        cam.cullingMask |= 1 << LayerMask.NameToLayer("GridField");
+    }
+    public void Hide() {
+        cam.cullingMask |= 1 << LayerMask.NameToLayer("GridField");
+    }
+
 }
