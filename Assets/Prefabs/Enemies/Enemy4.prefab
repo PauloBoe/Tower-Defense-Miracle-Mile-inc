@@ -13,8 +13,7 @@ GameObject:
   - component: {fileID: 5372025536697061936}
   - component: {fileID: 4537915414252043845}
   - component: {fileID: 4647722915617672197}
-  - component: {fileID: -811260211447026752}
-  - component: {fileID: -931203231456894174}
+  - component: {fileID: -7341289758790780613}
   m_Layer: 0
   m_Name: Enemy4
   m_TagString: Enemy
@@ -116,7 +115,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!114 &-811260211447026752
+--- !u!114 &-7341289758790780613
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -125,19 +124,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1097072490388940066}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c9c58df51d2dbf499d331f26b828612, type: 3}
+  m_Script: {fileID: 11500000, guid: e1ce22ab5a82aa248b57d0d2a94155c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &-931203231456894174
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1097072490388940066}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a2a352aadb368f94cb15e2a2e23a4c1c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 0}
+  health: {fileID: 0}
+  enemyMovement: {fileID: 0}
+  pointAmount: 0

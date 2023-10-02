@@ -6,21 +6,39 @@ using UnityEngine;
 
 public class Health : MonoBehaviour, IDamageable {
     // Start is called before the first frame update
-    [SerializeField]private int health;
+    [SerializeField] private int health;
 
     public int HealthValue { get => health; set => health = value; }
+
+    private void Update() {
+
+    }
 
     public void TakeDamage(int amount) {
         if (health > 0) {
             health -= amount;
 
-            if(health <= 0) {
+            if (health <= 0) {
                 Die();
             }
         }
     }
 
-    private void Die() {
-        Destroy(gameObject);
+    public void SetHealth(int value) {
+        HealthValue = value;
     }
+
+    private void Die() {
+
+        if (gameObject.GetComponent<Enemy>() != null) {
+            Enemy enemy = gameObject.GetComponent<Enemy>();
+            enemy.PointManager.AddPoints(enemy.PointAmount);
+            Destroy(gameObject);
+        }
+        else {
+            Destroy(gameObject);
+        }
+    }
+
+
 }

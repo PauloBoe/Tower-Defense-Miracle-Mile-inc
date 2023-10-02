@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 
 [System.Serializable]
@@ -12,17 +13,17 @@ public class EnemySpawnInfo {
 
 
 public class CircleSpawner : MonoBehaviour {
-    public float outerRadius = 5.0f;
-    public float innerRadius = 2.0f;
+    [SerializeField]private List<GameObject> spawnedEnemies = new List<GameObject>();
     public List<EnemySpawnInfo> enemySpawnInfoList;
     public int initialWaveSize = 5;
+    private int waveSize;
+    public float outerRadius = 5.0f;
+    public float innerRadius = 2.0f;
     public float timeBetweenWaves = 5.0f;
     public float timeBetweenSpawns = 1.0f;
     public float waveSizeMultiplier = 1.5f;
 
     private Coroutine spawnCoroutine;
-    private int waveSize;
-    private List<GameObject> spawnedEnemies = new List<GameObject>();
     private bool isSpawningWave = false;
     private int currentWave = 1;
 
@@ -32,7 +33,7 @@ public class CircleSpawner : MonoBehaviour {
         waveSize = initialWaveSize;
         spawnCoroutine = StartCoroutine(SpawnWaves());
     }
-
+    [SerializeField] private TMP_Text waveText;
     private IEnumerator SpawnWaves() {
         while (true) {
             isSpawningWave = true;
@@ -72,6 +73,7 @@ public class CircleSpawner : MonoBehaviour {
             yield return new WaitForSeconds(timeBetweenWaves);
 
             currentWave++; // Increase the current wave
+            waveText.text = "Wave: " + currentWave.ToString();
             foreach (EnemySpawnInfo info in enemySpawnInfoList) {
                 int oldEnemyCount = info.enemyCount;
                 info.enemyCount = Mathf.RoundToInt(info.enemyCount * waveSizeMultiplier);
@@ -85,11 +87,15 @@ public class CircleSpawner : MonoBehaviour {
     }
 
     private GameObject LoadData(GameObject enemy, EnemySpawnInfo spawnInfo) {
-        Health enemyHealth = enemy.GetComponent<Health>();
-        EnemyMovement enemyMovement = enemy.GetComponent<EnemyMovement>();
-        enemyMovement.Target = attackPoint;
-        enemyMovement.MovementSpeed = spawnInfo.enemyType.MoveSpeed;
-        enemyHealth.HealthValue = spawnInfo.enemyType.Health;
+        //Health enemyHealth = enemy.GetComponent<Health>();
+        //EnemyMovement enemyMovement = enemy.GetComponent<EnemyMovement>();
+        //enemyMovement.Target = attackPoint;
+        //enemyMovement.MovementSpeed = spawnInfo.enemyType.MoveSpeed;
+        //enemyHealth.HealthValue = spawnInfo.enemyType.Health;
+        Entity enemyInstance = enemy.GetComponent<Enemy>();
+        enemyInstance.Health.GetComponent<Health>().SetHealth(spawnInfo.enemyType.Health);
+        enemyInstance.EnemyMovement.GetComponent<EnemyMovement>().SetMovement(attackPoint, spawnInfo.enemyType.MoveSpeed);
+        enemyInstance.PointAmount = spawnInfo.enemyType.PointValue;
 
         return enemy;    
     }

@@ -2584,6 +2584,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 767393453}
   m_CullTransparentMesh: 1
+--- !u!114 &825181539 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1606981395, guid: 6c70b72331f307a43aa10358dcb808a2, type: 3}
+  m_PrefabInstance: {fileID: 701424078}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &974137397
 GameObject:
   m_ObjectHideFlags: 0
@@ -6186,7 +6197,7 @@ GameObject:
   - component: {fileID: 2065764350}
   m_Layer: 0
   m_Name: GameManager
-  m_TagString: Untagged
+  m_TagString: GameController
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6245,8 +6256,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee544e94754480c4086e6d911e3d509c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  outerRadius: 7.4
-  innerRadius: 6
+  spawnedEnemies: []
   enemySpawnInfoList:
   - enemyType: {fileID: 11400000, guid: efdca374e9687cf48b07a2a27854efc9, type: 2}
     enemyCount: 3
@@ -6258,11 +6268,14 @@ MonoBehaviour:
     enemyCount: 1
   - enemyType: {fileID: 11400000, guid: 7b5632c553f407f4a887a68e5994ab96, type: 2}
     enemyCount: 1
-  initialWaveSize: 0
+  initialWaveSize: 1
+  outerRadius: 7.4
+  innerRadius: 6
   timeBetweenWaves: 5
   timeBetweenSpawns: 0.1
   waveSizeMultiplier: 1.2
   attackPoint: {fileID: 1672611893}
+  waveText: {fileID: 825181539}
 --- !u!1 &2104663229
 GameObject:
   m_ObjectHideFlags: 0

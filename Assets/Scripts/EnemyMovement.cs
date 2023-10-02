@@ -20,4 +20,9 @@ public class EnemyMovement : MonoBehaviour {
             transform.position += movementSpeed * Time.deltaTime * transform.forward;
         }
     }
+
+    public void SetMovement(GameObject target, float speed) {
+        Target = target;
+        movementSpeed = speed;
+    }
 }
