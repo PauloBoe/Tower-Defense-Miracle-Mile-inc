@@ -129,4 +129,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: {fileID: 0}
   enemyMovement: {fileID: 0}
+  pointManager: {fileID: 0}
   pointAmount: 0

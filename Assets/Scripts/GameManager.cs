@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour {
                     Vector3 offset = new Vector3(CheckTileSelection().transform.localScale.x * 10, 0, CheckTileSelection().transform.localScale.z * 10);
                     GameObject clone = Instantiate(_prefab, CheckTileSelection().transform.position, Quaternion.identity);
                 }
-                isBuilding = false;
+                EndBuilding();
             }
         }
     }

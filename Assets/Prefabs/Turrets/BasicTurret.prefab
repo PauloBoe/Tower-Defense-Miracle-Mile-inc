@@ -4870,10 +4870,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5749415741583908007}
-  - component: {fileID: 4952548841211032389}
-  - component: {fileID: 1374259084479812881}
   - component: {fileID: 2240696378470764719}
-  - component: {fileID: 9106118583083023101}
+  - component: {fileID: 6553768871601297932}
+  - component: {fileID: 7909912628013952217}
   m_Layer: 3
   m_Name: BasicTurret
   m_TagString: Untagged
@@ -4899,35 +4898,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4952548841211032389
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5749415741583908006}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 887b60057791bcf4dbe2bfcfbcd28ff6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  projectilePrefab: {fileID: 2060557206656475661, guid: 81180e8353320d5448d1e70aa10e6a18, type: 3}
-  projectileSpeed: 10
-  fireRate: 1
-  maxTargetRange: 10
---- !u!114 &1374259084479812881
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5749415741583908006}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 606b3525906cc6c42903b123b770c806, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _canvas: {fileID: 5849551023788048918}
 --- !u!95 &2240696378470764719
 Animator:
   serializedVersion: 5
@@ -4949,19 +4919,36 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!65 &9106118583083023101
-BoxCollider:
+--- !u!114 &6553768871601297932
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5749415741583908006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50fcd96ce6f11e941ab723c0a759f104, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fireRate: 1
+  range: 5
+  damagePerTick: 1
+  enemiesInRange: []
+  pivot: {fileID: 5749415741772504855}
+--- !u!135 &7909912628013952217
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5749415741583908006}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.028664172, y: 0.043338597, z: 0.04034048}
-  m_Center: {x: 0.00015941262, y: 0.02025649, z: 0.00031281327}
+  m_Radius: 0.05
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5749415741772504854
 GameObject:
   m_ObjectHideFlags: 0
@@ -5045,7 +5032,7 @@ PrefabInstance:
     - target: {fileID: 1814839109343195765, guid: 302efd6943f129848bbc41d85dcff6d5, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 4952548841211032389}
+      objectReference: {fileID: 0}
     - target: {fileID: 1814839109343195765, guid: 302efd6943f129848bbc41d85dcff6d5, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: TowerBase, Assembly-CSharp
@@ -5085,7 +5072,7 @@ PrefabInstance:
     - target: {fileID: 3525248815386433381, guid: 302efd6943f129848bbc41d85dcff6d5, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 4952548841211032389}
+      objectReference: {fileID: 0}
     - target: {fileID: 3525248815386433381, guid: 302efd6943f129848bbc41d85dcff6d5, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: TowerBase, Assembly-CSharp
@@ -5103,7 +5090,7 @@ PrefabInstance:
     - target: {fileID: 5156180452660973096, guid: 302efd6943f129848bbc41d85dcff6d5, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 4952548841211032389}
+      objectReference: {fileID: 0}
     - target: {fileID: 5696271667416631787, guid: 302efd6943f129848bbc41d85dcff6d5, type: 3}
       propertyPath: m_Layer
       value: 5
@@ -5111,7 +5098,7 @@ PrefabInstance:
     - target: {fileID: 6290934492806099112, guid: 302efd6943f129848bbc41d85dcff6d5, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 4952548841211032389}
+      objectReference: {fileID: 0}
     - target: {fileID: 6290934492806099112, guid: 302efd6943f129848bbc41d85dcff6d5, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: TowerBase, Assembly-CSharp
@@ -5283,11 +5270,6 @@ MonoBehaviour:
   laserTowerCost: 600
   rocketTowerCost: 220
   sniperTowerCost: 400
---- !u!223 &5849551023788048918 stripped
-Canvas:
-  m_CorrespondingSourceObject: {fileID: 5346804930898523901, guid: 302efd6943f129848bbc41d85dcff6d5, type: 3}
-  m_PrefabInstance: {fileID: 1954119583814890731}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &8385644420501011196 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8016871620961979927, guid: 302efd6943f129848bbc41d85dcff6d5, type: 3}

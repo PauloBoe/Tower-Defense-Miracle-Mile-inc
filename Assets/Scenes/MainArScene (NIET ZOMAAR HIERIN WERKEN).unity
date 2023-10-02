@@ -6228,7 +6228,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 1925666219}
-  _prefab: {fileID: 5749415741583908006, guid: 3c4d2c1e0d663874e8c9091249e4363f, type: 3}
+  _prefab: {fileID: 5749415741583908006, guid: 165a386cc575e3e4e980500b9e772d7b, type: 3}
 --- !u!4 &2065764349
 Transform:
   m_ObjectHideFlags: 0
@@ -6272,7 +6272,7 @@ MonoBehaviour:
   outerRadius: 7.4
   innerRadius: 6
   timeBetweenWaves: 5
-  timeBetweenSpawns: 0.1
+  timeBetweenSpawns: 5
   waveSizeMultiplier: 1.2
   attackPoint: {fileID: 1672611893}
   waveText: {fileID: 825181539}
