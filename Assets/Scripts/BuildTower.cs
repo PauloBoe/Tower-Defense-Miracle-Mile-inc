@@ -2,60 +2,69 @@ using UnityEngine;
 
 public class BuildTower : MonoBehaviour
 {
-    public GameObject towerBlueprint;
-    public GameObject startPos;
-    public GameObject instatiatedPrefab;
 
-    [SerializeField] private GameObject buildButton;
-    [SerializeField] private GameObject cancelButton;
+    #region
+    //public GameObject towerBlueprint;
+    //public GameObject startPos;
+    //public GameObject instatiatedPrefab;
 
-    private EnemyManager em;
+    //[SerializeField] private GameObject buildButton;
+    //[SerializeField] private GameObject cancelButton;
 
-    private int towerCost = 15;
+    //private EnemyManager em;
 
-    private void Awake()
-    {
-        startPos = GameObject.Find("Buildplatform");
-        em = GameObject.FindGameObjectWithTag("EnemyManager").GetComponent<EnemyManager>();
+    //private int towerCost = 15;
 
-        buildButton = transform.Find("Build").gameObject;
-        cancelButton = transform.Find("Cancel").gameObject;
-    }
+    //private void Awake()
+    //{
+    //    startPos = GameObject.Find("Buildplatform");
+    //    em = GameObject.FindGameObjectWithTag("EnemyManager").GetComponent<EnemyManager>();
 
-    private void Start()
-    {
-        if (cancelButton != null)
-            cancelButton.SetActive(false);
-    }
+    //    buildButton = transform.Find("Build").gameObject;
+    //    cancelButton = transform.Find("Cancel").gameObject;
+    //}
 
-    public void PlaceBlueprint()
-    {
-        if (em.DeductPoinstIfSufficient(towerCost))
-        {
-            instatiatedPrefab = Instantiate(towerBlueprint, startPos.transform.position, startPos.transform.rotation);
-            cancelButton.SetActive(true);
-            if (cancelButton.activeSelf)
-            {
-                buildButton.SetActive(false);
-            }
-        }
-    }
+    //private void Start()
+    //{
+    //    if (cancelButton != null)
+    //        cancelButton.SetActive(false);
+    //}
 
-    public void CancelBlueprint()
-    {
-        em.AddPoints(15);
-        Destroy(instatiatedPrefab);
-        buildButton.SetActive(true);
-    }
+    //public void PlaceBlueprint()
+    //{
+    //    if (em.DeductPoinstIfSufficient(towerCost))
+    //    {
+    //        instatiatedPrefab = Instantiate(towerBlueprint, startPos.transform.position, startPos.transform.rotation);
+    //        cancelButton.SetActive(true);
+    //        if (cancelButton.activeSelf)
+    //        {
+    //            buildButton.SetActive(false);
+    //        }
+    //    }
+    //}
 
-    private void Update()
-    {
-        if (instatiatedPrefab == null)
-        {
-            if (cancelButton != null)
-                cancelButton.SetActive(false);
-            if (buildButton != null)
-                buildButton.SetActive(true);
-        }
+    //public void CancelBlueprint()
+    //{
+    //    em.AddPoints(15);
+    //    Destroy(instatiatedPrefab);
+    //    buildButton.SetActive(true);
+    //}
+
+    //private void Update()
+    //{
+    //    if (instatiatedPrefab == null)
+    //    {
+    //        if (cancelButton != null)
+    //            cancelButton.SetActive(false);
+    //        if (buildButton != null)
+    //            buildButton.SetActive(true);
+    //    }
+    //}
+    #endregion
+
+    public int tileCost;
+
+    public void CalculateCenter() {
+
     }
 }
