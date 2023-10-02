@@ -27,7 +27,7 @@ public class GameManager : MonoBehaviour {
                 if (CheckTileSelection() != null) {
                     //place the tower in the top 
                     Vector3 offset = new Vector3(CheckTileSelection().transform.localScale.x * 10, 0, CheckTileSelection().transform.localScale.z * 10);
-                    GameObject clone = Instantiate(_prefab, CheckTileSelection().transform.position + offset, Quaternion.identity);
+                    GameObject clone = Instantiate(_prefab, CheckTileSelection().transform.position, Quaternion.identity);
                 }
                 isBuilding = false;
             }
@@ -48,6 +48,9 @@ public class GameManager : MonoBehaviour {
     // Ooccupy the tiles with the size/ tile count cost of tower size.
     // rule out the ring size around the tile.
 
+
+
+    //TODO return selected tiles equal to the Tile cost of tower.
     private GameObject CheckTileSelection() {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
@@ -56,6 +59,7 @@ public class GameManager : MonoBehaviour {
             Tile tileComponent = hit.collider.GetComponent<Tile>();
 
             if (tileComponent != null) {
+
                 Debug.Log("Selected a tile within the range.");
                 return hit.collider.gameObject;
             }
