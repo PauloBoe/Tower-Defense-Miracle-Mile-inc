@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class Health : MonoBehaviour, IDamageable {
     // Start is called before the first frame update
-    private int health;
+    [SerializeField]private int health;
 
     public int HealthValue { get => health; set => health = value; }
 
