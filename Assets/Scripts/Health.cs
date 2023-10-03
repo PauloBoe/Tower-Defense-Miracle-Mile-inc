@@ -36,6 +36,7 @@ public class Health : MonoBehaviour, IDamageable {
             Destroy(gameObject);
         }
         else {
+            Debug.Log("Dies");
             Destroy(gameObject);
         }
     }

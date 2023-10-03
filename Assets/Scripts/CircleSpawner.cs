@@ -50,7 +50,7 @@ public class CircleSpawner : MonoBehaviour {
                     float x = randomRadius * Mathf.Cos(randomAngle * Mathf.Deg2Rad);
                     float y = randomRadius * Mathf.Sin(randomAngle * Mathf.Deg2Rad);
 
-                    Vector3 spawnPosition = new Vector3(x, 0f, y);
+                    Vector3 spawnPosition = new Vector3(x, 0.2f, y);
 
                     if (currentWave >= spawnInfo.enemyType.SpawnableInWave) {
                         GameObject enemyPrefab = spawnInfo.enemyType.Model;
@@ -87,12 +87,7 @@ public class CircleSpawner : MonoBehaviour {
     }
 
     private GameObject LoadData(GameObject enemy, EnemySpawnInfo spawnInfo) {
-        //Health enemyHealth = enemy.GetComponent<Health>();
-        //EnemyMovement enemyMovement = enemy.GetComponent<EnemyMovement>();
-        //enemyMovement.Target = attackPoint;
-        //enemyMovement.MovementSpeed = spawnInfo.enemyType.MoveSpeed;
-        //enemyHealth.HealthValue = spawnInfo.enemyType.Health;
-        Entity enemyInstance = enemy.GetComponent<Enemy>();
+        Enemy enemyInstance = enemy.GetComponent<Enemy>();
         enemyInstance.Health.GetComponent<Health>().SetHealth(spawnInfo.enemyType.Health);
         enemyInstance.EnemyMovement.GetComponent<EnemyMovement>().SetMovement(attackPoint, spawnInfo.enemyType.MoveSpeed);
         enemyInstance.PointAmount = spawnInfo.enemyType.PointValue;
