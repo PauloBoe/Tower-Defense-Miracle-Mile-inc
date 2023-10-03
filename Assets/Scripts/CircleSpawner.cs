@@ -58,7 +58,7 @@ public class CircleSpawner : MonoBehaviour {
                         spawnedEnemy = LoadData(spawnedEnemy, spawnInfo);
                         spawnedEnemies.Add(spawnedEnemy);
                     }
-                    yield return new WaitForSeconds(timeBetweenSpawns);
+                   // yield return new WaitForSeconds(timeBetweenSpawns);
                 }
             }
 

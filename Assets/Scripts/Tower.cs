@@ -15,10 +15,16 @@ public class Tower : MonoBehaviour {
     private List<Enemy> enemiesInRange = new List<Enemy>(); // Declare and initialize the list
     [SerializeField] private Transform pivot;
 
+    private Animator animation;
+
+    private void Start() {
+        animation = gameObject.GetComponent<Animator>();
+    }
+
 
     void Update() {
-        //simulate targeting 
-        GameObject closestEnemy = FindClosestEnemy(); // Find the closest enemy within range
+            //simulate targeting 
+            GameObject closestEnemy = FindClosestEnemy(); // Find the closest enemy within range
         if (closestEnemy != null) {
             Vector3 targetDirection = closestEnemy.transform.position - pivot.position;
             targetDirection.y = 0.0f; // Lock rotation to the XZ plane (assuming Y is the vertical axis)
@@ -38,6 +44,7 @@ public class Tower : MonoBehaviour {
     }
 
     void Attack(IDamageable enemy) {
+        animation.SetTrigger("Shoot");
         enemy.TakeDamage(damagePerTick);
     }
 
