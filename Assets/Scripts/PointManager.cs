@@ -7,29 +7,29 @@ public class PointManager : MonoBehaviour
 {
     // Start is called before the first frame update
 
-    private int points = 250;
+    private int points = 100;
     [SerializeField] private TMP_Text pointsText;
+
+    public int Points { get => points; set => points = value; }
+
     void Start()
     {
-        
+        pointsText.text = "Points: " + Points.ToString();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public void AddPoints(int amount) {
-        points += amount;
+        Points += amount;
+        pointsText.text = "Points: " + Points.ToString();
     }
 
     public bool DeductPoinstIfSufficient(int amount) {
-        if (points > amount) {
-            points -= amount;
-            pointsText.text = "Points: " + points;
+        if (Points > amount) {
+            Points -= amount;
+            pointsText.text = "Points: " + Points;
             return true;
         }
+        //TODO: Implement Message for insufficient point if true.
         return false;
     }
 }
