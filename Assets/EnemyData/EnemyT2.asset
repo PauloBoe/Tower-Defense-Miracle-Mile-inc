@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: EnemyT2
   m_EditorClassIdentifier: 
   health: 5
-  moveSpeed: 1
+  moveSpeed: 0.2
   model: {fileID: 1097072490388940066, guid: a4b3618d15d686a439e1bbd289c91682, type: 3}
   spawnableInWave: 3
+  pointValue: 20

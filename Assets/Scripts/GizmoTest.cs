@@ -5,13 +5,9 @@ using UnityEngine;
 public class GizmoTest : MonoBehaviour
 {
     void OnDrawGizmos() {
+        // Draws a 5 unit long red line in front of the object
         Gizmos.color = Color.red;
-
-        //If there hasn't been a hit yet, draw the ray at the maximum distance
-
-
-        //Draw a cube at the maximum distance
-        Gizmos.DrawWireCube(transform.position, transform.lossyScale);
-
+        Vector3 direction = transform.TransformDirection(Vector3.forward) * 5000;
+        Gizmos.DrawRay(transform.position, direction);
     }
 }
