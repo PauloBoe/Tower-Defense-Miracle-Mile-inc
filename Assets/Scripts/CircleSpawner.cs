@@ -31,8 +31,14 @@ public class CircleSpawner : MonoBehaviour {
 
     private void Start() {
         waveSize = initialWaveSize;
+        
+    }
+
+    public void StartGame()
+    {
         spawnCoroutine = StartCoroutine(SpawnWaves());
     }
+
     [SerializeField] private TMP_Text waveText;
     private IEnumerator SpawnWaves() {
         while (true) {
