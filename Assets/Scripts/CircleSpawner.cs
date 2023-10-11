@@ -29,17 +29,19 @@ public class CircleSpawner : MonoBehaviour {
 
     [SerializeField] private GameObject attackPoint;
     [SerializeField] private GameObject playButton;
+    [SerializeField] private GameObject buildButton;
 
 
     private void Start() {
         waveSize = initialWaveSize;
-        
+        buildButton.SetActive(false);
     }
 
     public void StartGame()
     {
         spawnCoroutine = StartCoroutine(SpawnWaves());
         playButton.SetActive(false);
+        buildButton.SetActive(true);
     }
 
     [SerializeField] private TMP_Text waveText;

@@ -1766,6 +1766,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gridTilePrefab: {fileID: 5281888850626517125, guid: acb51430299755b48b4241d820dcf935, type: 3}
   spacing: 0.15
+--- !u!114 &1555853632 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4747001699408860632, guid: 2dd4b09407359e74a82b2b0d27548ceb, type: 3}
+  m_PrefabInstance: {fileID: 1202688098005664694}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6803edce0201f574f923fd9d10e5b30a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1643848814 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2089860711508021439, guid: 2dd4b09407359e74a82b2b0d27548ceb, type: 3}
+  m_PrefabInstance: {fileID: 1202688098005664694}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6803edce0201f574f923fd9d10e5b30a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1672611893
 GameObject:
   m_ObjectHideFlags: 0
@@ -2121,6 +2143,8 @@ MonoBehaviour:
   cam: {fileID: 1259996390}
   _prefab: {fileID: 5749415741583908006, guid: 165a386cc575e3e4e980500b9e772d7b, type: 3}
   image: {fileID: 71971522}
+  leftRay: {fileID: 1643848814}
+  rightRay: {fileID: 1555853632}
 --- !u!4 &2065764349
 Transform:
   m_ObjectHideFlags: 0
@@ -2168,6 +2192,7 @@ MonoBehaviour:
   waveSizeMultiplier: 1.2
   attackPoint: {fileID: 1672611893}
   playButton: {fileID: 762399879}
+  buildButton: {fileID: 0}
   waveText: {fileID: 825181539}
 --- !u!1 &2104663229
 GameObject:

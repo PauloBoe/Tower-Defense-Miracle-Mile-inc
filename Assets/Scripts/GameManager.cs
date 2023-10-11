@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using UnityEngine.XR.Interaction.Toolkit;
 
@@ -19,6 +20,9 @@ public class GameManager : MonoBehaviour
     public event Action OnBuildEnter = delegate { };
     private Vector3 startingPoint;
     private bool isBuilding = false;
+
+
+
     private void Awake()
     {
         pointManager = gameObject.GetComponent<PointManager>();
@@ -34,17 +38,15 @@ public class GameManager : MonoBehaviour
     {
         if (isBuilding)
         {
-            if (Input.GetMouseButtonDown(0))
+            GameObject selectedTile;
+            bool tileSelected = CheckTileSelection(out selectedTile);
+            if (tileSelected)
             {
-                CheckTileSelection();
-                if (CheckTileSelection() != null && CheckSufficientPoints())
-                {
-                    //place the tower in the top 
-                    Vector3 offset = new Vector3(CheckTileSelection().transform.localScale.x * 10, 0, CheckTileSelection().transform.localScale.z * 10);
-                    GameObject clone = Instantiate(_prefab, CheckTileSelection().transform.position, Quaternion.identity);
+                //place the tower in the top 
+                Vector3 offset = new Vector3(selectedTile.transform.localScale.x * 10, 0, selectedTile.transform.localScale.z * 10);
+                GameObject clone = Instantiate(_prefab, selectedTile.transform.position, Quaternion.identity);
 
-                    EndBuilding();
-                }
+                EndBuilding();
             }
         }
     }
@@ -58,33 +60,43 @@ public class GameManager : MonoBehaviour
         OnBuildEnter.Invoke();
     }
 
-    private GameObject CheckTileSelection()
+
+    private bool CheckTileSelection(out GameObject selectedTile)
     {
+        selectedTile = null;
+        Tile tileComponent = null;
 
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
+        RaycastHit? rightRaycastHit = null;
+        RaycastHit? leftRaycastHit = null;
 
-        if (Physics.Raycast(ray, out hit, float.MaxValue))
+
+        if (rightRay.TryGetCurrentRaycast(out rightRaycastHit, out int rightRaycastHitIndex, out RaycastResult? rightUiRaycastHit, out int rightUiRaycastHitIndex, out bool rightIsUIHitClosest) ||
+            leftRay.TryGetCurrentRaycast(out leftRaycastHit, out int leftRaycastHitIndex, out RaycastResult? leftUiRaycastHit, out int leftUiRaycastHitIndex, out bool leftIsUIHitClosest))
         {
-            Tile tileComponent = hit.collider.GetComponent<Tile>();
-            Debug.DrawLine(ray.origin, hit.point, Color.red, 2.0f);
+            if (rightRaycastHit.HasValue)
+            {
+                tileComponent = rightRaycastHit.Value.collider.GetComponent<Tile>();
+            }
+            else if (leftRaycastHit.HasValue)
+            {
+                tileComponent = leftRaycastHit.Value.collider.GetComponent<Tile>();
+            }
 
             if (tileComponent != null)
             {
-
                 Debug.Log("Selected a tile within the range.");
-                return hit.collider.gameObject;
+                return true; // Return true for tile selection within the range
             }
             else
             {
                 Debug.Log("Selected a tile outside of the range.");
-                return null; // Return null to indicate tile selection outside of the range
+                return false; // Return false to indicate tile selection outside of the range
             }
         }
         else
         {
             Debug.Log("Clicked on something other than a tile.");
-            return null; // Return null for non-tile objects
+            return false; // Return false for non-tile objects
         }
     }
 
