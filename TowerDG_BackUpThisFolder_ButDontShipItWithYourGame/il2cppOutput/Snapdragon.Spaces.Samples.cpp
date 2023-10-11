@@ -4891,30 +4891,28 @@ struct InteractionManager_t7A01C090696791B0CDAB5B473B44B6A221403848  : public Mo
 {
 	// UnityEngine.GameObject Qualcomm.Snapdragon.Spaces.Samples.InteractionManager::HandTrackingPointer
 	GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* ___HandTrackingPointer_7;
-	// UnityEngine.GameObject Qualcomm.Snapdragon.Spaces.Samples.InteractionManager::GazePointer
-	GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* ___GazePointer_8;
 	// UnityEngine.GameObject Qualcomm.Snapdragon.Spaces.Samples.InteractionManager::DevicePointer
-	GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* ___DevicePointer_9;
+	GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* ___DevicePointer_8;
 	// UnityEngine.InputSystem.InputActionReference Qualcomm.Snapdragon.Spaces.Samples.InteractionManager::SwitchInputAction
-	InputActionReference_t64730C6B41271E0983FC21BFB416169F5D6BC4A1* ___SwitchInputAction_10;
+	InputActionReference_t64730C6B41271E0983FC21BFB416169F5D6BC4A1* ___SwitchInputAction_9;
 	// UnityEngine.InputSystem.InputActionReference Qualcomm.Snapdragon.Spaces.Samples.InteractionManager::BackButtonInputAction
-	InputActionReference_t64730C6B41271E0983FC21BFB416169F5D6BC4A1* ___BackButtonInputAction_11;
+	InputActionReference_t64730C6B41271E0983FC21BFB416169F5D6BC4A1* ___BackButtonInputAction_10;
 	// Qualcomm.Snapdragon.Spaces.Samples.AutomaticControllerSwitch Qualcomm.Snapdragon.Spaces.Samples.InteractionManager::_automaticControllerSwitch
-	AutomaticControllerSwitch_tD78C194F17B2797C82276AD5AC4895C3436B5E20* ____automaticControllerSwitch_12;
+	AutomaticControllerSwitch_tD78C194F17B2797C82276AD5AC4895C3436B5E20* ____automaticControllerSwitch_11;
 	// System.Boolean Qualcomm.Snapdragon.Spaces.Samples.InteractionManager::_isHandTrackingCompatible
-	bool ____isHandTrackingCompatible_13;
+	bool ____isHandTrackingCompatible_12;
 	// System.Boolean Qualcomm.Snapdragon.Spaces.Samples.InteractionManager::_isSessionOriginMoved
-	bool ____isSessionOriginMoved_14;
+	bool ____isSessionOriginMoved_13;
 	// Qualcomm.Snapdragon.Spaces.Samples.XRControllerManager Qualcomm.Snapdragon.Spaces.Samples.InteractionManager::_xrControllerManager
-	XRControllerManager_tD55C3C174FD950B151DE0817F08D212D9BD9DFC5* ____xrControllerManager_15;
+	XRControllerManager_tD55C3C174FD950B151DE0817F08D212D9BD9DFC5* ____xrControllerManager_14;
 	// Qualcomm.Snapdragon.Spaces.Samples.XRControllerProfile Qualcomm.Snapdragon.Spaces.Samples.InteractionManager::_xrControllerProfile
-	int32_t ____xrControllerProfile_16;
+	int32_t ____xrControllerProfile_15;
 	// QCHT.Interactions.Core.XRHandTrackingManager Qualcomm.Snapdragon.Spaces.Samples.InteractionManager::<HandTrackingManager>k__BackingField
-	XRHandTrackingManager_t67C975D4AA74E1CA03B3B5089775D8E757AF21DB* ___U3CHandTrackingManagerU3Ek__BackingField_17;
+	XRHandTrackingManager_t67C975D4AA74E1CA03B3B5089775D8E757AF21DB* ___U3CHandTrackingManagerU3Ek__BackingField_16;
 	// Qualcomm.Snapdragon.Spaces.Samples.InputType Qualcomm.Snapdragon.Spaces.Samples.InteractionManager::<InputType>k__BackingField
-	int32_t ___U3CInputTypeU3Ek__BackingField_18;
+	int32_t ___U3CInputTypeU3Ek__BackingField_17;
 	// UnityEngine.Transform Qualcomm.Snapdragon.Spaces.Samples.InteractionManager::<ArCameraTransform>k__BackingField
-	Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* ___U3CArCameraTransformU3Ek__BackingField_19;
+	Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* ___U3CArCameraTransformU3Ek__BackingField_18;
 };
 
 // Qualcomm.Snapdragon.Spaces.Samples.MirrorARCameraPose
@@ -17469,7 +17467,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR XRHandTrackingManager_t67C975D4AA74E1CA03B3B5
 {
 	{
 		// public XRHandTrackingManager HandTrackingManager { get; private set; }
-		XRHandTrackingManager_t67C975D4AA74E1CA03B3B5089775D8E757AF21DB* L_0 = __this->___U3CHandTrackingManagerU3Ek__BackingField_17;
+		XRHandTrackingManager_t67C975D4AA74E1CA03B3B5089775D8E757AF21DB* L_0 = __this->___U3CHandTrackingManagerU3Ek__BackingField_16;
 		return L_0;
 	}
 }
@@ -17479,8 +17477,8 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void InteractionManager_set_HandTrackingManag
 	{
 		// public XRHandTrackingManager HandTrackingManager { get; private set; }
 		XRHandTrackingManager_t67C975D4AA74E1CA03B3B5089775D8E757AF21DB* L_0 = ___0_value;
-		__this->___U3CHandTrackingManagerU3Ek__BackingField_17 = L_0;
-		Il2CppCodeGenWriteBarrier((void**)(&__this->___U3CHandTrackingManagerU3Ek__BackingField_17), (void*)L_0);
+		__this->___U3CHandTrackingManagerU3Ek__BackingField_16 = L_0;
+		Il2CppCodeGenWriteBarrier((void**)(&__this->___U3CHandTrackingManagerU3Ek__BackingField_16), (void*)L_0);
 		return;
 	}
 }
@@ -17489,7 +17487,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR int32_t InteractionManager_get_InputType_m798
 {
 	{
 		// public InputType InputType { get; private set; }
-		int32_t L_0 = __this->___U3CInputTypeU3Ek__BackingField_18;
+		int32_t L_0 = __this->___U3CInputTypeU3Ek__BackingField_17;
 		return L_0;
 	}
 }
@@ -17499,7 +17497,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void InteractionManager_set_InputType_m76CDC0
 	{
 		// public InputType InputType { get; private set; }
 		int32_t L_0 = ___0_value;
-		__this->___U3CInputTypeU3Ek__BackingField_18 = L_0;
+		__this->___U3CInputTypeU3Ek__BackingField_17 = L_0;
 		return;
 	}
 }
@@ -17508,7 +17506,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Transform_tB27202C6F4E36D225EE28A13E4D662BF99
 {
 	{
 		// public Transform ArCameraTransform { get; private set; }
-		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_0 = __this->___U3CArCameraTransformU3Ek__BackingField_19;
+		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_0 = __this->___U3CArCameraTransformU3Ek__BackingField_18;
 		return L_0;
 	}
 }
@@ -17518,8 +17516,8 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void InteractionManager_set_ArCameraTransform
 	{
 		// public Transform ArCameraTransform { get; private set; }
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_0 = ___0_value;
-		__this->___U3CArCameraTransformU3Ek__BackingField_19 = L_0;
-		Il2CppCodeGenWriteBarrier((void**)(&__this->___U3CArCameraTransformU3Ek__BackingField_19), (void*)L_0);
+		__this->___U3CArCameraTransformU3Ek__BackingField_18 = L_0;
+		Il2CppCodeGenWriteBarrier((void**)(&__this->___U3CArCameraTransformU3Ek__BackingField_18), (void*)L_0);
 		return;
 	}
 }
@@ -17613,7 +17611,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void InteractionManager_Start_mB0BDB2433AAFB0
 		L_1 = Component_get_transform_m2919A1D81931E6932C7F06D4C2F0AB8DDA9A5371(L_0, NULL);
 		InteractionManager_set_ArCameraTransform_m979C8AE05F5E59D0799FD5F2E2C1630174DFAC37_inline(__this, L_1, NULL);
 		// _xrControllerManager ??= FindObjectOfType<XRControllerManager>(true);
-		XRControllerManager_tD55C3C174FD950B151DE0817F08D212D9BD9DFC5* L_2 = __this->____xrControllerManager_15;
+		XRControllerManager_tD55C3C174FD950B151DE0817F08D212D9BD9DFC5* L_2 = __this->____xrControllerManager_14;
 		if (L_2)
 		{
 			goto IL_0025;
@@ -17623,14 +17621,14 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void InteractionManager_Start_mB0BDB2433AAFB0
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		XRControllerManager_tD55C3C174FD950B151DE0817F08D212D9BD9DFC5* L_3;
 		L_3 = Object_FindObjectOfType_TisXRControllerManager_tD55C3C174FD950B151DE0817F08D212D9BD9DFC5_mFE5A9D471A8EF534A47503395D0C276DC423C211((bool)1, Object_FindObjectOfType_TisXRControllerManager_tD55C3C174FD950B151DE0817F08D212D9BD9DFC5_mFE5A9D471A8EF534A47503395D0C276DC423C211_RuntimeMethod_var);
-		__this->____xrControllerManager_15 = L_3;
-		Il2CppCodeGenWriteBarrier((void**)(&__this->____xrControllerManager_15), (void*)L_3);
+		__this->____xrControllerManager_14 = L_3;
+		Il2CppCodeGenWriteBarrier((void**)(&__this->____xrControllerManager_14), (void*)L_3);
 	}
 
 IL_0025:
 	{
 		// SendControllerProfileToManager(_xrControllerManager);
-		XRControllerManager_tD55C3C174FD950B151DE0817F08D212D9BD9DFC5* L_4 = __this->____xrControllerManager_15;
+		XRControllerManager_tD55C3C174FD950B151DE0817F08D212D9BD9DFC5* L_4 = __this->____xrControllerManager_14;
 		InteractionManager_SendControllerProfileToManager_mF10F1BFA76FEAAA45881A03B671721661A0AD571(__this, L_4, NULL);
 		// int controllerType = PlayerPrefs.GetInt(_controllerTypePrefsKey, 0);
 		int32_t L_5;
@@ -17656,7 +17654,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void InteractionManager_Update_m867B33B4AE491
 		}
 	}
 	{
-		bool L_1 = __this->____isSessionOriginMoved_14;
+		bool L_1 = __this->____isSessionOriginMoved_13;
 		if (L_1)
 		{
 			goto IL_0034;
@@ -17681,7 +17679,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void InteractionManager_Update_m867B33B4AE491
 		// OffsetSessionOrigin();
 		InteractionManager_OffsetSessionOrigin_m9F7B1BFE1CDC076358962DA8956800A75482CF4A(__this, NULL);
 		// _isSessionOriginMoved = true;
-		__this->____isSessionOriginMoved_14 = (bool)1;
+		__this->____isSessionOriginMoved_13 = (bool)1;
 	}
 
 IL_0034:
@@ -17705,7 +17703,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void InteractionManager_OnEnable_m3E8E9163403
 	}
 	{
 		// SwitchInputAction.action.performed += OnSwitchInput;
-		InputActionReference_t64730C6B41271E0983FC21BFB416169F5D6BC4A1* L_0 = __this->___SwitchInputAction_10;
+		InputActionReference_t64730C6B41271E0983FC21BFB416169F5D6BC4A1* L_0 = __this->___SwitchInputAction_9;
 		NullCheck(L_0);
 		InputAction_t1B550AD2B55AF322AFB53CD28DA64081220D01CD* L_1;
 		L_1 = InputActionReference_get_action_m395EDEA6A93B54555D22323FDA6E1B1E931CE6EF(L_0, NULL);
@@ -17715,7 +17713,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void InteractionManager_OnEnable_m3E8E9163403
 		NullCheck(L_1);
 		InputAction_add_performed_m0337FFA16EBEF7AE365C3B558CFDFF7BB9747B54(L_1, L_2, NULL);
 		// BackButtonInputAction.action.performed += QuitWithBackButton;
-		InputActionReference_t64730C6B41271E0983FC21BFB416169F5D6BC4A1* L_3 = __this->___BackButtonInputAction_11;
+		InputActionReference_t64730C6B41271E0983FC21BFB416169F5D6BC4A1* L_3 = __this->___BackButtonInputAction_10;
 		NullCheck(L_3);
 		InputAction_t1B550AD2B55AF322AFB53CD28DA64081220D01CD* L_4;
 		L_4 = InputActionReference_get_action_m395EDEA6A93B54555D22323FDA6E1B1E931CE6EF(L_3, NULL);
@@ -17734,9 +17732,9 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void InteractionManager_OnEnable_m3E8E9163403
 		// _isHandTrackingCompatible = IsHandTrackingCompatible();
 		bool L_7;
 		L_7 = InteractionManager_IsHandTrackingCompatible_m6DE5A0B24C70CE872D58BF8764DB788B6DC6C0A4(__this, NULL);
-		__this->____isHandTrackingCompatible_13 = L_7;
+		__this->____isHandTrackingCompatible_12 = L_7;
 		// if (_isHandTrackingCompatible)
-		bool L_8 = __this->____isHandTrackingCompatible_13;
+		bool L_8 = __this->____isHandTrackingCompatible_12;
 		if (!L_8)
 		{
 			goto IL_006e;
@@ -17770,7 +17768,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void InteractionManager_OnDisable_m0742B3C312
 	}
 	{
 		// SwitchInputAction.action.performed -= OnSwitchInput;
-		InputActionReference_t64730C6B41271E0983FC21BFB416169F5D6BC4A1* L_0 = __this->___SwitchInputAction_10;
+		InputActionReference_t64730C6B41271E0983FC21BFB416169F5D6BC4A1* L_0 = __this->___SwitchInputAction_9;
 		NullCheck(L_0);
 		InputAction_t1B550AD2B55AF322AFB53CD28DA64081220D01CD* L_1;
 		L_1 = InputActionReference_get_action_m395EDEA6A93B54555D22323FDA6E1B1E931CE6EF(L_0, NULL);
@@ -17785,7 +17783,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void InteractionManager_OnDisable_m0742B3C312
 		Action_1__ctor_m9EFC6656FE579E4D72FFCA991DE5860FA28DD71E(L_3, __this, (intptr_t)((void*)InteractionManager_RegisterConnectedDevice_m872B7CF72B2D6CF3BA978C2D9D60EE474855D4D6_RuntimeMethod_var), NULL);
 		InputDevices_remove_deviceDisconnected_m1F052759E0E0911D2AB2B1275D49381BBFDCED1A(L_3, NULL);
 		// BackButtonInputAction.action.performed -= QuitWithBackButton;
-		InputActionReference_t64730C6B41271E0983FC21BFB416169F5D6BC4A1* L_4 = __this->___BackButtonInputAction_11;
+		InputActionReference_t64730C6B41271E0983FC21BFB416169F5D6BC4A1* L_4 = __this->___BackButtonInputAction_10;
 		NullCheck(L_4);
 		InputAction_t1B550AD2B55AF322AFB53CD28DA64081220D01CD* L_5;
 		L_5 = InputActionReference_get_action_m395EDEA6A93B54555D22323FDA6E1B1E931CE6EF(L_4, NULL);
@@ -17852,7 +17850,7 @@ IL_0023:
 IL_0025:
 	{
 		// if (_automaticControllerSwitch.ControllersTracked && _xrControllerProfile == XRControllerProfile.XRControllers)
-		AutomaticControllerSwitch_tD78C194F17B2797C82276AD5AC4895C3436B5E20* L_7 = __this->____automaticControllerSwitch_12;
+		AutomaticControllerSwitch_tD78C194F17B2797C82276AD5AC4895C3436B5E20* L_7 = __this->____automaticControllerSwitch_11;
 		NullCheck(L_7);
 		bool L_8;
 		L_8 = AutomaticControllerSwitch_get_ControllersTracked_m02D39D5C7BD711EAF31360A9323B2DBC30F2A2D3_inline(L_7, NULL);
@@ -17862,7 +17860,7 @@ IL_0025:
 		}
 	}
 	{
-		int32_t L_9 = __this->____xrControllerProfile_16;
+		int32_t L_9 = __this->____xrControllerProfile_15;
 		if ((!(((uint32_t)L_9) == ((uint32_t)1))))
 		{
 			goto IL_0043;
@@ -17958,7 +17956,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void InteractionManager_SendHapticImpulse_mAF
 	}
 	{
 		// _xrControllerManager.SendHapticImpulse(amplitude, frequency, duration);
-		XRControllerManager_tD55C3C174FD950B151DE0817F08D212D9BD9DFC5* L_1 = __this->____xrControllerManager_15;
+		XRControllerManager_tD55C3C174FD950B151DE0817F08D212D9BD9DFC5* L_1 = __this->____xrControllerManager_14;
 		float L_2 = ___0_amplitude;
 		float L_3 = ___1_frequency;
 		float L_4 = ___2_duration;
@@ -18017,12 +18015,12 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void InteractionManager_SetControllerProfileT
 	InteractionManager_t7A01C090696791B0CDAB5B473B44B6A221403848* G_B2_0 = NULL;
 	int32_t G_B4_0 = 0;
 	InteractionManager_t7A01C090696791B0CDAB5B473B44B6A221403848* G_B4_1 = NULL;
-	int32_t G_B18_0 = 0;
-	OnInputTypeSwitch_tA01957CADF34220198E2E03D770D56D114362C6E* G_B20_0 = NULL;
-	OnInputTypeSwitch_tA01957CADF34220198E2E03D770D56D114362C6E* G_B19_0 = NULL;
+	int32_t G_B16_0 = 0;
+	OnInputTypeSwitch_tA01957CADF34220198E2E03D770D56D114362C6E* G_B18_0 = NULL;
+	OnInputTypeSwitch_tA01957CADF34220198E2E03D770D56D114362C6E* G_B17_0 = NULL;
 	{
 		// if (!_isHandTrackingCompatible)
-		bool L_0 = __this->____isHandTrackingCompatible_13;
+		bool L_0 = __this->____isHandTrackingCompatible_12;
 		if (L_0)
 		{
 			goto IL_0017;
@@ -18076,23 +18074,23 @@ IL_001e:
 		{
 			case 0:
 			{
-				goto IL_003c;
+				goto IL_0039;
 			}
 			case 1:
 			{
-				goto IL_0069;
+				goto IL_005a;
 			}
 			case 2:
 			{
-				goto IL_009c;
+				goto IL_0081;
 			}
 		}
 	}
 	{
-		goto IL_00cd;
+		goto IL_00a6;
 	}
 
-IL_003c:
+IL_0039:
 	{
 		// HandTrackingPointer.SetActive(true);
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_6 = __this->___HandTrackingPointer_7;
@@ -18100,142 +18098,114 @@ IL_003c:
 		GameObject_SetActive_m638E92E1E75E519E5B24CF150B08CA8E0CDFAB92(L_6, (bool)1, NULL);
 		// HandleHandTrackingDevices(true);
 		InteractionManager_HandleHandTrackingDevices_m1CE8BC19A783141CB9208E11F3A5BBACDC14F955(__this, (bool)1, NULL);
-		// GazePointer.SetActive(false);
-		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_7 = __this->___GazePointer_8;
+		// DevicePointer.SetActive(false);
+		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_7 = __this->___DevicePointer_8;
 		NullCheck(L_7);
 		GameObject_SetActive_m638E92E1E75E519E5B24CF150B08CA8E0CDFAB92(L_7, (bool)0, NULL);
-		// DevicePointer.SetActive(false);
-		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_8 = __this->___DevicePointer_9;
+		// break;
+		goto IL_00a6;
+	}
+
+IL_005a:
+	{
+		// ResetPointerPose();
+		InteractionManager_ResetPointerPose_mBAFF4D816B0D5AA769432693026F6C941CCF1D92(__this, NULL);
+		// HandTrackingPointer.SetActive(false);
+		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_8 = __this->___HandTrackingPointer_7;
 		NullCheck(L_8);
 		GameObject_SetActive_m638E92E1E75E519E5B24CF150B08CA8E0CDFAB92(L_8, (bool)0, NULL);
-		// break;
-		goto IL_00cd;
-	}
-
-IL_0069:
-	{
-		// ResetPointerPose();
-		InteractionManager_ResetPointerPose_mBAFF4D816B0D5AA769432693026F6C941CCF1D92(__this, NULL);
-		// HandTrackingPointer.SetActive(false);
-		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_9 = __this->___HandTrackingPointer_7;
+		// HandleHandTrackingDevices(false);
+		InteractionManager_HandleHandTrackingDevices_m1CE8BC19A783141CB9208E11F3A5BBACDC14F955(__this, (bool)0, NULL);
+		// DevicePointer.SetActive(false);
+		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_9 = __this->___DevicePointer_8;
 		NullCheck(L_9);
 		GameObject_SetActive_m638E92E1E75E519E5B24CF150B08CA8E0CDFAB92(L_9, (bool)0, NULL);
-		// HandleHandTrackingDevices(false);
-		InteractionManager_HandleHandTrackingDevices_m1CE8BC19A783141CB9208E11F3A5BBACDC14F955(__this, (bool)0, NULL);
-		// GazePointer.SetActive(true);
-		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_10 = __this->___GazePointer_8;
-		NullCheck(L_10);
-		GameObject_SetActive_m638E92E1E75E519E5B24CF150B08CA8E0CDFAB92(L_10, (bool)1, NULL);
-		// DevicePointer.SetActive(false);
-		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_11 = __this->___DevicePointer_9;
-		NullCheck(L_11);
-		GameObject_SetActive_m638E92E1E75E519E5B24CF150B08CA8E0CDFAB92(L_11, (bool)0, NULL);
 		// break;
-		goto IL_00cd;
+		goto IL_00a6;
 	}
 
-IL_009c:
+IL_0081:
 	{
 		// ResetPointerPose();
 		InteractionManager_ResetPointerPose_mBAFF4D816B0D5AA769432693026F6C941CCF1D92(__this, NULL);
 		// HandTrackingPointer.SetActive(false);
-		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_12 = __this->___HandTrackingPointer_7;
-		NullCheck(L_12);
-		GameObject_SetActive_m638E92E1E75E519E5B24CF150B08CA8E0CDFAB92(L_12, (bool)0, NULL);
+		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_10 = __this->___HandTrackingPointer_7;
+		NullCheck(L_10);
+		GameObject_SetActive_m638E92E1E75E519E5B24CF150B08CA8E0CDFAB92(L_10, (bool)0, NULL);
 		// HandleHandTrackingDevices(false);
 		InteractionManager_HandleHandTrackingDevices_m1CE8BC19A783141CB9208E11F3A5BBACDC14F955(__this, (bool)0, NULL);
-		// GazePointer.SetActive(false);
-		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_13 = __this->___GazePointer_8;
-		NullCheck(L_13);
-		GameObject_SetActive_m638E92E1E75E519E5B24CF150B08CA8E0CDFAB92(L_13, (bool)0, NULL);
 		// DevicePointer.SetActive(true);
-		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_14 = __this->___DevicePointer_9;
-		NullCheck(L_14);
-		GameObject_SetActive_m638E92E1E75E519E5B24CF150B08CA8E0CDFAB92(L_14, (bool)1, NULL);
+		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_11 = __this->___DevicePointer_8;
+		NullCheck(L_11);
+		GameObject_SetActive_m638E92E1E75E519E5B24CF150B08CA8E0CDFAB92(L_11, (bool)1, NULL);
 	}
 
-IL_00cd:
+IL_00a6:
 	{
-		// int pointerType = GazePointer.activeSelf ? (int)InputType.GazePointer :
+		// int pointerType =
 		//     DevicePointer.activeSelf ? (int)InputType.ControllerPointer :
 		//     HandTrackingPointer.activeSelf ? (int)InputType.HandTracking : 0;
-		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_15 = __this->___GazePointer_8;
-		NullCheck(L_15);
-		bool L_16;
-		L_16 = GameObject_get_activeSelf_m4F3E5240E138B66AAA080EA30759A3D0517DA368(L_15, NULL);
-		if (L_16)
+		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_12 = __this->___DevicePointer_8;
+		NullCheck(L_12);
+		bool L_13;
+		L_13 = GameObject_get_activeSelf_m4F3E5240E138B66AAA080EA30759A3D0517DA368(L_12, NULL);
+		if (L_13)
 		{
-			goto IL_00fd;
+			goto IL_00c6;
 		}
 	}
 	{
-		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_17 = __this->___DevicePointer_9;
-		NullCheck(L_17);
-		bool L_18;
-		L_18 = GameObject_get_activeSelf_m4F3E5240E138B66AAA080EA30759A3D0517DA368(L_17, NULL);
+		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_14 = __this->___HandTrackingPointer_7;
+		NullCheck(L_14);
+		bool L_15;
+		L_15 = GameObject_get_activeSelf_m4F3E5240E138B66AAA080EA30759A3D0517DA368(L_14, NULL);
+		if (L_15)
+		{
+			goto IL_00c3;
+		}
+	}
+	{
+		G_B16_0 = 0;
+		goto IL_00c7;
+	}
+
+IL_00c3:
+	{
+		G_B16_0 = 0;
+		goto IL_00c7;
+	}
+
+IL_00c6:
+	{
+		G_B16_0 = 2;
+	}
+
+IL_00c7:
+	{
+		V_0 = G_B16_0;
+		// PlayerPrefs.SetInt(_controllerTypePrefsKey, pointerType);
+		int32_t L_16 = V_0;
+		PlayerPrefs_SetInt_m956D3E2DB966F20CF42F842880DDF9E2BE94D948(_stringLiteralF372478ED2CFBB18A885BC7BDF1FE9B878949483, L_16, NULL);
+		// onInputTypeSwitch?.Invoke(InputType);
+		OnInputTypeSwitch_tA01957CADF34220198E2E03D770D56D114362C6E* L_17 = ((InteractionManager_t7A01C090696791B0CDAB5B473B44B6A221403848_StaticFields*)il2cpp_codegen_static_fields_for(InteractionManager_t7A01C090696791B0CDAB5B473B44B6A221403848_il2cpp_TypeInfo_var))->___onInputTypeSwitch_6;
+		OnInputTypeSwitch_tA01957CADF34220198E2E03D770D56D114362C6E* L_18 = L_17;
+		G_B17_0 = L_18;
 		if (L_18)
 		{
-			goto IL_00fa;
-		}
-	}
-	{
-		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_19 = __this->___HandTrackingPointer_7;
-		NullCheck(L_19);
-		bool L_20;
-		L_20 = GameObject_get_activeSelf_m4F3E5240E138B66AAA080EA30759A3D0517DA368(L_19, NULL);
-		if (L_20)
-		{
-			goto IL_00f7;
-		}
-	}
-	{
-		G_B18_0 = 0;
-		goto IL_00fe;
-	}
-
-IL_00f7:
-	{
-		G_B18_0 = 0;
-		goto IL_00fe;
-	}
-
-IL_00fa:
-	{
-		G_B18_0 = 2;
-		goto IL_00fe;
-	}
-
-IL_00fd:
-	{
-		G_B18_0 = 1;
-	}
-
-IL_00fe:
-	{
-		V_0 = G_B18_0;
-		// PlayerPrefs.SetInt(_controllerTypePrefsKey, pointerType);
-		int32_t L_21 = V_0;
-		PlayerPrefs_SetInt_m956D3E2DB966F20CF42F842880DDF9E2BE94D948(_stringLiteralF372478ED2CFBB18A885BC7BDF1FE9B878949483, L_21, NULL);
-		// onInputTypeSwitch?.Invoke(InputType);
-		OnInputTypeSwitch_tA01957CADF34220198E2E03D770D56D114362C6E* L_22 = ((InteractionManager_t7A01C090696791B0CDAB5B473B44B6A221403848_StaticFields*)il2cpp_codegen_static_fields_for(InteractionManager_t7A01C090696791B0CDAB5B473B44B6A221403848_il2cpp_TypeInfo_var))->___onInputTypeSwitch_6;
-		OnInputTypeSwitch_tA01957CADF34220198E2E03D770D56D114362C6E* L_23 = L_22;
-		G_B19_0 = L_23;
-		if (L_23)
-		{
-			G_B20_0 = L_23;
-			goto IL_0114;
+			G_B18_0 = L_18;
+			goto IL_00dd;
 		}
 	}
 	{
 		return;
 	}
 
-IL_0114:
+IL_00dd:
 	{
-		int32_t L_24;
-		L_24 = InteractionManager_get_InputType_m798D7C681682BA368A08B5D7E444795EE019C0BD_inline(__this, NULL);
-		NullCheck(G_B20_0);
-		OnInputTypeSwitch_Invoke_mAAFABC449C33FDE7182E7334D2A39B1C244E6B0E_inline(G_B20_0, L_24, NULL);
+		int32_t L_19;
+		L_19 = InteractionManager_get_InputType_m798D7C681682BA368A08B5D7E444795EE019C0BD_inline(__this, NULL);
+		NullCheck(G_B18_0);
+		OnInputTypeSwitch_Invoke_mAAFABC449C33FDE7182E7334D2A39B1C244E6B0E_inline(G_B18_0, L_19, NULL);
 		// }
 		return;
 	}
@@ -18312,7 +18282,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void InteractionManager_HandleHandTrackingDev
 IL_000f:
 	{
 		// if (_xrControllerProfile == XRControllerProfile.HostController)
-		int32_t L_2 = __this->____xrControllerProfile_16;
+		int32_t L_2 = __this->____xrControllerProfile_15;
 		if (L_2)
 		{
 			goto IL_0024;
@@ -18562,7 +18532,7 @@ IL_0017:
 IL_0018:
 	{
 		NullCheck(G_B3_1);
-		G_B3_1->____xrControllerProfile_16 = G_B3_0;
+		G_B3_1->____xrControllerProfile_15 = G_B3_0;
 		// }
 		return;
 	}
@@ -18578,8 +18548,8 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void InteractionManager_SendControllerProfile
 	}
 	{
 		// _automaticControllerSwitch.SetControllerProfile(_xrControllerProfile);
-		AutomaticControllerSwitch_tD78C194F17B2797C82276AD5AC4895C3436B5E20* L_0 = __this->____automaticControllerSwitch_12;
-		int32_t L_1 = __this->____xrControllerProfile_16;
+		AutomaticControllerSwitch_tD78C194F17B2797C82276AD5AC4895C3436B5E20* L_0 = __this->____automaticControllerSwitch_11;
+		int32_t L_1 = __this->____xrControllerProfile_15;
 		NullCheck(L_0);
 		AutomaticControllerSwitch_SetControllerProfile_m2A1EBB72AAE9560AFECC1B7DADC067D4E1B0F132(L_0, L_1, NULL);
 		// if (xrControllerManager != null)
@@ -18595,7 +18565,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void InteractionManager_SendControllerProfile
 	{
 		// xrControllerManager.ActivateController(_xrControllerProfile);
 		XRControllerManager_tD55C3C174FD950B151DE0817F08D212D9BD9DFC5* L_4 = ___0_xrControllerManager;
-		int32_t L_5 = __this->____xrControllerProfile_16;
+		int32_t L_5 = __this->____xrControllerProfile_15;
 		NullCheck(L_4);
 		XRControllerManager_ActivateController_mB54AC162B951C11C6B9CAC5620A7FC235EBC7CBF(L_4, L_5, NULL);
 	}
@@ -21289,7 +21259,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR int32_t InteractionManager_get_In
 {
 	{
 		// public InputType InputType { get; private set; }
-		int32_t L_0 = __this->___U3CInputTypeU3Ek__BackingField_18;
+		int32_t L_0 = __this->___U3CInputTypeU3Ek__BackingField_17;
 		return L_0;
 	}
 }
@@ -21297,7 +21267,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR Transform_tB27202C6F4E36D225EE28A
 {
 	{
 		// public Transform ArCameraTransform { get; private set; }
-		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_0 = __this->___U3CArCameraTransformU3Ek__BackingField_19;
+		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_0 = __this->___U3CArCameraTransformU3Ek__BackingField_18;
 		return L_0;
 	}
 }
@@ -21791,7 +21761,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR XRHandTrackingManager_t67C975D4AA
 {
 	{
 		// public XRHandTrackingManager HandTrackingManager { get; private set; }
-		XRHandTrackingManager_t67C975D4AA74E1CA03B3B5089775D8E757AF21DB* L_0 = __this->___U3CHandTrackingManagerU3Ek__BackingField_17;
+		XRHandTrackingManager_t67C975D4AA74E1CA03B3B5089775D8E757AF21DB* L_0 = __this->___U3CHandTrackingManagerU3Ek__BackingField_16;
 		return L_0;
 	}
 }
@@ -21998,8 +21968,8 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void InteractionManager_set_ArCam
 	{
 		// public Transform ArCameraTransform { get; private set; }
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_0 = ___0_value;
-		__this->___U3CArCameraTransformU3Ek__BackingField_19 = L_0;
-		Il2CppCodeGenWriteBarrier((void**)(&__this->___U3CArCameraTransformU3Ek__BackingField_19), (void*)L_0);
+		__this->___U3CArCameraTransformU3Ek__BackingField_18 = L_0;
+		Il2CppCodeGenWriteBarrier((void**)(&__this->___U3CArCameraTransformU3Ek__BackingField_18), (void*)L_0);
 		return;
 	}
 }
@@ -22048,8 +22018,8 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void InteractionManager_set_HandT
 	{
 		// public XRHandTrackingManager HandTrackingManager { get; private set; }
 		XRHandTrackingManager_t67C975D4AA74E1CA03B3B5089775D8E757AF21DB* L_0 = ___0_value;
-		__this->___U3CHandTrackingManagerU3Ek__BackingField_17 = L_0;
-		Il2CppCodeGenWriteBarrier((void**)(&__this->___U3CHandTrackingManagerU3Ek__BackingField_17), (void*)L_0);
+		__this->___U3CHandTrackingManagerU3Ek__BackingField_16 = L_0;
+		Il2CppCodeGenWriteBarrier((void**)(&__this->___U3CHandTrackingManagerU3Ek__BackingField_16), (void*)L_0);
 		return;
 	}
 }
@@ -22058,7 +22028,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void InteractionManager_set_Input
 	{
 		// public InputType InputType { get; private set; }
 		int32_t L_0 = ___0_value;
-		__this->___U3CInputTypeU3Ek__BackingField_18 = L_0;
+		__this->___U3CInputTypeU3Ek__BackingField_17 = L_0;
 		return;
 	}
 }

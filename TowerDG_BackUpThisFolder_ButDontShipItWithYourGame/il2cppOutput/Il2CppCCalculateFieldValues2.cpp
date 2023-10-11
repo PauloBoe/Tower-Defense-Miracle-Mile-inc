@@ -5311,14 +5311,14 @@ struct U3CU3Ec_t05E77A34CC516BC9C1EAD29412349378EFCE5A5D  : public RuntimeObject
 {
 };
 
-// CircleSpawner/<SpawnWaves>d__16
-struct U3CSpawnWavesU3Ed__16_t6AD17C5108E5ABBAD1AB506948097C0BFE08441C  : public RuntimeObject
+// CircleSpawner/<SpawnWaves>d__17
+struct U3CSpawnWavesU3Ed__17_t8A8AF8D8DA6126C824ED5D45AF2321857EC1C57A  : public RuntimeObject
 {
-	// System.Int32 CircleSpawner/<SpawnWaves>d__16::<>1__state
+	// System.Int32 CircleSpawner/<SpawnWaves>d__17::<>1__state
 	int32_t ___U3CU3E1__state_0;
-	// System.Object CircleSpawner/<SpawnWaves>d__16::<>2__current
+	// System.Object CircleSpawner/<SpawnWaves>d__17::<>2__current
 	RuntimeObject* ___U3CU3E2__current_1;
-	// CircleSpawner CircleSpawner/<SpawnWaves>d__16::<>4__this
+	// CircleSpawner CircleSpawner/<SpawnWaves>d__17::<>4__this
 	CircleSpawner_t3819C380C2B26A54EF639C32D6D9CFCB7F67C2C3* ___U3CU3E4__this_2;
 };
 
@@ -26053,8 +26053,10 @@ struct CircleSpawner_t3819C380C2B26A54EF639C32D6D9CFCB7F67C2C3  : public MonoBeh
 	int32_t ___currentWave_15;
 	// UnityEngine.GameObject CircleSpawner::attackPoint
 	GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* ___attackPoint_16;
+	// UnityEngine.GameObject CircleSpawner::playButton
+	GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* ___playButton_17;
 	// TMPro.TMP_Text CircleSpawner::waveText
-	TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9* ___waveText_17;
+	TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9* ___waveText_18;
 };
 
 // ComponentVersionDisplay
@@ -26389,14 +26391,18 @@ struct GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6  : public MonoBehav
 	Camera_tA92CC927D7439999BC82DBEDC0AA45B470F9E184* ___cam_4;
 	// UnityEngine.GameObject GameManager::_prefab
 	GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* ____prefab_5;
+	// UnityEngine.UI.Image GameManager::image
+	Image_tBC1D03F63BF71132E9A5E472B8742F172A011E7E* ___image_6;
 	// PointManager GameManager::pointManager
-	PointManager_t26B148DBE017524C9499C08C05A0B6A6F42FD2B9* ___pointManager_6;
+	PointManager_t26B148DBE017524C9499C08C05A0B6A6F42FD2B9* ___pointManager_7;
+	// CircleSpawner GameManager::spawner
+	CircleSpawner_t3819C380C2B26A54EF639C32D6D9CFCB7F67C2C3* ___spawner_8;
 	// System.Action GameManager::OnBuildEnter
-	Action_tD00B0A84D7945E50C2DFFC28EFEE6ED44ED2AD07* ___OnBuildEnter_7;
+	Action_tD00B0A84D7945E50C2DFFC28EFEE6ED44ED2AD07* ___OnBuildEnter_9;
 	// UnityEngine.Vector3 GameManager::startingPoint
-	Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 ___startingPoint_8;
+	Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 ___startingPoint_10;
 	// System.Boolean GameManager::isBuilding
-	bool ___isBuilding_9;
+	bool ___isBuilding_11;
 };
 
 // GameOver
@@ -26741,30 +26747,28 @@ struct InteractionManager_t7A01C090696791B0CDAB5B473B44B6A221403848  : public Mo
 {
 	// UnityEngine.GameObject Qualcomm.Snapdragon.Spaces.Samples.InteractionManager::HandTrackingPointer
 	GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* ___HandTrackingPointer_7;
-	// UnityEngine.GameObject Qualcomm.Snapdragon.Spaces.Samples.InteractionManager::GazePointer
-	GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* ___GazePointer_8;
 	// UnityEngine.GameObject Qualcomm.Snapdragon.Spaces.Samples.InteractionManager::DevicePointer
-	GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* ___DevicePointer_9;
+	GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* ___DevicePointer_8;
 	// UnityEngine.InputSystem.InputActionReference Qualcomm.Snapdragon.Spaces.Samples.InteractionManager::SwitchInputAction
-	InputActionReference_t64730C6B41271E0983FC21BFB416169F5D6BC4A1* ___SwitchInputAction_10;
+	InputActionReference_t64730C6B41271E0983FC21BFB416169F5D6BC4A1* ___SwitchInputAction_9;
 	// UnityEngine.InputSystem.InputActionReference Qualcomm.Snapdragon.Spaces.Samples.InteractionManager::BackButtonInputAction
-	InputActionReference_t64730C6B41271E0983FC21BFB416169F5D6BC4A1* ___BackButtonInputAction_11;
+	InputActionReference_t64730C6B41271E0983FC21BFB416169F5D6BC4A1* ___BackButtonInputAction_10;
 	// Qualcomm.Snapdragon.Spaces.Samples.AutomaticControllerSwitch Qualcomm.Snapdragon.Spaces.Samples.InteractionManager::_automaticControllerSwitch
-	AutomaticControllerSwitch_tD78C194F17B2797C82276AD5AC4895C3436B5E20* ____automaticControllerSwitch_12;
+	AutomaticControllerSwitch_tD78C194F17B2797C82276AD5AC4895C3436B5E20* ____automaticControllerSwitch_11;
 	// System.Boolean Qualcomm.Snapdragon.Spaces.Samples.InteractionManager::_isHandTrackingCompatible
-	bool ____isHandTrackingCompatible_13;
+	bool ____isHandTrackingCompatible_12;
 	// System.Boolean Qualcomm.Snapdragon.Spaces.Samples.InteractionManager::_isSessionOriginMoved
-	bool ____isSessionOriginMoved_14;
+	bool ____isSessionOriginMoved_13;
 	// Qualcomm.Snapdragon.Spaces.Samples.XRControllerManager Qualcomm.Snapdragon.Spaces.Samples.InteractionManager::_xrControllerManager
-	XRControllerManager_tD55C3C174FD950B151DE0817F08D212D9BD9DFC5* ____xrControllerManager_15;
+	XRControllerManager_tD55C3C174FD950B151DE0817F08D212D9BD9DFC5* ____xrControllerManager_14;
 	// Qualcomm.Snapdragon.Spaces.Samples.XRControllerProfile Qualcomm.Snapdragon.Spaces.Samples.InteractionManager::_xrControllerProfile
-	int32_t ____xrControllerProfile_16;
+	int32_t ____xrControllerProfile_15;
 	// QCHT.Interactions.Core.XRHandTrackingManager Qualcomm.Snapdragon.Spaces.Samples.InteractionManager::<HandTrackingManager>k__BackingField
-	XRHandTrackingManager_t67C975D4AA74E1CA03B3B5089775D8E757AF21DB* ___U3CHandTrackingManagerU3Ek__BackingField_17;
+	XRHandTrackingManager_t67C975D4AA74E1CA03B3B5089775D8E757AF21DB* ___U3CHandTrackingManagerU3Ek__BackingField_16;
 	// Qualcomm.Snapdragon.Spaces.Samples.InputType Qualcomm.Snapdragon.Spaces.Samples.InteractionManager::<InputType>k__BackingField
-	int32_t ___U3CInputTypeU3Ek__BackingField_18;
+	int32_t ___U3CInputTypeU3Ek__BackingField_17;
 	// UnityEngine.Transform Qualcomm.Snapdragon.Spaces.Samples.InteractionManager::<ArCameraTransform>k__BackingField
-	Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* ___U3CArCameraTransformU3Ek__BackingField_19;
+	Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* ___U3CArCameraTransformU3Ek__BackingField_18;
 };
 
 // UnityEngine.XR.OpenXR.Features.Interactions.KHRSimpleControllerProfile
@@ -34183,9 +34187,9 @@ struct U3CU3Ec_t05E77A34CC516BC9C1EAD29412349378EFCE5A5D_StaticFields
 
 // CPUHealth/<>c
 
-// CircleSpawner/<SpawnWaves>d__16
+// CircleSpawner/<SpawnWaves>d__17
 
-// CircleSpawner/<SpawnWaves>d__16
+// CircleSpawner/<SpawnWaves>d__17
 
 // Unity.VisualScripting.Cloning/<>c__DisplayClass32_0
 
@@ -34458,8 +34462,8 @@ struct U3CU3Ec_t934A682FC7A2310EB64DF8FB184FC75102272AA5_StaticFields
 {
 	// GameManager/<>c GameManager/<>c::<>9
 	U3CU3Ec_t934A682FC7A2310EB64DF8FB184FC75102272AA5* ___U3CU3E9_0;
-	// System.Action GameManager/<>c::<>9__17_0
-	Action_tD00B0A84D7945E50C2DFFC28EFEE6ED44ED2AD07* ___U3CU3E9__17_0_1;
+	// System.Action GameManager/<>c::<>9__19_0
+	Action_tD00B0A84D7945E50C2DFFC28EFEE6ED44ED2AD07* ___U3CU3E9__19_0_1;
 };
 
 // GameManager/<>c
@@ -47320,9 +47324,9 @@ IL2CPP_EXTERN_C const int32_t g_FieldOffsetTable8812[4] =
 IL2CPP_EXTERN_C const int32_t g_FieldOffsetTable8813[3] = 
 {
 	static_cast<int32_t>(sizeof(RuntimeObject)),0,0,};
-IL2CPP_EXTERN_C const int32_t g_FieldOffsetTable8815[16] = 
+IL2CPP_EXTERN_C const int32_t g_FieldOffsetTable8815[15] = 
 {
-	static_cast<int32_t>(offsetof(InteractionManager_t7A01C090696791B0CDAB5B473B44B6A221403848_StaticFields, ___U3CInstanceU3Ek__BackingField_4)),0,static_cast<int32_t>(offsetof(InteractionManager_t7A01C090696791B0CDAB5B473B44B6A221403848_StaticFields, ___onInputTypeSwitch_6)),static_cast<int32_t>(offsetof(InteractionManager_t7A01C090696791B0CDAB5B473B44B6A221403848, ___HandTrackingPointer_7)),static_cast<int32_t>(offsetof(InteractionManager_t7A01C090696791B0CDAB5B473B44B6A221403848, ___GazePointer_8)),static_cast<int32_t>(offsetof(InteractionManager_t7A01C090696791B0CDAB5B473B44B6A221403848, ___DevicePointer_9)),static_cast<int32_t>(offsetof(InteractionManager_t7A01C090696791B0CDAB5B473B44B6A221403848, ___SwitchInputAction_10)),static_cast<int32_t>(offsetof(InteractionManager_t7A01C090696791B0CDAB5B473B44B6A221403848, ___BackButtonInputAction_11)),static_cast<int32_t>(offsetof(InteractionManager_t7A01C090696791B0CDAB5B473B44B6A221403848, ____automaticControllerSwitch_12)),static_cast<int32_t>(offsetof(InteractionManager_t7A01C090696791B0CDAB5B473B44B6A221403848, ____isHandTrackingCompatible_13)),static_cast<int32_t>(offsetof(InteractionManager_t7A01C090696791B0CDAB5B473B44B6A221403848, ____isSessionOriginMoved_14)),static_cast<int32_t>(offsetof(InteractionManager_t7A01C090696791B0CDAB5B473B44B6A221403848, ____xrControllerManager_15)),static_cast<int32_t>(offsetof(InteractionManager_t7A01C090696791B0CDAB5B473B44B6A221403848, ____xrControllerProfile_16)),static_cast<int32_t>(offsetof(InteractionManager_t7A01C090696791B0CDAB5B473B44B6A221403848, ___U3CHandTrackingManagerU3Ek__BackingField_17)),static_cast<int32_t>(offsetof(InteractionManager_t7A01C090696791B0CDAB5B473B44B6A221403848, ___U3CInputTypeU3Ek__BackingField_18)),static_cast<int32_t>(offsetof(InteractionManager_t7A01C090696791B0CDAB5B473B44B6A221403848, ___U3CArCameraTransformU3Ek__BackingField_19)),};
+	static_cast<int32_t>(offsetof(InteractionManager_t7A01C090696791B0CDAB5B473B44B6A221403848_StaticFields, ___U3CInstanceU3Ek__BackingField_4)),0,static_cast<int32_t>(offsetof(InteractionManager_t7A01C090696791B0CDAB5B473B44B6A221403848_StaticFields, ___onInputTypeSwitch_6)),static_cast<int32_t>(offsetof(InteractionManager_t7A01C090696791B0CDAB5B473B44B6A221403848, ___HandTrackingPointer_7)),static_cast<int32_t>(offsetof(InteractionManager_t7A01C090696791B0CDAB5B473B44B6A221403848, ___DevicePointer_8)),static_cast<int32_t>(offsetof(InteractionManager_t7A01C090696791B0CDAB5B473B44B6A221403848, ___SwitchInputAction_9)),static_cast<int32_t>(offsetof(InteractionManager_t7A01C090696791B0CDAB5B473B44B6A221403848, ___BackButtonInputAction_10)),static_cast<int32_t>(offsetof(InteractionManager_t7A01C090696791B0CDAB5B473B44B6A221403848, ____automaticControllerSwitch_11)),static_cast<int32_t>(offsetof(InteractionManager_t7A01C090696791B0CDAB5B473B44B6A221403848, ____isHandTrackingCompatible_12)),static_cast<int32_t>(offsetof(InteractionManager_t7A01C090696791B0CDAB5B473B44B6A221403848, ____isSessionOriginMoved_13)),static_cast<int32_t>(offsetof(InteractionManager_t7A01C090696791B0CDAB5B473B44B6A221403848, ____xrControllerManager_14)),static_cast<int32_t>(offsetof(InteractionManager_t7A01C090696791B0CDAB5B473B44B6A221403848, ____xrControllerProfile_15)),static_cast<int32_t>(offsetof(InteractionManager_t7A01C090696791B0CDAB5B473B44B6A221403848, ___U3CHandTrackingManagerU3Ek__BackingField_16)),static_cast<int32_t>(offsetof(InteractionManager_t7A01C090696791B0CDAB5B473B44B6A221403848, ___U3CInputTypeU3Ek__BackingField_17)),static_cast<int32_t>(offsetof(InteractionManager_t7A01C090696791B0CDAB5B473B44B6A221403848, ___U3CArCameraTransformU3Ek__BackingField_18)),};
 IL2CPP_EXTERN_C const int32_t g_FieldOffsetTable8816[4] = 
 {
 	static_cast<int32_t>(offsetof(MirrorARCameraPose_tF55F33DB0A57D24BE237B986987DB7219BE4611C, ___TrackPosition_4)),static_cast<int32_t>(offsetof(MirrorARCameraPose_tF55F33DB0A57D24BE237B986987DB7219BE4611C, ___TrackRotation_5)),static_cast<int32_t>(offsetof(MirrorARCameraPose_tF55F33DB0A57D24BE237B986987DB7219BE4611C, ___PositionOffset_6)),static_cast<int32_t>(offsetof(MirrorARCameraPose_tF55F33DB0A57D24BE237B986987DB7219BE4611C, ____arCameraTransform_7)),};
@@ -47526,10 +47530,10 @@ IL2CPP_EXTERN_C const int32_t g_FieldOffsetTable8898[2] =
 	static_cast<int32_t>(offsetof(EnemySpawnInfo_t7CEE2A1F9FDF286E70649A04DA7344D77A6FB671, ___enemyType_0)),static_cast<int32_t>(offsetof(EnemySpawnInfo_t7CEE2A1F9FDF286E70649A04DA7344D77A6FB671, ___enemyCount_1)),};
 IL2CPP_EXTERN_C const int32_t g_FieldOffsetTable8899[3] = 
 {
-	static_cast<int32_t>(offsetof(U3CSpawnWavesU3Ed__16_t6AD17C5108E5ABBAD1AB506948097C0BFE08441C, ___U3CU3E1__state_0)),static_cast<int32_t>(offsetof(U3CSpawnWavesU3Ed__16_t6AD17C5108E5ABBAD1AB506948097C0BFE08441C, ___U3CU3E2__current_1)),static_cast<int32_t>(offsetof(U3CSpawnWavesU3Ed__16_t6AD17C5108E5ABBAD1AB506948097C0BFE08441C, ___U3CU3E4__this_2)),};
-IL2CPP_EXTERN_C const int32_t g_FieldOffsetTable8900[14] = 
+	static_cast<int32_t>(offsetof(U3CSpawnWavesU3Ed__17_t8A8AF8D8DA6126C824ED5D45AF2321857EC1C57A, ___U3CU3E1__state_0)),static_cast<int32_t>(offsetof(U3CSpawnWavesU3Ed__17_t8A8AF8D8DA6126C824ED5D45AF2321857EC1C57A, ___U3CU3E2__current_1)),static_cast<int32_t>(offsetof(U3CSpawnWavesU3Ed__17_t8A8AF8D8DA6126C824ED5D45AF2321857EC1C57A, ___U3CU3E4__this_2)),};
+IL2CPP_EXTERN_C const int32_t g_FieldOffsetTable8900[15] = 
 {
-	static_cast<int32_t>(offsetof(CircleSpawner_t3819C380C2B26A54EF639C32D6D9CFCB7F67C2C3, ___spawnedEnemies_4)),static_cast<int32_t>(offsetof(CircleSpawner_t3819C380C2B26A54EF639C32D6D9CFCB7F67C2C3, ___enemySpawnInfoList_5)),static_cast<int32_t>(offsetof(CircleSpawner_t3819C380C2B26A54EF639C32D6D9CFCB7F67C2C3, ___initialWaveSize_6)),static_cast<int32_t>(offsetof(CircleSpawner_t3819C380C2B26A54EF639C32D6D9CFCB7F67C2C3, ___waveSize_7)),static_cast<int32_t>(offsetof(CircleSpawner_t3819C380C2B26A54EF639C32D6D9CFCB7F67C2C3, ___outerRadius_8)),static_cast<int32_t>(offsetof(CircleSpawner_t3819C380C2B26A54EF639C32D6D9CFCB7F67C2C3, ___innerRadius_9)),static_cast<int32_t>(offsetof(CircleSpawner_t3819C380C2B26A54EF639C32D6D9CFCB7F67C2C3, ___timeBetweenWaves_10)),static_cast<int32_t>(offsetof(CircleSpawner_t3819C380C2B26A54EF639C32D6D9CFCB7F67C2C3, ___timeBetweenSpawns_11)),static_cast<int32_t>(offsetof(CircleSpawner_t3819C380C2B26A54EF639C32D6D9CFCB7F67C2C3, ___waveSizeMultiplier_12)),static_cast<int32_t>(offsetof(CircleSpawner_t3819C380C2B26A54EF639C32D6D9CFCB7F67C2C3, ___spawnCoroutine_13)),static_cast<int32_t>(offsetof(CircleSpawner_t3819C380C2B26A54EF639C32D6D9CFCB7F67C2C3, ___isSpawningWave_14)),static_cast<int32_t>(offsetof(CircleSpawner_t3819C380C2B26A54EF639C32D6D9CFCB7F67C2C3, ___currentWave_15)),static_cast<int32_t>(offsetof(CircleSpawner_t3819C380C2B26A54EF639C32D6D9CFCB7F67C2C3, ___attackPoint_16)),static_cast<int32_t>(offsetof(CircleSpawner_t3819C380C2B26A54EF639C32D6D9CFCB7F67C2C3, ___waveText_17)),};
+	static_cast<int32_t>(offsetof(CircleSpawner_t3819C380C2B26A54EF639C32D6D9CFCB7F67C2C3, ___spawnedEnemies_4)),static_cast<int32_t>(offsetof(CircleSpawner_t3819C380C2B26A54EF639C32D6D9CFCB7F67C2C3, ___enemySpawnInfoList_5)),static_cast<int32_t>(offsetof(CircleSpawner_t3819C380C2B26A54EF639C32D6D9CFCB7F67C2C3, ___initialWaveSize_6)),static_cast<int32_t>(offsetof(CircleSpawner_t3819C380C2B26A54EF639C32D6D9CFCB7F67C2C3, ___waveSize_7)),static_cast<int32_t>(offsetof(CircleSpawner_t3819C380C2B26A54EF639C32D6D9CFCB7F67C2C3, ___outerRadius_8)),static_cast<int32_t>(offsetof(CircleSpawner_t3819C380C2B26A54EF639C32D6D9CFCB7F67C2C3, ___innerRadius_9)),static_cast<int32_t>(offsetof(CircleSpawner_t3819C380C2B26A54EF639C32D6D9CFCB7F67C2C3, ___timeBetweenWaves_10)),static_cast<int32_t>(offsetof(CircleSpawner_t3819C380C2B26A54EF639C32D6D9CFCB7F67C2C3, ___timeBetweenSpawns_11)),static_cast<int32_t>(offsetof(CircleSpawner_t3819C380C2B26A54EF639C32D6D9CFCB7F67C2C3, ___waveSizeMultiplier_12)),static_cast<int32_t>(offsetof(CircleSpawner_t3819C380C2B26A54EF639C32D6D9CFCB7F67C2C3, ___spawnCoroutine_13)),static_cast<int32_t>(offsetof(CircleSpawner_t3819C380C2B26A54EF639C32D6D9CFCB7F67C2C3, ___isSpawningWave_14)),static_cast<int32_t>(offsetof(CircleSpawner_t3819C380C2B26A54EF639C32D6D9CFCB7F67C2C3, ___currentWave_15)),static_cast<int32_t>(offsetof(CircleSpawner_t3819C380C2B26A54EF639C32D6D9CFCB7F67C2C3, ___attackPoint_16)),static_cast<int32_t>(offsetof(CircleSpawner_t3819C380C2B26A54EF639C32D6D9CFCB7F67C2C3, ___playButton_17)),static_cast<int32_t>(offsetof(CircleSpawner_t3819C380C2B26A54EF639C32D6D9CFCB7F67C2C3, ___waveText_18)),};
 IL2CPP_EXTERN_C const int32_t g_FieldOffsetTable8901[1] = 
 {
 	static_cast<int32_t>(offsetof(U3CU3Ec_t05E77A34CC516BC9C1EAD29412349378EFCE5A5D_StaticFields, ___U3CU3E9_0)),};
@@ -47559,10 +47563,10 @@ IL2CPP_EXTERN_C const int32_t g_FieldOffsetTable8909[3] =
 	static_cast<int32_t>(offsetof(Entity_tA0A7B48C604B2526417890D6E1004FACF66AD2CC, ___health_4)),static_cast<int32_t>(offsetof(Entity_tA0A7B48C604B2526417890D6E1004FACF66AD2CC, ___pointManager_5)),static_cast<int32_t>(offsetof(Entity_tA0A7B48C604B2526417890D6E1004FACF66AD2CC, ___pointAmount_6)),};
 IL2CPP_EXTERN_C const int32_t g_FieldOffsetTable8910[2] = 
 {
-	static_cast<int32_t>(offsetof(U3CU3Ec_t934A682FC7A2310EB64DF8FB184FC75102272AA5_StaticFields, ___U3CU3E9_0)),static_cast<int32_t>(offsetof(U3CU3Ec_t934A682FC7A2310EB64DF8FB184FC75102272AA5_StaticFields, ___U3CU3E9__17_0_1)),};
-IL2CPP_EXTERN_C const int32_t g_FieldOffsetTable8911[6] = 
+	static_cast<int32_t>(offsetof(U3CU3Ec_t934A682FC7A2310EB64DF8FB184FC75102272AA5_StaticFields, ___U3CU3E9_0)),static_cast<int32_t>(offsetof(U3CU3Ec_t934A682FC7A2310EB64DF8FB184FC75102272AA5_StaticFields, ___U3CU3E9__19_0_1)),};
+IL2CPP_EXTERN_C const int32_t g_FieldOffsetTable8911[8] = 
 {
-	static_cast<int32_t>(offsetof(GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6, ___cam_4)),static_cast<int32_t>(offsetof(GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6, ____prefab_5)),static_cast<int32_t>(offsetof(GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6, ___pointManager_6)),static_cast<int32_t>(offsetof(GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6, ___OnBuildEnter_7)),static_cast<int32_t>(offsetof(GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6, ___startingPoint_8)),static_cast<int32_t>(offsetof(GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6, ___isBuilding_9)),};
+	static_cast<int32_t>(offsetof(GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6, ___cam_4)),static_cast<int32_t>(offsetof(GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6, ____prefab_5)),static_cast<int32_t>(offsetof(GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6, ___image_6)),static_cast<int32_t>(offsetof(GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6, ___pointManager_7)),static_cast<int32_t>(offsetof(GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6, ___spawner_8)),static_cast<int32_t>(offsetof(GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6, ___OnBuildEnter_9)),static_cast<int32_t>(offsetof(GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6, ___startingPoint_10)),static_cast<int32_t>(offsetof(GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6, ___isBuilding_11)),};
 IL2CPP_EXTERN_C const int32_t g_FieldOffsetTable8912[5] = 
 {
 	static_cast<int32_t>(offsetof(GameOver_tC0D72A03377DA58EE60B10DE7838DBDC0A75798D, ___scoreText_4)),static_cast<int32_t>(offsetof(GameOver_tC0D72A03377DA58EE60B10DE7838DBDC0A75798D, ___waveText_5)),static_cast<int32_t>(offsetof(GameOver_tC0D72A03377DA58EE60B10DE7838DBDC0A75798D, ___highscoreText_6)),static_cast<int32_t>(offsetof(GameOver_tC0D72A03377DA58EE60B10DE7838DBDC0A75798D, ___endPoints_7)),static_cast<int32_t>(offsetof(GameOver_tC0D72A03377DA58EE60B10DE7838DBDC0A75798D, ___deathCanvas_8)),};

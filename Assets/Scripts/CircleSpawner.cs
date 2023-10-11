@@ -27,7 +27,9 @@ public class CircleSpawner : MonoBehaviour {
     private bool isSpawningWave = false;
     private int currentWave = 1;
 
-    [SerializeField]private GameObject attackPoint;
+    [SerializeField] private GameObject attackPoint;
+    [SerializeField] private GameObject playButton;
+
 
     private void Start() {
         waveSize = initialWaveSize;
@@ -37,6 +39,7 @@ public class CircleSpawner : MonoBehaviour {
     public void StartGame()
     {
         spawnCoroutine = StartCoroutine(SpawnWaves());
+        playButton.SetActive(false);
     }
 
     [SerializeField] private TMP_Text waveText;
