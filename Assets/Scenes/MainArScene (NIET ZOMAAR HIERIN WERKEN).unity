@@ -178,6 +178,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &210940881 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5749415741583908006, guid: 3c4d2c1e0d663874e8c9091249e4363f, type: 3}
+  m_PrefabInstance: {fileID: 268101537}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &264077442
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -340,6 +345,63 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 224436646642840784, guid: 75602b458bb564026b4056c133763f2e, type: 3}
   m_PrefabInstance: {fileID: 264077442}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &268101537
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5749415741583908006, guid: 3c4d2c1e0d663874e8c9091249e4363f, type: 3}
+      propertyPath: m_Name
+      value: PlaceHolderTurret
+      objectReference: {fileID: 0}
+    - target: {fileID: 5749415741583908007, guid: 3c4d2c1e0d663874e8c9091249e4363f, type: 3}
+      propertyPath: m_RootOrder
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 5749415741583908007, guid: 3c4d2c1e0d663874e8c9091249e4363f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5749415741583908007, guid: 3c4d2c1e0d663874e8c9091249e4363f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.395
+      objectReference: {fileID: 0}
+    - target: {fileID: 5749415741583908007, guid: 3c4d2c1e0d663874e8c9091249e4363f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5749415741583908007, guid: 3c4d2c1e0d663874e8c9091249e4363f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5749415741583908007, guid: 3c4d2c1e0d663874e8c9091249e4363f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5749415741583908007, guid: 3c4d2c1e0d663874e8c9091249e4363f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5749415741583908007, guid: 3c4d2c1e0d663874e8c9091249e4363f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5749415741583908007, guid: 3c4d2c1e0d663874e8c9091249e4363f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5749415741583908007, guid: 3c4d2c1e0d663874e8c9091249e4363f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5749415741583908007, guid: 3c4d2c1e0d663874e8c9091249e4363f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3c4d2c1e0d663874e8c9091249e4363f, type: 3}
 --- !u!1 &296522467
 GameObject:
   m_ObjectHideFlags: 0
@@ -2057,7 +2119,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1539563250}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.2, z: 0.02}
+  m_LocalPosition: {x: 0, y: 0.2, z: 0}
   m_LocalScale: {x: 8, y: 0.1, z: 8}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2076,7 +2138,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98cdc33282438f541aaeb346041c80b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridTilePrefab: {fileID: 5281888850626517125, guid: acb51430299755b48b4241d820dcf935, type: 3}
+  gridTilePrefab: {fileID: 515429336657537672, guid: 582994bae478b5441bf185b6c9f14640, type: 3}
   spacing: 0.15
 --- !u!1 &1550770773
 GameObject:
@@ -2155,7 +2217,7 @@ GameObject:
   - component: {fileID: 1672611895}
   - component: {fileID: 1672611894}
   - component: {fileID: 1672611898}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Target
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2233,7 +2295,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1672611893}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.15, z: 0}
+  m_LocalPosition: {x: 0, y: 0.354, z: 0}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -2495,10 +2557,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 1259996390}
-  _prefab: {fileID: 5749415741583908006, guid: 165a386cc575e3e4e980500b9e772d7b, type: 3}
   image: {fileID: 71971522}
   leftHand: {fileID: 6577773827858917635}
   rightHand: {fileID: 6577773827858917634}
+  _prefab: {fileID: 5749415741583908006, guid: 165a386cc575e3e4e980500b9e772d7b, type: 3}
+  _prefabBp: {fileID: 210940881}
+  previewMat: {fileID: 2100000, guid: 71bfb48d130e49c4e8154aada50ebf1c, type: 2}
+  normalMat: {fileID: 2100000, guid: a88d92708d112224fb80670d19509ca6, type: 2}
   debugText: {fileID: 698370227}
 --- !u!4 &2065764349
 Transform:
@@ -2913,6 +2978,10 @@ PrefabInstance:
       propertyPath: m_ValidColorGradient.key0.r
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 727473059885449071, guid: 6b9647766921c394d8e499fcfc5e86df, type: 3}
+      propertyPath: m_RaycastMask.m_Bits
+      value: 507
+      objectReference: {fileID: 0}
     - target: {fileID: 5409416763388403200, guid: 6b9647766921c394d8e499fcfc5e86df, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -2964,6 +3033,10 @@ PrefabInstance:
     - target: {fileID: 5409416763953146463, guid: 6b9647766921c394d8e499fcfc5e86df, type: 3}
       propertyPath: DeviceController
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6266918582398532104, guid: 6b9647766921c394d8e499fcfc5e86df, type: 3}
+      propertyPath: m_RaycastMask.m_Bits
+      value: 507
       objectReference: {fileID: 0}
     - target: {fileID: 6266918582398532106, guid: 6b9647766921c394d8e499fcfc5e86df, type: 3}
       propertyPath: m_ValidColorGradient.key0.b

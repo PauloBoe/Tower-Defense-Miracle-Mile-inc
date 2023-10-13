@@ -32,4 +32,15 @@ public class PointManager : MonoBehaviour
         //TODO: Implement Message for insufficient point if true.
         return false;
     }
+
+    private bool CheckSufficientPoints() {
+        //TODO set diffrent tower costs
+        if (Points < 50) {
+            return false;
+        }
+        else {
+            Points -= 50;
+            return true;
+        }
+    }
 }
