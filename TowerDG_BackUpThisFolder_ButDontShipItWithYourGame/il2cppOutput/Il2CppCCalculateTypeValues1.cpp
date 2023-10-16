@@ -41032,24 +41032,36 @@ struct GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6  : public MonoBehav
 {
 	// UnityEngine.Camera GameManager::cam
 	Camera_tA92CC927D7439999BC82DBEDC0AA45B470F9E184* ___cam_4;
-	// UnityEngine.GameObject GameManager::_prefab
-	GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* ____prefab_5;
-	// UnityEngine.UI.Image GameManager::image
-	Image_tBC1D03F63BF71132E9A5E472B8742F172A011E7E* ___image_6;
-	// UnityEngine.GameObject GameManager::leftHand
-	GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* ___leftHand_7;
-	// UnityEngine.GameObject GameManager::rightHand
-	GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* ___rightHand_8;
-	// UnityEngine.UI.Text GameManager::debugText
-	Text_tD60B2346DAA6666BF0D822FF607F0B220C2B9E62* ___debugText_9;
 	// PointManager GameManager::pointManager
-	PointManager_t26B148DBE017524C9499C08C05A0B6A6F42FD2B9* ___pointManager_10;
+	PointManager_t26B148DBE017524C9499C08C05A0B6A6F42FD2B9* ___pointManager_5;
 	// CircleSpawner GameManager::spawner
-	CircleSpawner_t3819C380C2B26A54EF639C32D6D9CFCB7F67C2C3* ___spawner_11;
-	// UnityEngine.Vector3 GameManager::startingPoint
-	Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 ___startingPoint_12;
+	CircleSpawner_t3819C380C2B26A54EF639C32D6D9CFCB7F67C2C3* ___spawner_6;
+	// UnityEngine.UI.Image GameManager::image
+	Image_tBC1D03F63BF71132E9A5E472B8742F172A011E7E* ___image_7;
+	// UnityEngine.GameObject GameManager::leftHand
+	GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* ___leftHand_8;
+	// UnityEngine.GameObject GameManager::rightHand
+	GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* ___rightHand_9;
+	// UnityEngine.GameObject GameManager::_prefab
+	GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* ____prefab_10;
+	// UnityEngine.GameObject GameManager::_prefabBp
+	GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* ____prefabBp_11;
+	// UnityEngine.Material GameManager::previewMat
+	Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* ___previewMat_12;
+	// UnityEngine.Material GameManager::normalMat
+	Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* ___normalMat_13;
+	// UnityEngine.Material GameManager::blockedMat
+	Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* ___blockedMat_14;
+	// UnityEngine.GameObject GameManager::previousCell
+	GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* ___previousCell_15;
+	// UnityEngine.UI.Text GameManager::debugText
+	Text_tD60B2346DAA6666BF0D822FF607F0B220C2B9E62* ___debugText_16;
 	// System.Boolean GameManager::isBuilding
-	bool ___isBuilding_13;
+	bool ___isBuilding_17;
+	// System.Collections.Generic.List`1<UnityEngine.GameObject> GameManager::adjecentcells
+	List_1_tB951CE80B58D1BF9650862451D8DAD8C231F207B* ___adjecentcells_18;
+	// System.Collections.Generic.List`1<UnityEngine.GameObject> GameManager::commonCells
+	List_1_tB951CE80B58D1BF9650862451D8DAD8C231F207B* ___commonCells_19;
 };
 
 // GameOver
@@ -42178,6 +42190,8 @@ struct Tile_t192D2F5511792792FB74C37341AFAA9F6B77AE64  : public MonoBehaviour_t5
 {
 	// UnityEngine.Collider Tile::collider
 	Collider_t1CC3163924FCD6C4CC2E816373A929C1E3D55E76* ___collider_4;
+	// System.Boolean Tile::canApply
+	bool ___canApply_5;
 };
 
 // TileManager

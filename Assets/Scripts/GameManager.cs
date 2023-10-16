@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -19,10 +20,12 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject _prefab;
     [SerializeField] private GameObject _prefabBp;
 
+    [SerializeField] private GameObject currentCell;
+    [SerializeField] private GameObject previousCell;
+
     [SerializeField] private Material previewMat;
     [SerializeField] private Material normalMat;
     [SerializeField] private Material blockedMat;
-    private GameObject previousCell = null;
 
     [SerializeField] private Text debugText;
     private void Awake() {
@@ -37,7 +40,6 @@ public class GameManager : MonoBehaviour
 
     private void Update() {
 
-#if UNITY_EDITOR
         if (isBuilding) {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
@@ -55,34 +57,39 @@ public class GameManager : MonoBehaviour
                         //place the tower in the top 
                         Vector3 offset = new Vector3(0, CheckTileSelection().transform.localScale.y, 0);
                         GameObject clone = Instantiate(_prefab, CheckTileSelection().transform.position, Quaternion.identity);
-                        DisableSurroundingCells(adjecentcells);
+                        DisableSurroundingCells(outerCells, normalMat);
+                        DisableSurroundingCells(adjecentcells, blockedMat, false);
                         EndBuilding();
                     }
                 }
+
             }
         }
 
-#elif !UNITY_EDITOR
 
-        if (isBuilding) {
-            GameObject selectedTile;
-            bool tileSelected = CheckTileSelection(out selectedTile);
-            if (selectedTile != null) {
-                XRSimpleInteractable interactable = selectedTile.GetComponent<XRSimpleInteractable>();
 
-                //text = tileSelected.ToString() + " Tile name: " + selectedTile.name;
-                if (tileSelected && interactable.isSelected || Input.GetMouseButtonDown(0)) {
-                    //place the tower in the top 
-                    Vector3 offset = new Vector3(selectedTile.transform.localScale.x * 10, 0, selectedTile.transform.localScale.z * 10);
-                    GameObject clone = Instantiate(_prefab, selectedTile.transform.position, Quaternion.identity);
-                    debugText.text = selectedTile.name;
-                    ColorSurroundingCells(selectedTile);
+        //if (isBuilding) {
+        //    GameObject selectedTile;
+        //    bool tileSelected = CheckTileSelection(out selectedTile);
+        //    if (selectedTile != null) {
+        //        XRSimpleInteractable interactable = selectedTile.GetComponent<XRSimpleInteractable>();
+        //        _prefabBp.SetActive(true);
+        //        Vector3 intersection = selectedTile.transform.position;
+        //        _prefabBp.transform.position = intersection;
+        //        ColorSurroundingCells(selectedTile);
 
-                    EndBuilding();
-                }
-            }
-        }
-#endif
+        //        //text = tileSelected.ToString() + " Tile name: " + selectedTile.name;
+        //        if (tileSelected && interactable.isSelected || Input.GetMouseButtonDown(0)) {
+        //            _prefabBp.SetActive(false);
+        //            Vector3 offset = new Vector3(selectedTile.transform.localScale.x * 10, 0, selectedTile.transform.localScale.z * 10);
+        //            GameObject clone = Instantiate(_prefab, selectedTile.transform.position, Quaternion.identity);
+        //            debugText.text = selectedTile.name;
+        //            DisableSurroundingCells(adjecentcells);
+        //            EndBuilding();
+        //        }
+        //    }
+        //}
+
     }
     //Button fuction
     private bool isBuilding = false;
@@ -178,7 +185,7 @@ public class GameManager : MonoBehaviour
         cam.cullingMask |= 1 << LayerMask.NameToLayer("GridField");
     }
     public List<GameObject> adjecentcells = new List<GameObject>();
-    public List<GameObject> previousAdjecentcells = new List<GameObject>();
+    public List<GameObject> outerCells = new List<GameObject>();
     private void ColorSurroundingCells(GameObject selectedCell) {
         try {
 
@@ -202,21 +209,30 @@ public class GameManager : MonoBehaviour
                 new Vector3(cellScale.x + 0.15f, 0, -(cellScale.z + 0.15f)),// Diagonal Down-Right
                 new Vector3(-(cellScale.x + 0.15f), 0, -(cellScale.z + 0.15f))// Diagonal Down-Left
                 };
-                if (selectedCell != previousCell) {
-                    previousCell = selectedCell;
-                    RevertState(adjecentcells); //clear new
-                }
+
+
+                RevertState(adjecentcells); //clear new
+
                 // Color the surrounding cells
                 foreach (Vector3 offset in offsets) {
                     Vector3 position = selectedPosition + offset;
                     GameObject adjacentCell = GetCellAtPosition(position);
                     if (adjacentCell != null && !adjecentcells.Contains(adjacentCell)) {
                         adjecentcells.Add(adjacentCell); //add new
-                        ColorCell(adjacentCell, previewMat);
+                        ColorCell(adjacentCell, previewMat, false);
                     }
                 }
-                previousAdjecentcells.AddRange(adjecentcells);
-                
+
+                Vector3[] offsets5x5 = Calc(cellScale);
+
+                foreach (Vector3 offset in offsets5x5) {
+                    Vector3 pos = selectedPosition + offset;
+                    GameObject adjacentCell = GetCellAtPosition(pos);
+                    if (adjacentCell != null && !outerCells.Contains(adjacentCell)) {
+                        outerCells.Add(adjacentCell);
+                    }
+                }
+
             }
             else {
                 debugText.text = "selected cell is empty";
@@ -227,6 +243,34 @@ public class GameManager : MonoBehaviour
         }
     }
 
+
+    private Vector3[] Calc(Vector3 cellScale) {
+        Vector3[] offsets = new Vector3[]
+        {
+    // Additional offsets for a 5x5 grid (2 cells away)
+        new Vector3(2 * (cellScale.x + 0.15f), 0, 0),             // Right (2 cells away)
+        new Vector3(-(2 * (cellScale.x + 0.15f)), 0, 0),          // Left (2 cells away)
+        new Vector3(0, 0, 2 * (cellScale.z + 0.15f)),             // Up (2 cells away)
+        new Vector3(0, 0, -(2 * (cellScale.z + 0.15f))),          // Down (2 cells away)
+
+        new Vector3(2 * (cellScale.x + 0.15f), 0 , -(cellScale.z + 0.15f)),
+        new Vector3(2 * (cellScale.x + 0.15f), 0 , cellScale.z + 0.15f),
+        new Vector3(cellScale.x + 0.15f, 0 , 2* (cellScale.z + 0.15f)),
+        new Vector3(cellScale.x + 0.15f, 0 , 2 * -(cellScale.z + 0.15f)),
+
+        new Vector3(2* -(cellScale.x + 0.15f), 0 , cellScale.z + 0.15f),
+        new Vector3(2* -(cellScale.x + 0.15f), 0 , -(cellScale.z + 0.15f)),
+        new Vector3(-(cellScale.x + 0.15f), 0 , 2 * -(cellScale.z + 0.15f)),
+        new Vector3(-(cellScale.x + 0.15f), 0 , 2 * (cellScale.z + 0.15f)),
+
+        new Vector3(2* (cellScale.x + 0.15f), 0,  2 * (cellScale.z + 0.15f)),         // Diagonal Up-Right (2 cells away)
+        new Vector3(2 * (cellScale.x + 0.15f), 0, 2 * -(cellScale.z + 0.15f)),      // Diagonal Down-Right (2 cells away)
+        new Vector3(2* -(cellScale.x + 0.15f), 0, 2 * (cellScale.z + 0.15f)),      // Diagonal Up-Left (2 cells away)
+        new Vector3(-(2 * (cellScale.x + 0.15f)), 0,2 * -(cellScale.z + 0.15f))    // Diagonal Down-Left (2 cells away)
+        };
+
+        return offsets;
+    }
 
     private GameObject GetCellAtPosition(Vector3 position) {
         // Perform a raycast or any other method to find the cell at the specified position
@@ -254,11 +298,20 @@ public class GameManager : MonoBehaviour
             return null;
         }
     }
-    private void DisableSurroundingCells(List<GameObject> cells) {
+    private void DisableSurroundingCells(List<GameObject> cells, Material material) {
         if (cells != null) {
             foreach (GameObject cell in cells) {
-                ColorCell(cell, blockedMat);
+                ColorCell(cell, material);
                 cell.GetComponentInChildren<Tile>().enabled = false;
+            }
+            outerCells.Clear();
+        }
+    }
+    private void DisableSurroundingCells(List<GameObject> cells, Material mat, bool skip) {
+        if (cells != null) {
+            foreach (GameObject cell in cells) {
+                cell.GetComponentInChildren<Tile>().enabled = false;
+                ColorCell(cell, mat, skip);
             }
             adjecentcells.Clear();
         }
@@ -267,9 +320,13 @@ public class GameManager : MonoBehaviour
         if (cells != null) {
             foreach (GameObject cell in cells) {
                 Renderer renderer = cell.GetComponentInChildren<Renderer>();
-                renderer.material = normalMat;
+                if (renderer.material != blockedMat || cell.GetComponent<Tile>().enabled != false) {
+                    renderer.material = normalMat;
+                    debugText.text += "Reverting: " + cell.name + " ";
+                }
             }
             adjecentcells.Clear();
+            outerCells.Clear();
         }
     }
 
@@ -277,9 +334,22 @@ public class GameManager : MonoBehaviour
         if (cell != null) {
             // Change the color of the cell
             Renderer renderer = cell.GetComponentInChildren<Renderer>();
-            renderer.material = mat;
+            if (cell.GetComponent<Tile>().enabled != false) {
+                renderer.material = mat;
+            }
         }
     }
+
+    private void ColorCell(GameObject cell, Material mat, bool skip) {
+        if (cell != null) {
+            // Change the color of the cell
+            Renderer renderer = cell.GetComponentInChildren<Renderer>();
+            if (skip == false || cell.GetComponent<Tile>().enabled != false) {
+                renderer.material = mat;
+            }
+        }
+    }
+
     public void Hide() {
         cam.cullingMask &= ~(1 << LayerMask.NameToLayer("GridField"));
     }

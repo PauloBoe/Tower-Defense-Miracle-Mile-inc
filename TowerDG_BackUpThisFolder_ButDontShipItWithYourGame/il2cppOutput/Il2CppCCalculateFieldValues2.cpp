@@ -26386,24 +26386,36 @@ struct GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6  : public MonoBehav
 {
 	// UnityEngine.Camera GameManager::cam
 	Camera_tA92CC927D7439999BC82DBEDC0AA45B470F9E184* ___cam_4;
-	// UnityEngine.GameObject GameManager::_prefab
-	GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* ____prefab_5;
-	// UnityEngine.UI.Image GameManager::image
-	Image_tBC1D03F63BF71132E9A5E472B8742F172A011E7E* ___image_6;
-	// UnityEngine.GameObject GameManager::leftHand
-	GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* ___leftHand_7;
-	// UnityEngine.GameObject GameManager::rightHand
-	GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* ___rightHand_8;
-	// UnityEngine.UI.Text GameManager::debugText
-	Text_tD60B2346DAA6666BF0D822FF607F0B220C2B9E62* ___debugText_9;
 	// PointManager GameManager::pointManager
-	PointManager_t26B148DBE017524C9499C08C05A0B6A6F42FD2B9* ___pointManager_10;
+	PointManager_t26B148DBE017524C9499C08C05A0B6A6F42FD2B9* ___pointManager_5;
 	// CircleSpawner GameManager::spawner
-	CircleSpawner_t3819C380C2B26A54EF639C32D6D9CFCB7F67C2C3* ___spawner_11;
-	// UnityEngine.Vector3 GameManager::startingPoint
-	Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 ___startingPoint_12;
+	CircleSpawner_t3819C380C2B26A54EF639C32D6D9CFCB7F67C2C3* ___spawner_6;
+	// UnityEngine.UI.Image GameManager::image
+	Image_tBC1D03F63BF71132E9A5E472B8742F172A011E7E* ___image_7;
+	// UnityEngine.GameObject GameManager::leftHand
+	GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* ___leftHand_8;
+	// UnityEngine.GameObject GameManager::rightHand
+	GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* ___rightHand_9;
+	// UnityEngine.GameObject GameManager::_prefab
+	GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* ____prefab_10;
+	// UnityEngine.GameObject GameManager::_prefabBp
+	GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* ____prefabBp_11;
+	// UnityEngine.Material GameManager::previewMat
+	Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* ___previewMat_12;
+	// UnityEngine.Material GameManager::normalMat
+	Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* ___normalMat_13;
+	// UnityEngine.Material GameManager::blockedMat
+	Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* ___blockedMat_14;
+	// UnityEngine.GameObject GameManager::previousCell
+	GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* ___previousCell_15;
+	// UnityEngine.UI.Text GameManager::debugText
+	Text_tD60B2346DAA6666BF0D822FF607F0B220C2B9E62* ___debugText_16;
 	// System.Boolean GameManager::isBuilding
-	bool ___isBuilding_13;
+	bool ___isBuilding_17;
+	// System.Collections.Generic.List`1<UnityEngine.GameObject> GameManager::adjecentcells
+	List_1_tB951CE80B58D1BF9650862451D8DAD8C231F207B* ___adjecentcells_18;
+	// System.Collections.Generic.List`1<UnityEngine.GameObject> GameManager::commonCells
+	List_1_tB951CE80B58D1BF9650862451D8DAD8C231F207B* ___commonCells_19;
 };
 
 // GameOver
@@ -27493,6 +27505,8 @@ struct Tile_t192D2F5511792792FB74C37341AFAA9F6B77AE64  : public MonoBehaviour_t5
 {
 	// UnityEngine.Collider Tile::collider
 	Collider_t1CC3163924FCD6C4CC2E816373A929C1E3D55E76* ___collider_4;
+	// System.Boolean Tile::canApply
+	bool ___canApply_5;
 };
 
 // TileManager
@@ -47535,9 +47549,9 @@ IL2CPP_EXTERN_C const int32_t g_FieldOffsetTable8895[1] =
 IL2CPP_EXTERN_C const int32_t g_FieldOffsetTable8896[3] = 
 {
 	static_cast<int32_t>(offsetof(Entity_tA0A7B48C604B2526417890D6E1004FACF66AD2CC, ___health_4)),static_cast<int32_t>(offsetof(Entity_tA0A7B48C604B2526417890D6E1004FACF66AD2CC, ___pointManager_5)),static_cast<int32_t>(offsetof(Entity_tA0A7B48C604B2526417890D6E1004FACF66AD2CC, ___pointAmount_6)),};
-IL2CPP_EXTERN_C const int32_t g_FieldOffsetTable8897[10] = 
+IL2CPP_EXTERN_C const int32_t g_FieldOffsetTable8897[16] = 
 {
-	static_cast<int32_t>(offsetof(GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6, ___cam_4)),static_cast<int32_t>(offsetof(GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6, ____prefab_5)),static_cast<int32_t>(offsetof(GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6, ___image_6)),static_cast<int32_t>(offsetof(GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6, ___leftHand_7)),static_cast<int32_t>(offsetof(GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6, ___rightHand_8)),static_cast<int32_t>(offsetof(GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6, ___debugText_9)),static_cast<int32_t>(offsetof(GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6, ___pointManager_10)),static_cast<int32_t>(offsetof(GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6, ___spawner_11)),static_cast<int32_t>(offsetof(GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6, ___startingPoint_12)),static_cast<int32_t>(offsetof(GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6, ___isBuilding_13)),};
+	static_cast<int32_t>(offsetof(GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6, ___cam_4)),static_cast<int32_t>(offsetof(GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6, ___pointManager_5)),static_cast<int32_t>(offsetof(GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6, ___spawner_6)),static_cast<int32_t>(offsetof(GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6, ___image_7)),static_cast<int32_t>(offsetof(GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6, ___leftHand_8)),static_cast<int32_t>(offsetof(GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6, ___rightHand_9)),static_cast<int32_t>(offsetof(GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6, ____prefab_10)),static_cast<int32_t>(offsetof(GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6, ____prefabBp_11)),static_cast<int32_t>(offsetof(GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6, ___previewMat_12)),static_cast<int32_t>(offsetof(GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6, ___normalMat_13)),static_cast<int32_t>(offsetof(GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6, ___blockedMat_14)),static_cast<int32_t>(offsetof(GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6, ___previousCell_15)),static_cast<int32_t>(offsetof(GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6, ___debugText_16)),static_cast<int32_t>(offsetof(GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6, ___isBuilding_17)),static_cast<int32_t>(offsetof(GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6, ___adjecentcells_18)),static_cast<int32_t>(offsetof(GameManager_tFE129A0017AF5BBD30FDCD4403B9CCEAE064C6B6, ___commonCells_19)),};
 IL2CPP_EXTERN_C const int32_t g_FieldOffsetTable8898[5] = 
 {
 	static_cast<int32_t>(offsetof(GameOver_tC0D72A03377DA58EE60B10DE7838DBDC0A75798D, ___scoreText_4)),static_cast<int32_t>(offsetof(GameOver_tC0D72A03377DA58EE60B10DE7838DBDC0A75798D, ___waveText_5)),static_cast<int32_t>(offsetof(GameOver_tC0D72A03377DA58EE60B10DE7838DBDC0A75798D, ___highscoreText_6)),static_cast<int32_t>(offsetof(GameOver_tC0D72A03377DA58EE60B10DE7838DBDC0A75798D, ___endPoints_7)),static_cast<int32_t>(offsetof(GameOver_tC0D72A03377DA58EE60B10DE7838DBDC0A75798D, ___deathCanvas_8)),};
@@ -47574,9 +47588,9 @@ IL2CPP_EXTERN_C const int32_t g_FieldOffsetTable8910[1] =
 IL2CPP_EXTERN_C const int32_t g_FieldOffsetTable8911[2] = 
 {
 	static_cast<int32_t>(offsetof(TableCanvas_t092E97967B20B5C52670DD8E51DC3F352A3BC7AE, ___canvas_4)),static_cast<int32_t>(offsetof(TableCanvas_t092E97967B20B5C52670DD8E51DC3F352A3BC7AE, ___towerCostText_5)),};
-IL2CPP_EXTERN_C const int32_t g_FieldOffsetTable8912[1] = 
+IL2CPP_EXTERN_C const int32_t g_FieldOffsetTable8912[2] = 
 {
-	static_cast<int32_t>(offsetof(Tile_t192D2F5511792792FB74C37341AFAA9F6B77AE64, ___collider_4)),};
+	static_cast<int32_t>(offsetof(Tile_t192D2F5511792792FB74C37341AFAA9F6B77AE64, ___collider_4)),static_cast<int32_t>(offsetof(Tile_t192D2F5511792792FB74C37341AFAA9F6B77AE64, ___canApply_5)),};
 IL2CPP_EXTERN_C const int32_t g_FieldOffsetTable8913[3] = 
 {
 	static_cast<int32_t>(offsetof(TileManager_tFBBDFAC6A5BF52669B3CC976CF38997498154EC5, ___gridTilePrefab_4)),static_cast<int32_t>(offsetof(TileManager_tFBBDFAC6A5BF52669B3CC976CF38997498154EC5, ___spacing_5)),static_cast<int32_t>(offsetof(TileManager_tFBBDFAC6A5BF52669B3CC976CF38997498154EC5, ___tiles_6)),};

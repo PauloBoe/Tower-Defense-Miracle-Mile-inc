@@ -358,7 +358,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5749415741583908007, guid: 3c4d2c1e0d663874e8c9091249e4363f, type: 3}
       propertyPath: m_RootOrder
-      value: 11
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5749415741583908007, guid: 3c4d2c1e0d663874e8c9091249e4363f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2040,7 +2040,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1539563250
 GameObject:
@@ -2124,7 +2124,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1539563256
 MonoBehaviour:
@@ -2564,7 +2564,11 @@ MonoBehaviour:
   _prefabBp: {fileID: 210940881}
   previewMat: {fileID: 2100000, guid: 71bfb48d130e49c4e8154aada50ebf1c, type: 2}
   normalMat: {fileID: 2100000, guid: a88d92708d112224fb80670d19509ca6, type: 2}
+  blockedMat: {fileID: 2100000, guid: ceb1d3afffcf7fa4cb56a9fca52d45bc, type: 2}
   debugText: {fileID: 698370227}
+  adjecentcells: []
+  previousAdjecentcells: []
+  commonCells: []
 --- !u!4 &2065764349
 Transform:
   m_ObjectHideFlags: 0
@@ -2578,7 +2582,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2065764350
 MonoBehaviour:
@@ -2834,7 +2838,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4916780804330566140, guid: 39a2cd8cd2f4eab4bacdde8fbd2ee4fb, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4916780804330566140, guid: 39a2cd8cd2f4eab4bacdde8fbd2ee4fb, type: 3}
       propertyPath: m_AnchorMax.x

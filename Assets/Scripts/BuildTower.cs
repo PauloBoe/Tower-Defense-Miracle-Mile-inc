@@ -62,9 +62,4 @@ public class BuildTower : MonoBehaviour
     //}
     #endregion
 
-    public int tileCost;
-
-    public void CalculateCenter() {
-
-    }
 }
