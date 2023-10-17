@@ -5,10 +5,9 @@ using UnityEngine;
 public class Tile : MonoBehaviour
 {
     private Collider collider;
-    private bool canApply;
-
+    public bool isBlocked;
     public Collider Collider { get => collider; set => collider = value; }
-    public bool CanApply { get => canApply; set => canApply = value; }
+    public bool IsBlocked { get => isBlocked; set => isBlocked = value; }
 
     private void Start() {
         Collider = GetComponent<Collider>();

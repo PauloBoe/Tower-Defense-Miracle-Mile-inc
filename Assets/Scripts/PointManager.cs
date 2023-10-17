@@ -2,18 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PointManager : MonoBehaviour
 {
     // Start is called before the first frame update
 
     private int points = 100;
-    [SerializeField] private TMP_Text pointsText;
+    [SerializeField] private Text pointsText;
+    [SerializeField] private Text ErrorText;
+    private float counter = 0;
 
     public int Points { get => points; set => points = value; }
 
-    void Start()
-    {
+    void Start() {
         pointsText.text = "Points: " + Points.ToString();
     }
 
@@ -24,13 +26,25 @@ public class PointManager : MonoBehaviour
     }
 
     public bool DeductPoinstIfSufficient(int amount) {
-        if (Points > amount) {
+        if (Points >= amount) {
             Points -= amount;
             pointsText.text = "Points: " + Points;
             return true;
         }
-        //TODO: Implement Message for insufficient point if true.
-        return false;
+        else {
+
+            StartCoroutine("DisplayError");
+                
+            return false;
+        }
+    }
+
+    IEnumerator DisplayError() {
+
+        ErrorText.text = "Insufficient points";
+        yield return new WaitForSeconds(3f);
+        ErrorText.text = "";
+        yield return null;
     }
 
     private bool CheckSufficientPoints() {
