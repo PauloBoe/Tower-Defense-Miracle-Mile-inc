@@ -27,17 +27,28 @@ public class CircleSpawner : MonoBehaviour {
     private bool isSpawningWave = false;
     private int currentWave = 1;
 
-    [SerializeField]private GameObject attackPoint;
+    [SerializeField] private GameObject attackPoint;
+    [SerializeField] private GameObject playButton;
+    [SerializeField] private GameObject buildButton;
+
 
     private void Start() {
         waveSize = initialWaveSize;
-        spawnCoroutine = StartCoroutine(SpawnWaves());
+        buildButton.SetActive(false);
     }
+
+    public void StartGame()
+    {
+        spawnCoroutine = StartCoroutine(SpawnWaves());
+        playButton.SetActive(false);
+        buildButton.SetActive(true);
+    }
+
     [SerializeField] private TMP_Text waveText;
     private IEnumerator SpawnWaves() {
         while (true) {
             isSpawningWave = true;
-
+            yield return new WaitForSeconds(3f);
             foreach (var spawnInfo in enemySpawnInfoList) {
                 for (int i = 0; i < spawnInfo.enemyCount * waveSize; i++) // Increase enemy count based on the current wave
                 {
@@ -88,9 +99,10 @@ public class CircleSpawner : MonoBehaviour {
 
     private GameObject LoadData(GameObject enemy, EnemySpawnInfo spawnInfo) {
         Enemy enemyInstance = enemy.GetComponent<Enemy>();
-        enemyInstance.Health.GetComponent<Health>().SetHealth(spawnInfo.enemyType.Health);
+        enemyInstance.HealthComponent.GetComponent<Health>().Initialize(spawnInfo.enemyType.Health, spawnInfo.enemyType.Health);
         enemyInstance.EnemyMovement.GetComponent<EnemyMovement>().SetMovement(attackPoint, spawnInfo.enemyType.MoveSpeed);
         enemyInstance.PointAmount = spawnInfo.enemyType.PointValue;
+        enemyInstance.Damage = spawnInfo.enemyType.DamageValue;
 
         return enemy;    
     }
@@ -101,6 +113,7 @@ public class CircleSpawner : MonoBehaviour {
                 return false;
             }
         }
+        spawnedEnemies.Clear();
         return true;
     }
 

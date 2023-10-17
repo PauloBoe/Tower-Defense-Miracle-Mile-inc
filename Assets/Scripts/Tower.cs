@@ -8,6 +8,7 @@ public class Tower : MonoBehaviour {
     public float fireRate = 0.5f;
     public float range = 5.0f;
     public int damagePerTick = 1;
+    public int gridSize = 3;
 
     private float fireCooldown = 0.0f;
     private IDamageable targetEnemy; // Use the IDamageable interface

@@ -1,5 +1,7 @@
 {
   "dependencies": {
+    "com.qualcomm.qcht.unity.interactions": "file:C:/Users/Intern/Downloads/Snapdragon_Spaces_SDK_0_17_0_for_Unity/Unity Package/com.qualcomm.qcht.unity.interactions-4.1.0.tgz",
+    "com.qualcomm.snapdragon.spaces": "file:C:/Users/Intern/Downloads/Snapdragon_Spaces_SDK_0_17_0_for_Unity/Unity Package/com.qualcomm.snapdragon.spaces-0.17.0.tgz",
     "com.unity.ai.navigation": "1.1.1",
     "com.unity.collab-proxy": "2.0.7",
     "com.unity.feature.development": "1.0.1",
@@ -13,7 +15,6 @@
     "com.unity.timeline": "1.7.3",
     "com.unity.ugui": "1.0.0",
     "com.unity.visualscripting": "1.8.0",
-    "com.unity.xr.arcore": "5.0.4",
     "com.unity.xr.arfoundation": "5.0.4",
     "com.unity.xr.openxr": "1.6.0",
     "com.unity.modules.ai": "1.0.0",
