@@ -16,10 +16,9 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        // WIP weird bug
         if (other.gameObject.CompareTag("Enemy"))
         {
-            other.gameObject.GetComponent<EnemyMovement>().Damage(damage);
+            other.gameObject.GetComponent<Health>().TakeDamage(damage);
         }
         Destroy(gameObject);
     }

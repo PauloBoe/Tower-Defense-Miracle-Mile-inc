@@ -1,74 +1,28 @@
 using UnityEngine;
 
-public class EnemyMovement : MonoBehaviour
-{
-    public Vector3 velocity;
-    public int health = 5;
-    public int maxHealth;
-    public Transform[] nodes;
-    public float movementSpeed = 2f;
-    public EnemyPoof explodeEffect;
+public class EnemyMovement : MonoBehaviour {
 
-    private Transform cpu;
-    private int currentNode;
-    private Vector3 previousPos;
-    private Vector3 target = Vector3.zero;
+    [SerializeField] private GameObject target;
+    private float movementSpeed;
 
-    // Reference to EnemyManager
-    private EnemyManager em;
+    public GameObject Target { get => target; set => target = value; }
+    public float MovementSpeed { get => movementSpeed; set => movementSpeed = value; }
 
-    private void Awake()
-    {
-        maxHealth = health;
-        cpu = GameObject.FindGameObjectWithTag("CPU").transform;
-        em = GameObject.FindGameObjectWithTag("EnemyManager").GetComponent<EnemyManager>();
+    private void Awake() {
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.collider.gameObject.Equals(cpu.gameObject))
-            Destroy(gameObject);
-    }
-    //TODO: make a better movement option
-    private void Update()
-    {
-        if (currentNode < nodes.Length)
-        {
-            velocity = (transform.position - previousPos) / Time.deltaTime;
-            previousPos = transform.position;
-            target = new Vector3(nodes[currentNode].position.x, transform.position.y, nodes[currentNode].position.z);
-            transform.LookAt(target);
-            transform.position += movementSpeed * Time.deltaTime * transform.forward;
+    private void OnCollisionEnter(Collision collision) {
 
-            // ENEMY DOESNT ALWAYS MOVE
-            if (Mathf.Round(transform.position.x * 200) == Mathf.Round(nodes[currentNode].position.x * 200) &&
-                Mathf.Round(transform.position.z * 200) == Mathf.Round(nodes[currentNode].position.z * 200))
-                currentNode++;
-        }
-        else
-        {
-            target = new Vector3(cpu.transform.position.x, transform.position.y, cpu.transform.position.z);
-            transform.LookAt(target);
+    }
+    private void Update() {
+        if(target != null) {
+            gameObject.transform.LookAt(target.transform);
             transform.position += movementSpeed * Time.deltaTime * transform.forward;
         }
     }
 
-    public void Damage(int amount)
-    {
-        health -= amount;
-        if (health <= 0)
-        {
-            Die();
-        }
-    }
-
-    private void Die()
-    {
-        // REDO POINTS
-        em.AddScore(maxHealth);
-        em.AddPoints(maxHealth / 2);
-        Destroy(Instantiate(explodeEffect, transform.position, Quaternion.identity).Explode(), 6);
-
-        Destroy(gameObject);
+    public void SetMovement(GameObject target, float speed) {
+        Target = target;
+        movementSpeed = speed;
     }
 }

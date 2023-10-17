@@ -2,34 +2,59 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PointManager : MonoBehaviour
 {
     // Start is called before the first frame update
 
-    private int points = 250;
-    [SerializeField] private TMP_Text pointsText;
-    void Start()
-    {
-        
+    private int points = 100;
+    [SerializeField] private Text pointsText;
+    [SerializeField] private Text ErrorText;
+    private float counter = 0;
+
+    public int Points { get => points; set => points = value; }
+
+    void Start() {
+        pointsText.text = "Points: " + Points.ToString();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public void AddPoints(int amount) {
-        points += amount;
+        Points += amount;
+        pointsText.text = "Points: " + Points.ToString();
     }
 
     public bool DeductPoinstIfSufficient(int amount) {
-        if (points > amount) {
-            points -= amount;
-            pointsText.text = "Points: " + points;
+        if (Points >= amount) {
+            Points -= amount;
+            pointsText.text = "Points: " + Points;
             return true;
         }
-        return false;
+        else {
+
+            StartCoroutine("DisplayError");
+                
+            return false;
+        }
+    }
+
+    IEnumerator DisplayError() {
+
+        ErrorText.text = "Insufficient points";
+        yield return new WaitForSeconds(3f);
+        ErrorText.text = "";
+        yield return null;
+    }
+
+    private bool CheckSufficientPoints() {
+        //TODO set diffrent tower costs
+        if (Points < 50) {
+            return false;
+        }
+        else {
+            Points -= 50;
+            return true;
+        }
     }
 }

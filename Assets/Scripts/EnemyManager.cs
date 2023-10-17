@@ -85,7 +85,7 @@ public class EnemyManager : MonoBehaviour
 
         // Set enemies height higher based on size
         enemy.transform.position += new Vector3(0, enemy.transform.lossyScale.y/2, 0);
-        enemy.GetComponent<EnemyMovement>().nodes = nodes[spawnIndex];
+        //enemy.GetComponent<EnemyMovement>().nodes = nodes[spawnIndex];
     }
 
     // check if the player has started the game through clicking on a button

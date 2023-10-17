@@ -19,6 +19,7 @@ public abstract class TowerBase : MonoBehaviour
         get { return GetType(); }
     }
 
+
     /// <summary>
     /// The damage the projectile of this tower should deal to the enemy
     /// </summary>

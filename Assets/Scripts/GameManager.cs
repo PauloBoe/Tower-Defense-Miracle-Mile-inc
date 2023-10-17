@@ -1,47 +1,425 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using UnityEngine.XR.Interaction.Toolkit;
 
-
-public class GameManager : MonoBehaviour {
+public class GameManager : MonoBehaviour
+{
     [SerializeField] private Camera cam;
-    [SerializeField] private GameObject _prefab;
-
-    private RaycastHit _hit;
-    private Vector3 _movePoint;
-    private bool _isPlaceable;
-    private GameObject slot;
-
     private PointManager pointManager;
+    private CircleSpawner spawner;
+    [SerializeField] private Image image;
 
+    [SerializeField] private GameObject leftHand;
+    [SerializeField] private GameObject rightHand;
+
+    [SerializeField] private GameObject _prefab;
+    [SerializeField] private GameObject _prefabBp;
+
+    [SerializeField] private GameObject currentCell;
+    [SerializeField] private GameObject previousCell;
+
+    [SerializeField] private Material previewMat;
+    [SerializeField] private Material normalMat;
+    [SerializeField] private Material blockedMat;
+
+    [SerializeField] private Text debugText;
     private void Awake() {
         pointManager = gameObject.GetComponent<PointManager>();
+        spawner = gameObject.GetComponent<CircleSpawner>();
     }
     void Start() {
-        _movePoint = Input.mousePosition;
-        Ray ray = cam.ScreenPointToRay(Input.mousePosition);
-        if (Physics.Raycast(ray, out _hit, 500f))
-            _movePoint = _hit.point;
+        Hide();
+        debugText.text = "hi";
     }
 
 
-    private void FixedUpdate() {
-        if (Input.GetMouseButtonDown(0)) {
-            Ray ray = cam.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(ray, out _hit, 5000f)) {
-                transform.position = _hit.point;
-                if (_hit.collider is BoxCollider) {
-                    slot = _hit.collider.gameObject;
-                    PlaceTower();
+    private void Update() {
+
+        //if (isBuilding) {
+        //    Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        //    RaycastHit hit;
+        //    if (Physics.Raycast(ray, out hit) && CheckTileSelection() != null) {
+        //        Vector3 offset = new Vector3(0, 0.17f, 0);
+        //        float rayLength = float.MaxValue;
+        //        Debug.DrawRay(ray.origin, ray.direction * rayLength, Color.black);
+        //        _prefabBp.SetActive(true);
+        //        Vector3 intersection = hit.collider.transform.position;
+        //        _prefabBp.transform.position = intersection + offset;
+        //        ColorSurroundingCells(CheckTileSelection());
+
+        //        if (Input.GetMouseButtonDown(0)) {
+        //            _prefabBp.SetActive(false);
+        //            if (CheckTileSelection() != null) {
+        //                //place the tower in the top 
+        //                if (!pointManager.DeductPoinstIfSufficient(50)) {
+        //                    RevertState(adjecentcells);
+        //                    EndBuilding();
+        //                    return;
+        //                }
+
+        //                GameObject clone = Instantiate(_prefab, CheckTileSelection().transform.position, Quaternion.identity);
+        //                DisableSurroundingCells(outerCells, normalMat);
+        //                DisableSurroundingCells(adjecentcells, blockedMat, false, true);
+        //                EndBuilding();
+        //            }
+        //        }
+
+        //    }
+        //}
+
+
+
+        if (isBuilding) {
+            Show();
+            GameObject selectedTile;
+            bool tileSelected = CheckTileSelection(out selectedTile);
+            if (selectedTile != null) {
+                Vector3 offset = new Vector3(0, 0.17f, 0);
+                XRSimpleInteractable interactable = selectedTile.GetComponent<XRSimpleInteractable>();
+                _prefabBp.SetActive(true);
+                Vector3 intersection = selectedTile.transform.position + offset;
+                _prefabBp.transform.position = intersection;
+                ColorSurroundingCells(selectedTile);
+
+                //text = tileSelected.ToString() + " Tile name: " + selectedTile.name;
+                if (tileSelected && interactable.isSelected || Input.GetMouseButtonDown(0)) {
+                    _prefabBp.SetActive(false);
+                    if (!pointManager.DeductPoinstIfSufficient(50)) {
+                        RevertState(adjecentcells);
+                        EndBuilding();
+                        return;
+                    }
+
+                    GameObject clone = Instantiate(_prefab, selectedTile.transform.position, Quaternion.identity);
+                    //debugText.text = selectedTile.name;
+                    DisableSurroundingCells(outerCells, normalMat);
+                    DisableSurroundingCells(adjecentcells, blockedMat, false, true);
+                    EndBuilding();
                 }
+            }
+        }
+
+    }
+    //Button fuction
+    private bool isBuilding = false;
+    public void StartBulding() {
+        if (image != null)
+            image.color = Color.green;
+
+        isBuilding = true;
+    }
+    //editor version
+    private GameObject CheckTileSelection() {
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+
+        if (Physics.Raycast(ray, out hit)) {
+            Tile tileComponent = hit.collider.GetComponent<Tile>();
+
+            if (tileComponent != null && tileComponent.enabled == true) {
+                return hit.collider.gameObject;
+            }
+            else {
+                Debug.Log("Selected a tile outside of the range.");
+                return null; // Return null to indicate tile selection outside of the range
+            }
+        }
+        else {
+            Debug.Log("Clicked on something other than a tile:" + hit.collider.name);
+            return null; // Return null for non-tile objects
+        }
+    }
+    /// <summary>
+    /// The A3 version of checking if we selected an tile that returns the gameobject from the raycast from the hand
+    /// </summary>
+    /// <param name="selectedTile"></param>
+    /// <returns></returns>
+    private bool CheckTileSelection(out GameObject selectedTile) {
+        selectedTile = null;
+        Tile tileComponent = null;
+
+        XRRayInteractor rightRay = rightHand.GetComponent<XRRayInteractor>();
+        XRRayInteractor leftRay = leftHand.GetComponent<XRRayInteractor>();
+
+        RaycastHit? rightRaycastHit = null;
+        RaycastHit? leftRaycastHit = null;
+
+        try {
+            if (rightRay.TryGetCurrentRaycast(out rightRaycastHit, out int rightRaycastHitIndex, out RaycastResult? rightUiRaycastHit, out int rightUiRaycastHitIndex, out bool rightIsUIHitClosest) ||
+                leftRay.TryGetCurrentRaycast(out leftRaycastHit, out int leftRaycastHitIndex, out RaycastResult? leftUiRaycastHit, out int leftUiRaycastHitIndex, out bool leftIsUIHitClosest)) {
+
+                if (rightRaycastHit.HasValue) {
+                    try {
+                        tileComponent = rightRaycastHit.Value.collider.GetComponent<Tile>();
+                        //debugText.text = rightRaycastHit.Value.collider.name + tileComponent.name;
+                    }
+                    catch (Exception ex) {
+                        //debugText.text += ex.Message;
+                    }
+                }
+                else if (leftRaycastHit.HasValue) {
+                    try {
+                        tileComponent = leftRaycastHit.Value.collider.GetComponent<Tile>();
+                        //debugText.text = leftRaycastHit.Value.collider.name + tileComponent.name;
+                    }
+                    catch (Exception ex) {
+                        //debugText.text += ex.Message;
+                    }
+                }
+
+                if (tileComponent != null && tileComponent.enabled == true) {
+                    Debug.Log("Selected a tile within the range.");
+                    selectedTile = tileComponent.gameObject;
+                    return true; // Return true for tile selection within the range
+                }
+                else {
+                    Debug.Log("Selected a tile outside of the range.");
+                    return false; // Return false to indicate tile selection outside of the range
+                }
+            }
+            else {
+                Debug.Log("Clicked on something other than a tile.");
+                return false; // Return false for non-tile objects
+            }
+        }
+        catch (Exception ex) {
+            //debugText.text += ex.Message;
+            return false;
+        }
+    }
+
+
+
+    public List<GameObject> adjecentcells = new List<GameObject>();
+    public List<GameObject> outerCells = new List<GameObject>();
+    private void ColorSurroundingCells(GameObject selectedCell) {
+        try {
+
+            if (selectedCell != null) {
+                // Get the position of the selected cell
+                Vector3 selectedPosition = selectedCell.transform.position;
+
+                // Get the size of the selected cell
+                Vector3 cellScale = selectedCell.transform.localScale;
+
+                // Define the relative positions of the surrounding cells based on cell size
+                Vector3[] offsets = new Vector3[]
+                {
+                Vector3.zero, Vector3.zero,                        //Middle
+                new Vector3(cellScale.x + 0.15f, 0, 0),          // Right
+                new Vector3(-(cellScale.x + 0.15f), 0, 0),         // Left
+                new Vector3(0, 0, cellScale.z + 0.15f),          // Up
+                new Vector3(0, 0, -(cellScale.z + 0.15f)),         // Down
+                new Vector3(cellScale.x + 0.15f, 0, cellScale.z + 0.15f), // Diagonal Up-Right
+                new Vector3(-(cellScale.x + 0.15f), 0, cellScale.z + 0.15f),// Diagonal Up-Left
+                new Vector3(cellScale.x + 0.15f, 0, -(cellScale.z + 0.15f)),// Diagonal Down-Right
+                new Vector3(-(cellScale.x + 0.15f), 0, -(cellScale.z + 0.15f))// Diagonal Down-Left
+                };
+
+
+                RevertState(adjecentcells); //clear new
+
+                // Color the surrounding cells
+                foreach (Vector3 offset in Calc3x3(cellScale, 3)) {
+                    Vector3 position = selectedPosition + offset;
+                    GameObject adjacentCell = GetCellAtPosition(position);
+                    if (adjacentCell != null && !adjecentcells.Contains(adjacentCell)) {
+                        adjecentcells.Add(adjacentCell); //add new
+                        ColorCell(adjacentCell, previewMat, false);
+                    }
+                }
+
+                Vector3[] offsets5x5 = Calc5x5(cellScale);
+
+                foreach (Vector3 offset in offsets5x5) {
+                    Vector3 pos = selectedPosition + offset;
+                    GameObject adjacentCell = GetCellAtPosition(pos);
+                    if (adjacentCell != null && !outerCells.Contains(adjacentCell)) {
+                        outerCells.Add(adjacentCell);
+                    }
+                }
+
+            }
+            else {
+                //debugText.text = "selected cell is empty";
+            }
+        }
+        catch (Exception e) {
+            //debugText.text = e.Message;
+        }
+    }
+
+    //Optimizable
+    //calculate a 5x5 grid
+    private Vector3[] Calc3x3(Vector3 cellScale, int gridSize) {
+        float offset = cellScale.x + 0.15f;
+        List<Vector3> vectors = new List<Vector3>();
+
+        for (int i = 0; i < gridSize; i++) {
+            for (int j = 0; j < gridSize; j++) {
+                float x = i * offset - (gridSize - 1) * offset * 0.5f;
+                float z = j * offset - (gridSize - 1) * offset * 0.5f;
+
+                vectors.Add(new Vector3(x, 0, z));
+            }
+        }
+        return vectors.ToArray();
+    }
+    private Vector3[] Calc5x5(Vector3 cellScale) {
+        List<Vector3> vectors = new List<Vector3>();
+        float offset = cellScale.x = 0.15f;
+        for (int i = -1; i <= 1; i += 2) {
+            for (int j = -1; j <= 1; j += 2) {
+                // Right, Left, Up, Down
+                vectors.Add(new Vector3(2 * i * (cellScale.x + 0.15f), 0, 0));
+                vectors.Add(new Vector3(0, 0, 2 * j * (cellScale.z + 0.15f)));
+
+                // Diagonals
+                vectors.Add(new Vector3(2 * i * (cellScale.x + 0.15f), 0, j * (cellScale.z + 0.15f)));
+                vectors.Add(new Vector3(i * (cellScale.x + 0.15f), 0, 2 * j * (cellScale.z + 0.15f)));
+
+                // Additional Diagonals
+                vectors.Add(new Vector3(2 * i * (cellScale.x + 0.15f), 0, 2 * j * (cellScale.z + 0.15f)));
+                vectors.Add(new Vector3(2 * i * (cellScale.x + 0.15f), 0, -2 * j * (cellScale.z + 0.15f)));
+                vectors.Add(new Vector3(-2 * i * (cellScale.x + 0.15f), 0, 2 * j * (cellScale.z + 0.15f)));
+                vectors.Add(new Vector3(-2 * i * (cellScale.x + 0.15f), 0, -2 * j * (cellScale.z + 0.15f)));
+            }
+        }
+        return vectors.ToArray();
+
+
+    }
+
+    private GameObject GetCellAtPosition(Vector3 position) {
+        // Perform a raycast or any other method to find the cell at the specified position
+        try {
+
+            RaycastHit hit;
+            Ray ray = new Ray(position + new Vector3(0, 10, 0), Vector3.down);
+
+            if (Physics.Raycast(ray, out hit)) {
+                try {
+                    if (hit.collider.gameObject.GetComponent<Tile>() != null)
+                        return hit.collider.gameObject;
+                    else
+                        return null;
+                }
+                catch (Exception e) {
+                    Debug.LogError(e.Message);
+                }
+            }
+
+            return null;
+        }
+        catch (Exception e) {
+            debugText.text = e.ToString();
+            return null;
+        }
+    }
+    private void DisableSurroundingCells(List<GameObject> cells, Material material) {
+        if (cells != null) {
+            foreach (GameObject cell in cells) {
+                ColorCell(cell, material);
+                cell.GetComponentInChildren<Tile>().enabled = false;
+            }
+            outerCells.Clear();
+        }
+    }
+    private void DisableSurroundingCells(List<GameObject> cells, Material mat, bool skip, bool blocked) {
+        if (cells != null) {
+            foreach (GameObject cell in cells) {
+                cell.GetComponentInChildren<Tile>().enabled = false;
+                cell.GetComponentInChildren<Tile>().IsBlocked = blocked;
+
+                ColorCell(cell, mat, skip);
+            }
+            adjecentcells.Clear();
+        }
+    }
+
+    private void ColorCell(GameObject cell, Material mat) {
+        if (cell != null) {
+            // Change the color of the cell
+            Renderer renderer = cell.GetComponentInChildren<Renderer>();
+            if (cell.GetComponent<Tile>().enabled != false) {
+                renderer.material = mat;
             }
         }
     }
 
-    public void PlaceTower() {
-        GameObject tower = Instantiate(_prefab, slot.transform.position, slot.transform.rotation);
-        tower.transform.SetParent(slot.transform, true);
-        slot.GetComponent<BoxCollider>().enabled = false;
-        Destroy(gameObject);
+    private void ColorCell(GameObject cell, Material mat, bool skip) {
+        if (cell != null) {
+            // Change the color of the cell
+            Renderer renderer = cell.GetComponentInChildren<Renderer>();
+            if ((skip == false || cell.GetComponent<Tile>().IsBlocked == false)) {
+                renderer.material = mat;
+            }
+        }
+    }
+    private void RevertState(List<GameObject> cells) {
+        if (cells != null) {
+            foreach (GameObject cell in cells) {
+                ColorCell(cell, normalMat, false);
+                //Renderer renderer = cell.GetComponentInChildren<Renderer>();
+                //if (renderer.material != blockedMat &&  cell.GetComponent<Tile>().enabled != false) {
+                //    renderer.material = normalMat;
+                //    //debugText.text += "Reverting: " + cell.name + " ";
+                //}
+            }
+            adjecentcells.Clear();
+            outerCells.Clear();
+        }
+    }
+
+    public void Hide() {
+        cam.cullingMask &= ~(1 << LayerMask.NameToLayer("GridField"));
+    }
+    public void Show() {
+        cam.cullingMask |= 1 << LayerMask.NameToLayer("GridField");
+    }
+
+    public void Quit() {
+        Application.Quit();
+    }
+    public void Restart() {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+    public void EndBuilding() {
+        if (image != null)
+            image.color = Color.white;
+
+        isBuilding = false;
+        Hide();
     }
 }
+//    Vector3[] offsets = new Vector3[]
+//    {
+//      Additional offsets for a 5x5 grid (2 cells away)
+//    new Vector3(2 * (cellScale.x + 0.15f), 0, 0),             // Right (2 cells away)
+//    new Vector3(-(2 * (cellScale.x + 0.15f)), 0, 0),          // Left (2 cells away)
+//    new Vector3(0, 0, 2 * (cellScale.z + 0.15f)),             // Up (2 cells away)
+//    new Vector3(0, 0, -(2 * (cellScale.z + 0.15f))),          // Down (2 cells away)
+
+//    new Vector3(2 * (cellScale.x + 0.15f), 0 , -(cellScale.z + 0.15f)),
+//    new Vector3(2 * (cellScale.x + 0.15f), 0 , cellScale.z + 0.15f),
+//    new Vector3(cellScale.x + 0.15f, 0 , 2* (cellScale.z + 0.15f)),
+//    new Vector3(cellScale.x + 0.15f, 0 , 2 * -(cellScale.z + 0.15f)),
+
+//    new Vector3(2* -(cellScale.x + 0.15f), 0 , cellScale.z + 0.15f),
+//    new Vector3(2* -(cellScale.x + 0.15f), 0 , -(cellScale.z + 0.15f)),
+//    new Vector3(-(cellScale.x + 0.15f), 0 , 2 * -(cellScale.z + 0.15f)),
+//    new Vector3(-(cellScale.x + 0.15f), 0 , 2 * (cellScale.z + 0.15f)),
+
+//    new Vector3(2* (cellScale.x + 0.15f), 0,  2 * (cellScale.z + 0.15f)),         // Diagonal Up-Right (2 cells away)
+//    new Vector3(2 * (cellScale.x + 0.15f), 0, 2 * -(cellScale.z + 0.15f)),      // Diagonal Down-Right (2 cells away)
+//    new Vector3(2* -(cellScale.x + 0.15f), 0, 2 * (cellScale.z + 0.15f)),      // Diagonal Up-Left (2 cells away)
+//    new Vector3(-(2 * (cellScale.x + 0.15f)), 0,2 * -(cellScale.z + 0.15f))    // Diagonal Down-Left (2 cells away)
+//    };
+
+//return offsets;
