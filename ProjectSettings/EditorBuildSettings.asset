@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Scenes/LoadScene.unity
     guid: c6bfde53901e44441be59aa7abf95bc0
   - enabled: 1
-    path: Assets/Scenes/MainArScene (NIET ZOMAAR HIERIN WERKEN).unity
+    path: Assets/Scenes/GetARWorking.unity
     guid: 8ba494dc3a7e3d74b9aa23436f2fb740
   - enabled: 0
     path: Assets/Scenes/Almar_Development_Scene.unity
@@ -28,3 +28,4 @@ EditorBuildSettings:
     UnityEditor.XR.ARKit.ARKitSettings: {fileID: 11400000, guid: d6e0a7317843b9b4b87bebd22d1a3fea, type: 2}
     com.unity.xr.arfoundation.simulation_settings: {fileID: 11400000, guid: a26714d57c7b5fd488b407cd5c872bad, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 8039feb3d1eaa1f4e8d24bbb1bf16751, type: 2}
+    com.unity.xr.openxr.settings4: {fileID: 11400000, guid: 4c2e86ca22092714e8a4faf2f4a4171c, type: 2}
