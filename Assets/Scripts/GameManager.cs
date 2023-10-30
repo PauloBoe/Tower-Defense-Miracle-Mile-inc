@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using UnityEngine.XR.Interaction.Toolkit;
+//using UnityEngine.XR.Interaction.Toolkit;
 
 public class GameManager : MonoBehaviour
 {
@@ -144,54 +144,55 @@ public class GameManager : MonoBehaviour
         selectedTile = null;
         Tile tileComponent = null;
 
-        XRRayInteractor rightRay = rightHand.GetComponent<XRRayInteractor>();
-        XRRayInteractor leftRay = leftHand.GetComponent<XRRayInteractor>();
+        //XRRayInteractor rightRay = rightHand.GetComponent<XRRayInteractor>();
+        //XRRayInteractor leftRay = leftHand.GetComponent<XRRayInteractor>();
 
         RaycastHit? rightRaycastHit = null;
         RaycastHit? leftRaycastHit = null;
 
-        try {
-            if (rightRay.TryGetCurrentRaycast(out rightRaycastHit, out int rightRaycastHitIndex, out RaycastResult? rightUiRaycastHit, out int rightUiRaycastHitIndex, out bool rightIsUIHitClosest) ||
-                leftRay.TryGetCurrentRaycast(out leftRaycastHit, out int leftRaycastHitIndex, out RaycastResult? leftUiRaycastHit, out int leftUiRaycastHitIndex, out bool leftIsUIHitClosest)) {
+        //try {
+        //    if (rightRay.TryGetCurrentRaycast(out rightRaycastHit, out int rightRaycastHitIndex, out RaycastResult? rightUiRaycastHit, out int rightUiRaycastHitIndex, out bool rightIsUIHitClosest) ||
+        //        leftRay.TryGetCurrentRaycast(out leftRaycastHit, out int leftRaycastHitIndex, out RaycastResult? leftUiRaycastHit, out int leftUiRaycastHitIndex, out bool leftIsUIHitClosest)) {
 
-                if (rightRaycastHit.HasValue) {
-                    try {
-                        tileComponent = rightRaycastHit.Value.collider.GetComponent<Tile>();
-                        //debugText.text = rightRaycastHit.Value.collider.name + tileComponent.name;
-                    }
-                    catch (Exception ex) {
-                        //debugText.text += ex.Message;
-                    }
-                }
-                else if (leftRaycastHit.HasValue) {
-                    try {
-                        tileComponent = leftRaycastHit.Value.collider.GetComponent<Tile>();
-                        //debugText.text = leftRaycastHit.Value.collider.name + tileComponent.name;
-                    }
-                    catch (Exception ex) {
-                        //debugText.text += ex.Message;
-                    }
-                }
+        //        if (rightRaycastHit.HasValue) {
+        //            try {
+        //                tileComponent = rightRaycastHit.Value.collider.GetComponent<Tile>();
+        //                //debugText.text = rightRaycastHit.Value.collider.name + tileComponent.name;
+        //            }
+        //            catch (Exception ex) {
+        //                //debugText.text += ex.Message;
+        //            }
+        //        }
+        //        else if (leftRaycastHit.HasValue) {
+        //            try {
+        //                tileComponent = leftRaycastHit.Value.collider.GetComponent<Tile>();
+        //                //debugText.text = leftRaycastHit.Value.collider.name + tileComponent.name;
+        //            }
+        //            catch (Exception ex) {
+        //                //debugText.text += ex.Message;
+        //            }
+        //        }
 
-                if (tileComponent != null && tileComponent.enabled == true) {
-                    Debug.Log("Selected a tile within the range.");
-                    selectedTile = tileComponent.gameObject;
-                    return true; // Return true for tile selection within the range
-                }
-                else {
-                    Debug.Log("Selected a tile outside of the range.");
-                    return false; // Return false to indicate tile selection outside of the range
-                }
-            }
-            else {
-                Debug.Log("Clicked on something other than a tile.");
-                return false; // Return false for non-tile objects
-            }
-        }
-        catch (Exception ex) {
-            //debugText.text += ex.Message;
-            return false;
-        }
+        //        if (tileComponent != null && tileComponent.enabled == true) {
+        //            Debug.Log("Selected a tile within the range.");
+        //            selectedTile = tileComponent.gameObject;
+        //            return true; // Return true for tile selection within the range
+        //        }
+        //        else {
+        //            Debug.Log("Selected a tile outside of the range.");
+        //            return false; // Return false to indicate tile selection outside of the range
+        //        }
+        //    }
+        //    else {
+        //        Debug.Log("Clicked on something other than a tile.");
+        //        return false; // Return false for non-tile objects
+        //    }
+        //}
+        //catch (Exception ex) {
+        //    //debugText.text += ex.Message;
+        //    return false;
+        //}
+        return false;
     }
 
 
