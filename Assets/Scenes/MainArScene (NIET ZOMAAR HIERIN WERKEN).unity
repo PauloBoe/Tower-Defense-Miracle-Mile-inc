@@ -128,17 +128,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4574677420355002493, guid: 39a2cd8cd2f4eab4bacdde8fbd2ee4fb, type: 3}
   m_PrefabInstance: {fileID: 2174664542434231665}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &71971522 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7155124815528053811, guid: 39a2cd8cd2f4eab4bacdde8fbd2ee4fb, type: 3}
-  m_PrefabInstance: {fileID: 2174664542434231665}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1197424482}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &121684085
 GameObject:
   m_ObjectHideFlags: 0
@@ -548,7 +537,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &296522471
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3344,7 +3333,6 @@ MonoBehaviour:
     m_Interactions: 
     m_SingletonActionBindings: []
     m_Flags: 0
-  m_HasMigratedActions: 1
 --- !u!114 &1259996393
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3612,7 +3600,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1296674307
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4080,7 +4068,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1805144372
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4322,7 +4310,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 1259996390}
-  image: {fileID: 71971522}
   leftHand: {fileID: 6577773827858917635}
   rightHand: {fileID: 6577773827858917634}
   _prefab: {fileID: 5749415741583908006, guid: 165a386cc575e3e4e980500b9e772d7b, type: 3}
@@ -4332,7 +4319,6 @@ MonoBehaviour:
   previewMat: {fileID: 2100000, guid: 71bfb48d130e49c4e8154aada50ebf1c, type: 2}
   normalMat: {fileID: 2100000, guid: a88d92708d112224fb80670d19509ca6, type: 2}
   blockedMat: {fileID: 2100000, guid: ceb1d3afffcf7fa4cb56a9fca52d45bc, type: 2}
-  debugText: {fileID: 698370227}
   adjecentcells: []
   outerCells: []
 --- !u!4 &2065764349
@@ -4480,6 +4466,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 416557399, guid: 39a2cd8cd2f4eab4bacdde8fbd2ee4fb, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 685926041, guid: 39a2cd8cd2f4eab4bacdde8fbd2ee4fb, type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 873756108, guid: 39a2cd8cd2f4eab4bacdde8fbd2ee4fb, type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1294313375, guid: 39a2cd8cd2f4eab4bacdde8fbd2ee4fb, type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 833150970571689504, guid: 39a2cd8cd2f4eab4bacdde8fbd2ee4fb, type: 3}
       propertyPath: m_Camera
       value: 

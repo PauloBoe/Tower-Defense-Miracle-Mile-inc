@@ -13,7 +13,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Camera cam;
     private PointManager pointManager;
     private CircleSpawner spawner;
-    [SerializeField] private Image image;
 
     [SerializeField] private GameObject leftHand;
     [SerializeField] private GameObject rightHand;
@@ -28,14 +27,13 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Material normalMat;
     [SerializeField] private Material blockedMat;
 
-    [SerializeField] private Text debugText;
+    //[SerializeField] private Text debugText;
     private void Awake() {
         pointManager = gameObject.GetComponent<PointManager>();
         spawner = gameObject.GetComponent<CircleSpawner>();
     }
     void Start() {
         Hide();
-        debugText.text = "hi";
     }
 
 
@@ -109,9 +107,6 @@ public class GameManager : MonoBehaviour
     //Button fuction
     private bool isBuilding = false;
     public void StartBulding() {
-        if (image != null)
-            image.color = Color.green;
-
         isBuilding = true;
     }
     //editor version
@@ -319,7 +314,7 @@ public class GameManager : MonoBehaviour
             return null;
         }
         catch (Exception e) {
-            debugText.text = e.ToString();
+            //debugText.text = e.ToString();
             return null;
         }
     }
@@ -392,9 +387,6 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
     public void EndBuilding() {
-        if (image != null)
-            image.color = Color.white;
-
         isBuilding = false;
         Hide();
     }
