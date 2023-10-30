@@ -14,6 +14,8 @@ public class EnemySpawnInfo {
 
 public class CircleSpawner : MonoBehaviour {
     [SerializeField]private List<GameObject> spawnedEnemies = new List<GameObject>();
+    public GameObject spawnGround;
+    private Bounds bounds;
     public List<EnemySpawnInfo> enemySpawnInfoList;
     public int initialWaveSize = 5;
     private int waveSize;
@@ -35,6 +37,7 @@ public class CircleSpawner : MonoBehaviour {
     private void Start() {
         waveSize = initialWaveSize;
         buildButton.SetActive(false);
+        bounds = spawnGround.GetComponent<BoxCollider>().bounds;
     }
 
     public void StartGame()
@@ -55,13 +58,18 @@ public class CircleSpawner : MonoBehaviour {
                     if (!isSpawningWave)
                         yield break; // Stop spawning if the wave was cleared prematurely
 
-                    float randomAngle = Random.Range(0f, 360f);
-                    float randomRadius = Random.Range(innerRadius, outerRadius);
+                    //float randomAngle = Random.Range(0f, 360f);
+                    //float randomRadius = Random.Range(innerRadius, outerRadius);
 
-                    float x = randomRadius * Mathf.Cos(randomAngle * Mathf.Deg2Rad);
-                    float y = randomRadius * Mathf.Sin(randomAngle * Mathf.Deg2Rad);
+                    //float x = randomRadius * Mathf.Cos(randomAngle * Mathf.Deg2Rad);
+                    //float y = randomRadius * Mathf.Sin(randomAngle * Mathf.Deg2Rad); 
 
-                    Vector3 spawnPosition = new Vector3(x, 0.2f, y);
+   
+
+                    float x = Random.Range(bounds.min.x, bounds.max.x);
+                    float z = Random.Range(bounds.min.z, bounds.max.z);
+
+                    Vector3 spawnPosition = new Vector3(x, 0.2f, z);
 
                     if (currentWave >= spawnInfo.enemyType.SpawnableInWave) {
                         GameObject enemyPrefab = spawnInfo.enemyType.Model;

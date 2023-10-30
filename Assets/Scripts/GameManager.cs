@@ -41,69 +41,69 @@ public class GameManager : MonoBehaviour
 
     private void Update() {
 
-        //if (isBuilding) {
-        //    Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        //    RaycastHit hit;
-        //    if (Physics.Raycast(ray, out hit) && CheckTileSelection() != null) {
-        //        Vector3 offset = new Vector3(0, 0.17f, 0);
-        //        float rayLength = float.MaxValue;
-        //        Debug.DrawRay(ray.origin, ray.direction * rayLength, Color.black);
-        //        _prefabBp.SetActive(true);
-        //        Vector3 intersection = hit.collider.transform.position;
-        //        _prefabBp.transform.position = intersection + offset;
-        //        ColorSurroundingCells(CheckTileSelection());
-
-        //        if (Input.GetMouseButtonDown(0)) {
-        //            _prefabBp.SetActive(false);
-        //            if (CheckTileSelection() != null) {
-        //                //place the tower in the top 
-        //                if (!pointManager.DeductPoinstIfSufficient(50)) {
-        //                    RevertState(adjecentcells);
-        //                    EndBuilding();
-        //                    return;
-        //                }
-
-        //                GameObject clone = Instantiate(_prefab, CheckTileSelection().transform.position, Quaternion.identity);
-        //                DisableSurroundingCells(outerCells, normalMat);
-        //                DisableSurroundingCells(adjecentcells, blockedMat, false, true);
-        //                EndBuilding();
-        //            }
-        //        }
-
-        //    }
-        //}
-
-
-
         if (isBuilding) {
-            Show();
-            GameObject selectedTile;
-            bool tileSelected = CheckTileSelection(out selectedTile);
-            if (selectedTile != null) {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit) && CheckTileSelection() != null) {
                 Vector3 offset = new Vector3(0, 0.17f, 0);
-                XRSimpleInteractable interactable = selectedTile.GetComponent<XRSimpleInteractable>();
+                float rayLength = float.MaxValue;
+                Debug.DrawRay(ray.origin, ray.direction * rayLength, Color.black);
                 _prefabBp.SetActive(true);
-                Vector3 intersection = selectedTile.transform.position + offset;
-                _prefabBp.transform.position = intersection;
-                ColorSurroundingCells(selectedTile);
+                Vector3 intersection = hit.collider.transform.position;
+                _prefabBp.transform.position = intersection + offset;
+                ColorSurroundingCells(CheckTileSelection());
 
-                //text = tileSelected.ToString() + " Tile name: " + selectedTile.name;
-                if (tileSelected && interactable.isSelected || Input.GetMouseButtonDown(0)) {
+                if (Input.GetMouseButtonDown(0)) {
                     _prefabBp.SetActive(false);
-                    if (!pointManager.DeductPoinstIfSufficient(50)) {
-                        RevertState(adjecentcells);
-                        EndBuilding();
-                        return;
-                    }
+                    if (CheckTileSelection() != null) {
+                        //place the tower in the top 
+                        if (!pointManager.DeductPoinstIfSufficient(50)) {
+                            RevertState(adjecentcells);
+                            EndBuilding();
+                            return;
+                        }
 
-                    GameObject clone = Instantiate(_prefab, selectedTile.transform.position, Quaternion.identity);
-                    //debugText.text = selectedTile.name;
-                    DisableSurroundingCells(outerCells, normalMat);
-                    DisableSurroundingCells(adjecentcells, blockedMat, false, true);
-                    EndBuilding();
+                        GameObject clone = Instantiate(_prefab, CheckTileSelection().transform.position, Quaternion.identity);
+                        DisableSurroundingCells(outerCells, normalMat);
+                        DisableSurroundingCells(adjecentcells, blockedMat, false, true);
+                        EndBuilding();
+                    }
                 }
+
             }
         }
+
+
+
+        //if (isBuilding) {
+        //    Show();
+        //    GameObject selectedTile;
+        //    bool tileSelected = CheckTileSelection(out selectedTile);
+        //    if (selectedTile != null) {
+        //        Vector3 offset = new Vector3(0, 0.17f, 0);
+        //        XRSimpleInteractable interactable = selectedTile.GetComponent<XRSimpleInteractable>();
+        //        _prefabBp.SetActive(true);
+        //        Vector3 intersection = selectedTile.transform.position + offset;
+        //        _prefabBp.transform.position = intersection;
+        //        ColorSurroundingCells(selectedTile);
+
+        //        //text = tileSelected.ToString() + " Tile name: " + selectedTile.name;
+        //        if (tileSelected && interactable.isSelected || Input.GetMouseButtonDown(0)) {
+        //            _prefabBp.SetActive(false);
+        //            if (!pointManager.DeductPoinstIfSufficient(50)) {
+        //                RevertState(adjecentcells);
+        //                EndBuilding();
+        //                return;
+        //            }
+
+        //            GameObject clone = Instantiate(_prefab, selectedTile.transform.position, Quaternion.identity);
+        //            //debugText.text = selectedTile.name;
+        //            DisableSurroundingCells(outerCells, normalMat);
+        //            DisableSurroundingCells(adjecentcells, blockedMat, false, true);
+        //            EndBuilding();
+        //        }
+        //    }
+        //}
 
     }
     //Button fuction

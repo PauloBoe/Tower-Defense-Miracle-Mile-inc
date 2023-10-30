@@ -16,13 +16,23 @@ public class EnemyMovement : MonoBehaviour {
     }
     private void Update() {
         if(target != null) {
-            gameObject.transform.LookAt(target.transform);
-            transform.position += movementSpeed * Time.deltaTime * transform.forward;
+            //gameObject.transform.LookAt(target.transform);
+            Vector3 dir = (target.transform.position - transform.position).normalized;
+            transform.position -= movementSpeed * Time.deltaTime * transform.forward;
+            //transform.position += dir * movementSpeed * Time.deltaTime;
         }
     }
 
     public void SetMovement(GameObject target, float speed) {
         Target = target;
         movementSpeed = speed;
+    }
+
+    private Vector3 Direction() {
+        Vector3 direction = new Vector3();
+
+        //switch based on if the t
+
+        return direction;
     }
 }
