@@ -45,7 +45,7 @@ namespace Qualcomm.Snapdragon.Spaces.Samples
         private const string _controllerTypePrefsKey = "Qualcomm.Snapdragon.Spaces.Samples.Prefs.ControllerType";
         public static OnInputTypeSwitch onInputTypeSwitch;
         public GameObject HandTrackingPointer;
-        public GameObject GazePointer = null;
+        public GameObject GazePointer;
         public GameObject DevicePointer;
         public InputActionReference SwitchInputAction;
         public InputActionReference BackButtonInputAction;
