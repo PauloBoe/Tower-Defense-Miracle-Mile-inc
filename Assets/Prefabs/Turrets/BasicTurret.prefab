@@ -4888,7 +4888,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5749415741583908006}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -3.75, y: 0.15, z: 1.25}
   m_LocalScale: {x: 20, y: 20, z: 20}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -4931,9 +4931,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50fcd96ce6f11e941ab723c0a759f104, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireRate: 1
+  fireRate: 3
   range: 5
   damagePerTick: 1
+  gridSize: 3
   pivot: {fileID: 5749415741772504855}
 --- !u!135 &7909912628013952217
 SphereCollider:

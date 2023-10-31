@@ -5,26 +5,12 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Scenes/LoadScene.unity
-    guid: c6bfde53901e44441be59aa7abf95bc0
   - enabled: 1
     path: Assets/Scenes/MainArScene (NIET ZOMAAR HIERIN WERKEN).unity
     guid: 8ba494dc3a7e3d74b9aa23436f2fb740
-  - enabled: 0
-    path: Assets/Scenes/Almar_Development_Scene.unity
-    guid: a79fd8052d72d0b4996c8b7c58dd66e2
-  - enabled: 0
-    path: Assets/Scenes/Job_Development_Scene.unity
-    guid: e4173bdc19685434790598a5d9938310
-  - enabled: 0
-    path: Assets/Scenes/Stijn_Development_Scene.unity
-    guid: d866d4966413de74e91c4e3da1f4670b
-  - enabled: 0
-    path: Assets/Scenes/Paulo_Development_Scene.unity
-    guid: 56d9429b9681d4f4a8a7e1223198097e
   m_configObjects:
     UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: 9d1ed8ef90ca81d4ebf0bbe27272cb5b, type: 2}
     UnityEditor.XR.ARKit.ARKitSettings: {fileID: 11400000, guid: d6e0a7317843b9b4b87bebd22d1a3fea, type: 2}
     com.unity.xr.arfoundation.simulation_settings: {fileID: 11400000, guid: a26714d57c7b5fd488b407cd5c872bad, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 8039feb3d1eaa1f4e8d24bbb1bf16751, type: 2}
+    com.unity.xr.openxr.settings4: {fileID: 11400000, guid: 4c2e86ca22092714e8a4faf2f4a4171c, type: 2}
