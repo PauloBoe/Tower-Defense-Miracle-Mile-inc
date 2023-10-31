@@ -35,6 +35,7 @@ public class GameManager : MonoBehaviour
     }
     void Start() {
         Hide();
+        StartBulding();
     }
 
 
@@ -140,9 +141,9 @@ public class GameManager : MonoBehaviour
         selectedTile = null;
         Tile tileComponent = null;
 
-        XRRayInteractor rightRay = rightHand.GetComponent<XRRayInteractor>();
+        XRRayInteractor rightRay = rightHand.GetComponentInChildren<XRRayInteractor>();
         XRRayInteractor leftRay = leftHand.GetComponent<XRRayInteractor>();
-
+        
         RaycastHit? rightRaycastHit = null;
         RaycastHit? leftRaycastHit = null;
 
@@ -180,7 +181,7 @@ public class GameManager : MonoBehaviour
                 }
             }
             else {
-                Debug.Log("Clicked on something other than a tile.");
+          
                 return false; // Return false for non-tile objects
             }
         }
@@ -188,7 +189,6 @@ public class GameManager : MonoBehaviour
             //debugText.text += ex.Message;
             return false;
         }
-        return false;
     }
 
 

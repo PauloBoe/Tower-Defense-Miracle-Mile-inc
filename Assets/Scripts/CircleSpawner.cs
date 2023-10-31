@@ -36,8 +36,10 @@ public class CircleSpawner : MonoBehaviour {
 
     private void Start() {
         waveSize = initialWaveSize;
-        buildButton.SetActive(false);
+        //buildButton.SetActive(false);
         bounds = spawnGround.GetComponent<BoxCollider>().bounds;
+        spawnCoroutine = StartCoroutine(SpawnWaves());
+
     }
 
     public void StartGame()
@@ -69,15 +71,15 @@ public class CircleSpawner : MonoBehaviour {
                     float x = Random.Range(bounds.min.x, bounds.max.x);
                     float z = Random.Range(bounds.min.z, bounds.max.z);
 
-                    Vector3 spawnPosition = new Vector3(x, 0.2f, z);
+                    Vector3 spawnPosition = new Vector3(x, 0.2f, z); // for a spawn field
 
                     if (currentWave >= spawnInfo.enemyType.SpawnableInWave) {
                         GameObject enemyPrefab = spawnInfo.enemyType.Model;
-                        GameObject spawnedEnemy = Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
+                        GameObject spawnedEnemy = Instantiate(enemyPrefab, spawnGround.transform.position, Quaternion.identity);
                         spawnedEnemy = LoadData(spawnedEnemy, spawnInfo);
                         spawnedEnemies.Add(spawnedEnemy);
                     }
-                   // yield return new WaitForSeconds(timeBetweenSpawns);
+                    yield return new WaitForSeconds(timeBetweenSpawns);
                 }
             }
 
