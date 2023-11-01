@@ -1168,6 +1168,9 @@ GameObject:
   - component: {fileID: 1373416389}
   - component: {fileID: 1373416388}
   - component: {fileID: 1373416387}
+  - component: {fileID: 1373416393}
+  - component: {fileID: 1373416392}
+  - component: {fileID: 1373416391}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -1253,6 +1256,50 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1373416391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1373416386}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c9c58df51d2dbf499d331f26b828612, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 0
+  currentHealth: 0
+--- !u!114 &1373416392
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1373416386}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe4a217bfd31701408980f83ed8abd02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 1
+  health: 1
+  deadMaterial: {fileID: 0}
+--- !u!114 &1373416393
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1373416386}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c75cac136df1644f9de54cca9686afd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sliderBase: {fileID: 0}
+  sliderBar: {fileID: 0}
+  imageOfSliderBar: {fileID: 0}
 --- !u!1 &1530414504
 GameObject:
   m_ObjectHideFlags: 0
