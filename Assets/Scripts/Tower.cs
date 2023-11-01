@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
 
-public class Tower : MonoBehaviour {
+public class Tower : Entity {
     public float fireRate = 0.5f;
     public float range = 5.0f;
     public int damagePerTick = 1;
@@ -12,9 +12,10 @@ public class Tower : MonoBehaviour {
 
     private float fireCooldown = 0.0f;
     private IDamageable targetEnemy; // Use the IDamageable interface
-    private List<Collider> collidersInRange = new List<Collider>(); // Declare and initialize the list
     private List<Enemy> enemiesInRange = new List<Enemy>(); // Declare and initialize the list
     [SerializeField] private Transform pivot;
+    [SerializeField] private Transform shootingPoint;
+    [SerializeField] private ParticleSystem particleSystem;
 
     private Animator animation;
 
@@ -24,8 +25,28 @@ public class Tower : MonoBehaviour {
 
 
     void Update() {
-            //simulate targeting 
-            GameObject closestEnemy = FindClosestEnemy(); // Find the closest enemy within range
+
+        RaycastHit hit;
+        if (Physics.Raycast(shootingPoint.position, Vector3.forward, out hit, 50f)){
+            if(hit.collider.TryGetComponent(out Enemy enemy)) {
+                if(enemy != null) {
+                    particleSystem.Play();
+                }
+            }
+        }
+    }
+
+    protected override void HandleHealthChange(int currentHealth, int maxHealth) {
+        base.HandleHealthChange(currentHealth, maxHealth);
+
+        if(currentHealth <= 0) {
+            Destroy(gameObject);
+        }
+    }
+
+    private void TargetEnemy() {
+        //simulate targeting 
+        GameObject closestEnemy = FindClosestEnemy(); // Find the closest enemy within range
         if (closestEnemy != null) {
             Vector3 targetDirection = closestEnemy.transform.position - pivot.position;
             targetDirection.y = 0.0f; // Lock rotation to the XZ plane (assuming Y is the vertical axis)
@@ -87,6 +108,11 @@ public class Tower : MonoBehaviour {
             }
         }
 
+    }
+
+    private void OnDrawGizmos() {
+        Gizmos.color = Color.blue;
+        Gizmos.DrawRay(shootingPoint.transform.position, shootingPoint.transform.forward * 5f);
     }
 
 }
