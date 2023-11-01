@@ -4,8 +4,9 @@ using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
 
-public class Tower : Entity {
-    public float fireRate = 0.5f;
+public class Tower : Entity
+{
+    public float fireRate = 5f;
     public float range = 5.0f;
     public int damagePerTick = 1;
     public int gridSize = 3;
@@ -22,27 +23,24 @@ public class Tower : Entity {
     private void Start() {
         animation = gameObject.GetComponent<Animator>();
 
-        healthComponent.Initialize(5,5);
+        healthComponent.Initialize(5, 5);
     }
 
 
     void Update() {
 
         RaycastHit hit;
-        if (Physics.Raycast(shootingPoint.position, Vector3.forward, out hit, 50f)){
-            if(hit.collider.TryGetComponent(out Enemy enemy)) {
-                if(enemy != null) {
-                    particleSystem.Play();
+        if (Physics.Raycast(shootingPoint.position, Vector3.forward, out hit, 50f)) {
+            if (hit.collider.TryGetComponent(out Enemy enemy)) {
+                if (enemy != null) {
+                    if (fireCooldown <= 0.0f) {
+                        particleSystem.Play();
+
+                        fireCooldown = 1.0f / fireRate;
+                    }
+                    fireCooldown -= Time.deltaTime;
                 }
             }
-        }
-    }
-
-    protected override void HandleHealthChange(int currentHealth, int maxHealth) {
-        base.HandleHealthChange(currentHealth, maxHealth);
-
-        if(currentHealth <= 0) {
-            Destroy(gameObject);
         }
     }
 
@@ -94,19 +92,16 @@ public class Tower : Entity {
         return closestEnemy; // Set the closest enemy as the target
     }
 
-    protected override void HandleHealthChange(int currentHealth, int maxHealth)
-    {
+    protected override void HandleHealthChange(int currentHealth, int maxHealth) {
         //base.HandleHealthChange(currentHealth, maxHealth);
 
         // Check for player death condition
-        if (currentHealth <= 0)
-        {
+        if (currentHealth <= 0) {
             Die();
         }
     }
 
-    private void Die()
-    {
+    private void Die() {
         Destroy(gameObject);
     }
 
