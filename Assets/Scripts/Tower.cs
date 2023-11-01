@@ -21,6 +21,8 @@ public class Tower : Entity {
 
     private void Start() {
         animation = gameObject.GetComponent<Animator>();
+
+        healthComponent.Initialize(5,5);
     }
 
 
@@ -92,6 +94,24 @@ public class Tower : Entity {
         return closestEnemy; // Set the closest enemy as the target
     }
 
+    protected override void HandleHealthChange(int currentHealth, int maxHealth)
+    {
+        //base.HandleHealthChange(currentHealth, maxHealth);
+
+        // Check for player death condition
+        if (currentHealth <= 0)
+        {
+            Die();
+        }
+    }
+
+    private void Die()
+    {
+        Destroy(gameObject);
+    }
+
+
+
     void OnTriggerEnter(Collider other) {
         Enemy enemy = other.GetComponent<Enemy>();
         if (enemy != null) {
@@ -107,7 +127,6 @@ public class Tower : Entity {
                 targetEnemy = null; // Clear the target if the current target leaves the range
             }
         }
-
     }
 
     private void OnDrawGizmos() {
