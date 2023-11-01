@@ -9,16 +9,9 @@ public class BulletParticle : MonoBehaviour
 
     List<ParticleCollisionEvent> colEvents = new List<ParticleCollisionEvent>();
 
-    private void Update() {
-
-    }
-
     private void OnParticleCollision(GameObject other) {
         int events = particleSystem.GetCollisionEvents(other, colEvents);
-
-        for (int i = 0; i < events; i++) {
-
-        }
+        //for (int i = 0; i < events; i++) {}
 
         if (other.TryGetComponent(out Health health)) {
             health.TakeDamage(damage);

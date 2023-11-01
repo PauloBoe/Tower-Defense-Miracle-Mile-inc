@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4130895173153196162}
   - component: {fileID: 4130895173153196160}
   - component: {fileID: 4130895173153196161}
+  - component: {fileID: 791998448}
   m_Layer: 3
   m_Name: TurretShootEffect
   m_TagString: Untagged
@@ -3843,7 +3844,7 @@ ParticleSystem:
     radiusScale: 1
     collidesWith:
       serializedVersion: 2
-      m_Bits: 503
+      m_Bits: 247
     maxCollisionShapes: 256
     quality: 0
     voxelSize: 0.5
@@ -4870,6 +4871,20 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &791998448
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4130895173153196163}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5db1a6463aefa5349ba947f7d99e0b45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particleSystem: {fileID: 4130895173153196160}
+  damage: 1
 --- !u!1 &4130895173214748683
 GameObject:
   m_ObjectHideFlags: 0
@@ -6901,7 +6916,6 @@ GameObject:
   - component: {fileID: 4130895174997440526}
   - component: {fileID: 4130895174997440527}
   - component: {fileID: 4808743431540806560}
-  - component: {fileID: 4130895174997440520}
   - component: {fileID: 4130895174997440521}
   m_Layer: 3
   m_Name: BasicTurret
@@ -6964,9 +6978,9 @@ MonoBehaviour:
   healthComponent: {fileID: 0}
   pointManager: {fileID: 0}
   pointAmount: 0
-  fireRate: 0
+  fireRate: 1
   range: 5
-  damagePerTick: 0
+  damagePerTick: 1
   gridSize: 3
   pivot: {fileID: 4130895174394218094}
   shootingPoint: {fileID: 4130895173153196162}
@@ -6983,19 +6997,6 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.05, y: 0.05, z: 0.05}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!135 &4130895174997440520
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4130895174997440523}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Radius: 0.05
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &4130895174997440521
 MonoBehaviour:

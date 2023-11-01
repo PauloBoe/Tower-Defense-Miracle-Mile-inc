@@ -28,18 +28,16 @@ public class Tower : Entity
 
 
     void Update() {
-
         RaycastHit hit;
-        if (Physics.Raycast(shootingPoint.position, Vector3.forward, out hit, 50f)) {
-            if (hit.collider.TryGetComponent(out Enemy enemy)) {
-                if (enemy != null) {
-                    if (fireCooldown <= 0.0f) {
-                        particleSystem.Play();
+        if (Physics.Raycast(shootingPoint.position, Vector3.forward, out hit, 80f)) {
+            Enemy enemy = hit.collider.GetComponent<Enemy>();
+            if (enemy != null) {
+                if (fireCooldown <= 0.0f) {
+                    particleSystem.Play();
 
-                        fireCooldown = 1.0f / fireRate;
-                    }
-                    fireCooldown -= Time.deltaTime;
+                    fireCooldown = 1.0f / fireRate;
                 }
+                fireCooldown -= Time.deltaTime;
             }
         }
     }
