@@ -7,11 +7,15 @@ using UnityEngine;
 public class Tower : Entity
 {
     public float fireRate = 5f;
+    private float fireCooldown = 0.0f;
+    [SerializeField] private GameObject model;
+    // set model
+    // model = getcomponent<tower>().GetModel();
+
+
     public float range = 5.0f;
     public int damagePerTick = 1;
     public int gridSize = 3;
-
-    private float fireCooldown = 0.0f;
     private IDamageable targetEnemy; // Use the IDamageable interface
     private List<Enemy> enemiesInRange = new List<Enemy>(); // Declare and initialize the list
     [SerializeField] private Transform pivot;
@@ -22,12 +26,15 @@ public class Tower : Entity
 
     private void Start() {
         animation = gameObject.GetComponent<Animator>();
-
         healthComponent.Initialize(5, 5);
     }
 
 
-    void Update() {
+    protected virtual void Update() {
+        FireForward();
+    }
+
+    protected virtual void FireForward() {
         RaycastHit hit;
         if (Physics.Raycast(shootingPoint.position, Vector3.forward, out hit, 80f)) {
             Enemy enemy = hit.collider.GetComponent<Enemy>();
