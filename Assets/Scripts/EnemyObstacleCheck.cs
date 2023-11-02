@@ -11,7 +11,7 @@ public class EnemyObstacleCheck : MonoBehaviour
     [SerializeField] float enemySpeed = 5f;
     [SerializeField] float timeToDoDamage;
     [SerializeField] int doesAmountDamage = 1;
-    [SerializeField] float attackInterval = 2f; 
+    [SerializeField] float attackInterval = 2f;
 
     private float lastAttackTime = 0f;
 
@@ -27,6 +27,7 @@ public class EnemyObstacleCheck : MonoBehaviour
             Debug.Log("There is an obstacle in front the enemy.");
 
             health = hit.transform.GetComponent<Health>();
+            shakeTargetObject = hit.transform.GetComponent<ShakeObject>();
             if (Time.time - lastAttackTime >= attackInterval)
             {
                 if (health != null)
@@ -34,8 +35,8 @@ public class EnemyObstacleCheck : MonoBehaviour
                     health.TakeDamage(doesAmountDamage);
                     shakeTargetObject.StartShake();
                 }
-                    lastAttackTime = Time.time;
-                    StartCoroutine(WaitForSeconds(timeToDoDamage));
+                lastAttackTime = Time.time;
+                StartCoroutine(WaitForSeconds(timeToDoDamage));
             }
         }
         else
