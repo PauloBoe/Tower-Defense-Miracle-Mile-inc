@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 4130895173153196162}
   - component: {fileID: 4130895173153196160}
   - component: {fileID: 4130895173153196161}
-  m_Layer: 0
+  - component: {fileID: 791998448}
+  m_Layer: 3
   m_Name: TurretShootEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42,15 +43,15 @@ ParticleSystem:
   m_GameObject: {fileID: 4130895173153196163}
   serializedVersion: 8
   lengthInSec: 5
-  simulationSpeed: 6.22
+  simulationSpeed: 1
   stopAction: 0
   cullingMode: 0
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
   emitterVelocityMode: 1
-  looping: 0
+  looping: 1
   prewarm: 0
-  playOnAwake: 0
+  playOnAwake: 1
   useUnscaledTime: 0
   autoRandomSeed: 1
   startDelay:
@@ -106,7 +107,7 @@ ParticleSystem:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-  moveWithTransform: 0
+  moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
   randomSeed: 0
@@ -115,9 +116,9 @@ ParticleSystem:
     enabled: 1
     startLifetime:
       serializedVersion: 2
-      minMaxState: 3
-      scalar: 1.9
-      minScalar: 1
+      minMaxState: 0
+      scalar: 5
+      minScalar: 5
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -169,7 +170,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.010467529
+      scalar: 10
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -223,7 +224,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.7877358, g: 1, b: 0.98751384, a: 1}
+      maxColor: {r: 1, g: 0.4337424, b: 0, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -601,7 +602,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     randomizeRotationDirection: 0
-    maxNumParticles: 100000
+    maxNumParticles: 1000
     customEmitterVelocity: {x: 0, y: 0, z: 0}
     size3D: 0
     rotation3D: 0
@@ -661,15 +662,15 @@ ParticleSystem:
   ShapeModule:
     serializedVersion: 6
     enabled: 1
-    type: 4
-    angle: 42.262512
+    type: 18
+    angle: 25
     length: 5
     boxThickness: {x: 0, y: 0, z: 0}
     radiusThickness: 1
     donutRadius: 0.2
     m_Position: {x: 0, y: 0, z: 0}
     m_Rotation: {x: 0, y: 0, z: 0}
-    m_Scale: {x: 1, y: 1, z: 1}
+    m_Scale: {x: 0, y: 0, z: 0}
     placementMode: 0
     m_MeshMaterialIndex: 0
     m_MeshNormalOffset: 0
@@ -748,7 +749,7 @@ ParticleSystem:
     sphericalDirectionAmount: 0
     randomPositionAmount: 0
     radius:
-      value: 0.003
+      value: 1
       mode: 0
       spread: 0
       speed:
@@ -867,7 +868,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 50
+      scalar: 0
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -970,10 +971,68 @@ ParticleSystem:
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
-    m_BurstCount: 0
-    m_Bursts: []
+    m_BurstCount: 1
+    m_Bursts:
+    - serializedVersion: 2
+      time: 0
+      countCurve:
+        serializedVersion: 2
+        minMaxState: 0
+        scalar: 1
+        minScalar: 30
+        maxCurve:
+          serializedVersion: 2
+          m_Curve:
+          - serializedVersion: 3
+            time: 0
+            value: 1
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0.33333334
+            outWeight: 0.33333334
+          - serializedVersion: 3
+            time: 1
+            value: 1
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0.33333334
+            outWeight: 0.33333334
+          m_PreInfinity: 2
+          m_PostInfinity: 2
+          m_RotationOrder: 4
+        minCurve:
+          serializedVersion: 2
+          m_Curve:
+          - serializedVersion: 3
+            time: 0
+            value: 1
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0.33333334
+            outWeight: 0.33333334
+          - serializedVersion: 3
+            time: 1
+            value: 1
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0.33333334
+            outWeight: 0.33333334
+          m_PreInfinity: 2
+          m_PostInfinity: 2
+          m_RotationOrder: 4
+      cycleCount: 1
+      repeatInterval: 0.01
+      probability: 1
   SizeModule:
-    enabled: 1
+    enabled: 0
     curve:
       serializedVersion: 2
       minMaxState: 1
@@ -984,31 +1043,22 @@ ParticleSystem:
         m_Curve:
         - serializedVersion: 3
           time: 0
-          value: 1
-          inSlope: -0.90748537
-          outSlope: -0.90748537
+          value: 0
+          inSlope: 0
+          outSlope: 1
           tangentMode: 0
           weightedMode: 0
-          inWeight: 0
-          outWeight: 0.13436504
-        - serializedVersion: 3
-          time: 0.17806698
-          value: 0.5135116
-          inSlope: -1.8604555
-          outSlope: -1.8604555
-          tangentMode: 0
-          weightedMode: 0
-          inWeight: 0.25981227
-          outWeight: 0.15023042
+          inWeight: 0.33333334
+          outWeight: 0.33333334
         - serializedVersion: 3
           time: 1
-          value: 0
-          inSlope: -0.33467466
-          outSlope: -0.33467466
+          value: 1
+          inSlope: 1
+          outSlope: 0
           tangentMode: 0
           weightedMode: 0
-          inWeight: 0.14691623
-          outWeight: 0
+          inWeight: 0.33333334
+          outWeight: 0.33333334
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
@@ -1495,11 +1545,11 @@ ParticleSystem:
     flipU: 0
     flipV: 0
   VelocityModule:
-    enabled: 1
+    enabled: 0
     x:
       serializedVersion: 2
-      minMaxState: 1
-      scalar: 1
+      minMaxState: 0
+      scalar: 0
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -1551,8 +1601,8 @@ ParticleSystem:
         m_RotationOrder: 4
     y:
       serializedVersion: 2
-      minMaxState: 1
-      scalar: 1
+      minMaxState: 0
+      scalar: 0
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -1604,15 +1654,15 @@ ParticleSystem:
         m_RotationOrder: 4
     z:
       serializedVersion: 2
-      minMaxState: 1
-      scalar: 1
+      minMaxState: 0
+      scalar: 0
       minScalar: 0
       maxCurve:
         serializedVersion: 2
         m_Curve:
         - serializedVersion: 3
           time: 0
-          value: 0.05405584
+          value: 0
           inSlope: 0
           outSlope: 0
           tangentMode: 0
@@ -1620,17 +1670,8 @@ ParticleSystem:
           inWeight: 0.33333334
           outWeight: 0.33333334
         - serializedVersion: 3
-          time: 0.89672494
-          value: 0.040200487
-          inSlope: 0.113763206
-          outSlope: 0.113763206
-          tangentMode: 0
-          weightedMode: 0
-          inWeight: 0.1291335
-          outWeight: 1
-        - serializedVersion: 3
           time: 1
-          value: 0.0000014305115
+          value: 0
           inSlope: 0
           outSlope: 0
           tangentMode: 0
@@ -2702,7 +2743,7 @@ ParticleSystem:
     strength:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 2
+      scalar: 1
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -3249,21 +3290,21 @@ ParticleSystem:
         m_Curve:
         - serializedVersion: 3
           time: 0
-          value: 1
+          value: 0
           inSlope: 0
-          outSlope: 0
+          outSlope: 1
           tangentMode: 0
           weightedMode: 0
           inWeight: 0.33333334
           outWeight: 0.33333334
         - serializedVersion: 3
           time: 1
-          value: 0.02702713
-          inSlope: -1.3346415
-          outSlope: -1.3346415
+          value: 1
+          inSlope: 1
+          outSlope: 0
           tangentMode: 0
           weightedMode: 0
-          inWeight: 0.14175272
+          inWeight: 0.33333334
           outWeight: 0.33333334
         m_PreInfinity: 2
         m_PostInfinity: 2
@@ -3630,9 +3671,9 @@ ParticleSystem:
         m_NumAlphaKeys: 2
     range: {x: 0, y: 1}
   CollisionModule:
-    enabled: 0
+    enabled: 1
     serializedVersion: 4
-    type: 0
+    type: 1
     collisionMode: 0
     colliderForce: 0
     multiplyColliderForceByParticleSize: 0
@@ -3695,7 +3736,7 @@ ParticleSystem:
     m_Bounce:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 0
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -3748,7 +3789,7 @@ ParticleSystem:
     m_EnergyLossOnCollision:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0
+      scalar: 1
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -3798,16 +3839,16 @@ ParticleSystem:
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
-    minKillSpeed: 0
+    minKillSpeed: 1
     maxKillSpeed: 10000
     radiusScale: 1
     collidesWith:
       serializedVersion: 2
-      m_Bits: 4294967295
+      m_Bits: 247
     maxCollisionShapes: 256
     quality: 0
     voxelSize: 0.5
-    collisionMessages: 0
+    collisionMessages: 1
     collidesWithDynamic: 1
     interiorCollisions: 0
   TriggerModule:
@@ -3951,7 +3992,7 @@ ParticleSystem:
     lifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.2
+      scalar: 1
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -4005,8 +4046,8 @@ ParticleSystem:
     textureMode: 0
     ribbonCount: 1
     shadowBias: 0.5
-    worldSpace: 1
-    dieWithParticles: 0
+    worldSpace: 0
+    dieWithParticles: 1
     sizeAffectsWidth: 1
     sizeAffectsLifetime: 0
     inheritParticleColor: 1
@@ -4079,7 +4120,7 @@ ParticleSystem:
     widthOverTrail:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.0001
+      scalar: 1
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -4779,7 +4820,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 2fa4d3d6e0e02e945b92471e17736cfd, type: 2}
+  - {fileID: 2100000, guid: e823cd5b5d27c0f4b8256e7c12ee3e6d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4804,7 +4845,7 @@ ParticleSystemRenderer:
   m_MeshDistribution: 0
   m_SortMode: 0
   m_MinParticleSize: 0
-  m_MaxParticleSize: 0.04
+  m_MaxParticleSize: 1
   m_CameraVelocityScale: 0
   m_VelocityScale: 0
   m_LengthScale: 2
@@ -4830,6 +4871,20 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &791998448
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4130895173153196163}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5db1a6463aefa5349ba947f7d99e0b45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particleSystem: {fileID: 4130895173153196160}
+  damage: 1
 --- !u!1 &4130895173214748683
 GameObject:
   m_ObjectHideFlags: 0
@@ -4841,7 +4896,7 @@ GameObject:
   - component: {fileID: 4130895173214748682}
   - component: {fileID: 4130895173214748680}
   - component: {fileID: 4130895173214748681}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4976,7 +5031,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4130895173296732313}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: ShootingPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5009,7 +5064,7 @@ GameObject:
   - component: {fileID: 4130895173378521330}
   - component: {fileID: 4130895173378521328}
   - component: {fileID: 4130895173378521329}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5148,7 +5203,7 @@ GameObject:
   - component: {fileID: 4130895173419484436}
   - component: {fileID: 4130895173419484437}
   - component: {fileID: 4130895173419484438}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: RangeUpgrade
   m_TagString: Button
   m_Icon: {fileID: 0}
@@ -5296,7 +5351,7 @@ GameObject:
   - component: {fileID: 4130895173476430208}
   - component: {fileID: 4130895173476430214}
   - component: {fileID: 4130895173476430215}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5435,7 +5490,7 @@ GameObject:
   - component: {fileID: 4130895173552197880}
   - component: {fileID: 4130895173552197886}
   - component: {fileID: 4130895173552197887}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5574,7 +5629,7 @@ GameObject:
   - component: {fileID: 4130895173622521048}
   - component: {fileID: 4130895173622521049}
   - component: {fileID: 4130895173622521050}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: DamageUpgrade
   m_TagString: Button
   m_Icon: {fileID: 0}
@@ -5724,7 +5779,7 @@ GameObject:
   - component: {fileID: 4130895173623095500}
   - component: {fileID: 4130895173623095501}
   - component: {fileID: 4130895173623095502}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: EvolveLazer
   m_TagString: Button
   m_Icon: {fileID: 0}
@@ -5872,7 +5927,7 @@ GameObject:
   - component: {fileID: 4130895173866277672}
   - component: {fileID: 4130895173866277678}
   - component: {fileID: 4130895173866277679}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: turretbasic 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5959,7 +6014,7 @@ GameObject:
   - component: {fileID: 4130895173936436696}
   - component: {fileID: 4130895173936436702}
   - component: {fileID: 4130895173936436703}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: turretbase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6045,7 +6100,7 @@ GameObject:
   - component: {fileID: 4130895173953173865}
   - component: {fileID: 4130895173953173871}
   - component: {fileID: 4130895173953173864}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: DestroyTowerTEXT
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6180,7 +6235,7 @@ GameObject:
   - component: {fileID: 4130895173969711692}
   - component: {fileID: 4130895173969711682}
   - component: {fileID: 4130895173969711683}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6317,7 +6372,7 @@ GameObject:
   - component: {fileID: 4130895174136763486}
   - component: {fileID: 4130895174136763487}
   - component: {fileID: 4130895174136763480}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: DestroyTower
   m_TagString: Button
   m_Icon: {fileID: 0}
@@ -6463,7 +6518,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4130895174394218094}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Pivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6500,7 +6555,7 @@ GameObject:
   - component: {fileID: 4130895174495903385}
   - component: {fileID: 4130895174495903386}
   - component: {fileID: 4130895174495903387}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: FireRateUpgrade
   m_TagString: Button
   m_Icon: {fileID: 0}
@@ -6650,7 +6705,7 @@ GameObject:
   - component: {fileID: 4130895174731154382}
   - component: {fileID: 4130895174731154383}
   - component: {fileID: 4130895174731154376}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: UpgradeUi
   m_TagString: UpgradeCanvas
   m_Icon: {fileID: 0}
@@ -6775,7 +6830,7 @@ GameObject:
   - component: {fileID: 4130895174824216841}
   - component: {fileID: 4130895174824216847}
   - component: {fileID: 4130895174824216840}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6861,9 +6916,8 @@ GameObject:
   - component: {fileID: 4130895174997440526}
   - component: {fileID: 4130895174997440527}
   - component: {fileID: 4808743431540806560}
-  - component: {fileID: 4130895174997440520}
   - component: {fileID: 4130895174997440521}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: BasicTurret
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6879,7 +6933,7 @@ Transform:
   m_GameObject: {fileID: 4130895174997440523}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.5, z: 12}
-  m_LocalScale: {x: 40, y: 40, z: 40}
+  m_LocalScale: {x: 20, y: 20, z: 20}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 4130895174731154377}
@@ -6924,11 +6978,13 @@ MonoBehaviour:
   healthComponent: {fileID: 0}
   pointManager: {fileID: 0}
   pointAmount: 0
-  fireRate: 0
+  fireRate: 1
   range: 5
-  damagePerTick: 0
+  damagePerTick: 1
   gridSize: 3
   pivot: {fileID: 4130895174394218094}
+  shootingPoint: {fileID: 4130895173153196162}
+  particleSystem: {fileID: 4130895173153196160}
 --- !u!65 &4808743431540806560
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6941,19 +6997,6 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.05, y: 0.05, z: 0.05}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!135 &4130895174997440520
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4130895174997440523}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Radius: 0.05
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &4130895174997440521
 MonoBehaviour:
@@ -6982,7 +7025,7 @@ GameObject:
   - component: {fileID: 4130895175011065497}
   - component: {fileID: 4130895175011065498}
   - component: {fileID: 4130895175011065499}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: EvolveSniper
   m_TagString: Button
   m_Icon: {fileID: 0}
@@ -7130,7 +7173,7 @@ GameObject:
   - component: {fileID: 4130895175081488831}
   - component: {fileID: 4130895175081488829}
   - component: {fileID: 4130895175081488830}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7216,7 +7259,7 @@ GameObject:
   - component: {fileID: 4130895175098726583}
   - component: {fileID: 4130895175098726576}
   - component: {fileID: 4130895175098726577}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: EvolveRocket
   m_TagString: Button
   m_Icon: {fileID: 0}
@@ -7364,7 +7407,7 @@ GameObject:
   - component: {fileID: 4130895175124084258}
   - component: {fileID: 4130895175124084256}
   - component: {fileID: 4130895175124084257}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

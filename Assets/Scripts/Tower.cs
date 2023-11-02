@@ -4,30 +4,47 @@ using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
 
-public class Tower : Entity {
-    public float fireRate = 0.5f;
+public class Tower : Entity
+{
+    public float fireRate = 5f;
     public float range = 5.0f;
     public int damagePerTick = 1;
     public int gridSize = 3;
 
     private float fireCooldown = 0.0f;
     private IDamageable targetEnemy; // Use the IDamageable interface
-    private List<Collider> collidersInRange = new List<Collider>(); // Declare and initialize the list
     private List<Enemy> enemiesInRange = new List<Enemy>(); // Declare and initialize the list
     [SerializeField] private Transform pivot;
+    [SerializeField] private Transform shootingPoint;
+    [SerializeField] private ParticleSystem particleSystem;
 
     private Animator animation;
 
     private void Start() {
         animation = gameObject.GetComponent<Animator>();
 
-        healthComponent.Initialize(5,5);
+        healthComponent.Initialize(5, 5);
     }
 
 
     void Update() {
-            //simulate targeting 
-            GameObject closestEnemy = FindClosestEnemy(); // Find the closest enemy within range
+        RaycastHit hit;
+        if (Physics.Raycast(shootingPoint.position, Vector3.forward, out hit, 80f)) {
+            Enemy enemy = hit.collider.GetComponent<Enemy>();
+            if (enemy != null) {
+                if (fireCooldown <= 0.0f) {
+                    particleSystem.Play();
+
+                    fireCooldown = 1.0f / fireRate;
+                }
+                fireCooldown -= Time.deltaTime;
+            }
+        }
+    }
+
+    private void TargetEnemy() {
+        //simulate targeting 
+        GameObject closestEnemy = FindClosestEnemy(); // Find the closest enemy within range
         if (closestEnemy != null) {
             Vector3 targetDirection = closestEnemy.transform.position - pivot.position;
             targetDirection.y = 0.0f; // Lock rotation to the XZ plane (assuming Y is the vertical axis)
@@ -73,19 +90,16 @@ public class Tower : Entity {
         return closestEnemy; // Set the closest enemy as the target
     }
 
-    protected override void HandleHealthChange(int currentHealth, int maxHealth)
-    {
+    protected override void HandleHealthChange(int currentHealth, int maxHealth) {
         //base.HandleHealthChange(currentHealth, maxHealth);
 
         // Check for player death condition
-        if (currentHealth <= 0)
-        {
+        if (currentHealth <= 0) {
             Die();
         }
     }
 
-    private void Die()
-    {
+    private void Die() {
         Destroy(gameObject);
     }
 
@@ -106,6 +120,11 @@ public class Tower : Entity {
                 targetEnemy = null; // Clear the target if the current target leaves the range
             }
         }
+    }
+
+    private void OnDrawGizmos() {
+        Gizmos.color = Color.blue;
+        Gizmos.DrawRay(shootingPoint.transform.position, shootingPoint.transform.forward * 5f);
     }
 
 }

@@ -12,6 +12,7 @@ using UnityEngine.XR.Interaction.Toolkit;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private Camera cam;
+    
     private PointManager pointManager;
     private CircleSpawner spawner;
 
@@ -37,9 +38,7 @@ public class GameManager : MonoBehaviour
         Hide();
     }
 
-
     private void Update() {
-
         //if (isBuilding) {
         //    Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         //    RaycastHit hit;
@@ -72,8 +71,6 @@ public class GameManager : MonoBehaviour
         //    }
         //}
 
-
-
         if (isBuilding) {
             Show();
             GameObject selectedTile;
@@ -84,21 +81,21 @@ public class GameManager : MonoBehaviour
                 _prefabBp.SetActive(true);
                 Vector3 intersection = selectedTile.transform.position + offset;
                 _prefabBp.transform.position = intersection;
-                ColorSurroundingCells(selectedTile);
+                //ColorSurroundingCells(selectedTile);
 
                 //text = tileSelected.ToString() + " Tile name: " + selectedTile.name;
                 if (tileSelected && interactable.isSelected || Input.GetMouseButtonDown(0)) {
                     _prefabBp.SetActive(false);
                     if (!pointManager.DeductPoinstIfSufficient(50)) {
-                        RevertState(adjecentcells);
+                        //RevertState(adjecentcells);
                         EndBuilding();
                         return;
                     }
 
                     GameObject clone = Instantiate(_prefab, selectedTile.transform.position, Quaternion.identity);
                     //debugText.text = selectedTile.name;
-                    DisableSurroundingCells(outerCells, normalMat);
-                    DisableSurroundingCells(adjecentcells, blockedMat, false, true);
+                   // DisableSurroundingCells(outerCells, normalMat);
+                   // DisableSurroundingCells(adjecentcells, blockedMat, false, true);
                     EndBuilding();
                 }
             }
@@ -140,9 +137,9 @@ public class GameManager : MonoBehaviour
         selectedTile = null;
         Tile tileComponent = null;
 
-        XRRayInteractor rightRay = rightHand.GetComponent<XRRayInteractor>();
+        XRRayInteractor rightRay = rightHand.GetComponentInChildren<XRRayInteractor>();
         XRRayInteractor leftRay = leftHand.GetComponent<XRRayInteractor>();
-
+        
         RaycastHit? rightRaycastHit = null;
         RaycastHit? leftRaycastHit = null;
 
@@ -180,7 +177,7 @@ public class GameManager : MonoBehaviour
                 }
             }
             else {
-                Debug.Log("Clicked on something other than a tile.");
+          
                 return false; // Return false for non-tile objects
             }
         }
@@ -188,7 +185,6 @@ public class GameManager : MonoBehaviour
             //debugText.text += ex.Message;
             return false;
         }
-        return false;
     }
 
 
