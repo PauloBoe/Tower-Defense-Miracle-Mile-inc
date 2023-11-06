@@ -14,7 +14,7 @@ public class Enemy : Entity
 
     public void Awake() {
         base.Awake();
-
+        check = this.gameObject.GetComponent<EnemyObstacleCheck>();
     }
 
     protected override void HandleHealthChange(int currentHealth, int maxHealth) {
