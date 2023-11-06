@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Base : Entity
 {
@@ -15,17 +16,17 @@ public class Base : Entity
     private void Start() {
         base.Start();
         healthComponent.Initialize(20, 20);
-
     }
+
+
 
     protected override void HandleHealthChange(int currentHealth, int maxHealth) {
         base.HandleHealthChange(currentHealth, maxHealth);
 
-        // Check for player death condition
-        if (currentHealth <= 0) {
-            ShowGameOverScreen();
-            //play death Animation
-        }
+    }
+
+    protected override void Die() {
+        SceneManager.LoadScene(1);
     }
 
     private void ShowGameOverScreen() {

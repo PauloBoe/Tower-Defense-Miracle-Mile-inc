@@ -16,7 +16,6 @@ public class Entity : MonoBehaviour, Itransformable {
     public void Awake() {
         HealthComponent = this.gameObject.AddComponent<Health>();
         PointManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<PointManager>();
-        healthComponent.OnHealthChanged += HandleHealthChange;
     }
     protected virtual void Start() {
         // Assuming the HealthComponent script is attached to the entity
@@ -24,13 +23,13 @@ public class Entity : MonoBehaviour, Itransformable {
 
         // Subscribe to the health change event
         healthComponent.OnHealthChanged += HandleHealthChange;
+        healthComponent.OnHealthZero += Die;
     }
 
 
-    protected virtual void HandleHealthChange(int currentHealth, int maxHealth) {
+    protected virtual void HandleHealthChange(int currentHealth, int maxHealth) { }
 
-    }
-
+    protected virtual void Die() { }
     public Transform GetTransfrom() {
         return transform;
     }

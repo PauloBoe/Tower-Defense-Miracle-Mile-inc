@@ -19,14 +19,9 @@ public class Enemy : Entity
 
     protected override void HandleHealthChange(int currentHealth, int maxHealth) {
         base.HandleHealthChange(currentHealth, maxHealth);
-
-        // Check for player death condition
-        if (currentHealth <= 0) {
-            Die();
-        }
     }
 
-    private void Die() {
+    protected override void Die() {
         PointManager.AddPoints(pointAmount);
         Destroy(gameObject);
     }

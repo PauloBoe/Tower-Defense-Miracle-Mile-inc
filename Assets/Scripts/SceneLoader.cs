@@ -9,15 +9,26 @@ public class SceneLoader : MonoBehaviour
 
     public GameObject sceneMainArScene;
 
-    public void LoadSceneMainArScene()
-    {
+    public void LoadSceneMainArScene() {
         sceneMainArScene = GameObject.FindGameObjectWithTag("MainArScene");
         SceneManager.LoadScene(1);
     }
-public void LoadScene()
-    {
+    public void LoadScene() {
         sceneMainArScene = GameObject.FindGameObjectWithTag("MainArScene");
         SceneManager.LoadScene(0);
+    }
+
+
+    public void Quit() {
+        Application.Quit();
+    }
+
+    public void Restart() {
+        SceneManager.LoadScene(0);
+    }
+
+    public void MainMenu() {
+        SceneManager.LoadScene(2);
     }
 
 }
