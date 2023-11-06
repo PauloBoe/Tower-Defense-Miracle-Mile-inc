@@ -7,14 +7,13 @@ using UnityEngine;
 public class Enemy : Entity
 {
     //can add more behaviours or further make diffrent types of enemies with diffrent types of behaviours.
-    [SerializeField] protected EnemyMovement enemyMovement;
     [SerializeField] private int damage = 1;
-    public EnemyMovement EnemyMovement { get => enemyMovement; set => enemyMovement = value; }
+    [SerializeField] private EnemyObstacleCheck check;
     public int Damage { get => damage; set => damage = value; }
+    public EnemyObstacleCheck Check { get => check; set => check = value; }
 
     public void Awake() {
         base.Awake();
-        EnemyMovement = this.gameObject.AddComponent<EnemyMovement>();
 
     }
 

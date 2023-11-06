@@ -46,6 +46,10 @@ public class EnemyObstacleCheck : MonoBehaviour
         }
     }
 
+    public void SetMovement(float speed) {
+        enemySpeed = speed;
+    }
+
     private IEnumerator WaitForSeconds(float seconds)
     {
         yield return new WaitForSeconds(seconds);
