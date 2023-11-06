@@ -75,7 +75,8 @@ public class CircleSpawner : MonoBehaviour {
 
                     if (currentWave >= spawnInfo.enemyType.SpawnableInWave) {
                         GameObject enemyPrefab = spawnInfo.enemyType.Model;
-                        GameObject spawnedEnemy = Instantiate(enemyPrefab, spawnGround.transform.position, Quaternion.identity);
+                        Quaternion targetRotation = Quaternion.LookRotation(attackPoint.transform.position - transform.position, Vector3.up);
+                        GameObject spawnedEnemy = Instantiate(enemyPrefab, spawnGround.transform.position, targetRotation);
                         spawnedEnemy = LoadData(spawnedEnemy, spawnInfo);
                         spawnedEnemies.Add(spawnedEnemy);
                     }

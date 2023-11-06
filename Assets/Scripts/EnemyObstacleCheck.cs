@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class EnemyObstacleCheck : MonoBehaviour
 {
-    //private Enemy enemy;
-    //private ShakeObject shakeObject;
     private Health health;
 
     [SerializeField] ShakeObject shakeTargetObject;
@@ -13,11 +11,10 @@ public class EnemyObstacleCheck : MonoBehaviour
     [SerializeField] float enemySpeed = 5f;
     [SerializeField] float timeToDoDamage;
     [SerializeField] int doesAmountDamage = 1;
-    [SerializeField] float attackInterval = 2f; // Time between damage intervals
+    [SerializeField] float attackInterval = 2f;
+
     private float lastAttackTime = 0f;
 
-
-    // Update is called once per frame
     private void Update()
     {
         // Cast a ray forward from the enemy's forward position
@@ -27,41 +24,27 @@ public class EnemyObstacleCheck : MonoBehaviour
         if (Physics.Raycast(ray, out hit, raycastDistance))
         {
             // An obstacle is detected
-            Debug.Log("There is an obstacle in front the enemy.");
-
-            shakeTargetObject = hit.transform.GetComponent<ShakeObject>();
-            if (shakeTargetObject != null)
-            {
-                //shakeTargetObject.StartShake();
-            }
-            //TriggerShake(); 
-            // Add stop enemy movement
-
-            // Add do damage here
+            //Debug.Log("There is an obstacle in front the enemy.");
 
             health = hit.transform.GetComponent<Health>();
+            shakeTargetObject = hit.transform.GetComponent<ShakeObject>();
             if (Time.time - lastAttackTime >= attackInterval)
             {
-                if (health != null)
+                if (health != null && shakeTargetObject != null)
                 {
                     health.TakeDamage(doesAmountDamage);
                     shakeTargetObject.StartShake();
                 }
-                    lastAttackTime = Time.time;
-                    StartCoroutine(WaitForSeconds(timeToDoDamage));
+                lastAttackTime = Time.time;
+                StartCoroutine(WaitForSeconds(timeToDoDamage));
             }
         }
         else
         {
-            // Do nothing for now
+            // Moves forward
             transform.Translate(Vector3.forward * enemySpeed * Time.deltaTime);
         }
     }
-
-    //private void Die()
-    //{
-    //    Destroy(hit.transform.gameObject);
-    //}
 
     private IEnumerator WaitForSeconds(float seconds)
     {

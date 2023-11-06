@@ -7032,6 +7032,8 @@ MonoBehaviour:
   damagePerTick: 0
   gridSize: 3
   pivot: {fileID: 5749415741772504855}
+  shootingPoint: {fileID: 531849275963814382}
+  particleSystem: {fileID: 531849275963814381}
 --- !u!65 &4704303971370618281
 BoxCollider:
   m_ObjectHideFlags: 0
