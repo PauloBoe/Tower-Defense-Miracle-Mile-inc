@@ -111,7 +111,7 @@ public class CircleSpawner : MonoBehaviour {
     private GameObject LoadData(GameObject enemy, EnemySpawnInfo spawnInfo) {
         Enemy enemyInstance = enemy.GetComponent<Enemy>();
         enemyInstance.HealthComponent.GetComponent<Health>().Initialize(spawnInfo.enemyType.Health, spawnInfo.enemyType.Health);
-        enemyInstance.EnemyMovement.GetComponent<EnemyMovement>().SetMovement(attackPoint, spawnInfo.enemyType.MoveSpeed);
+        enemyInstance.Check.GetComponent<EnemyObstacleCheck>().SetMovement(spawnInfo.enemyType.MoveSpeed);
         enemyInstance.PointAmount = spawnInfo.enemyType.PointValue;
         enemyInstance.Damage = spawnInfo.enemyType.DamageValue;
 
