@@ -12,11 +12,12 @@ using UnityEngine.XR.Interaction.Toolkit;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private Camera cam;
+
     private PointManager pointManager;
     private CircleSpawner spawner;
 
-    [SerializeField] private GameObject leftHand;
-    [SerializeField] private GameObject rightHand;
+    [SerializeField] private XRRayInteractor leftHand;
+    [SerializeField] private XRRayInteractor rightHand;
 
     [SerializeField] private GameObject _prefab;
     [SerializeField] private GameObject _prefabBp;
@@ -28,6 +29,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Material normalMat;
     [SerializeField] private Material blockedMat;
 
+
+
     //[SerializeField] private Text debugText;
     private void Awake() {
         pointManager = gameObject.GetComponent<PointManager>();
@@ -37,9 +40,7 @@ public class GameManager : MonoBehaviour
         Hide();
     }
 
-
     private void Update() {
-
         //if (isBuilding) {
         //    Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         //    RaycastHit hit;
@@ -72,8 +73,6 @@ public class GameManager : MonoBehaviour
         //    }
         //}
 
-
-
         if (isBuilding) {
             Show();
             GameObject selectedTile;
@@ -84,21 +83,23 @@ public class GameManager : MonoBehaviour
                 _prefabBp.SetActive(true);
                 Vector3 intersection = selectedTile.transform.position + offset;
                 _prefabBp.transform.position = intersection;
-                ColorSurroundingCells(selectedTile);
+                //ColorSurroundingCells(selectedTile);
 
                 //text = tileSelected.ToString() + " Tile name: " + selectedTile.name;
                 if (tileSelected && interactable.isSelected || Input.GetMouseButtonDown(0)) {
                     _prefabBp.SetActive(false);
                     if (!pointManager.DeductPoinstIfSufficient(50)) {
-                        RevertState(adjecentcells);
+                        //RevertState(adjecentcells);
                         EndBuilding();
                         return;
                     }
-
+                    //TODO: future implementation make turret always look down the lane.
+                    //Quaternion forwards = Quaternion.LookRotation(selectedTile.transform.position - cam.transform.position, Vector3.up );
                     GameObject clone = Instantiate(_prefab, selectedTile.transform.position, Quaternion.identity);
+                    DisableCell(selectedTile);
                     //debugText.text = selectedTile.name;
-                    DisableSurroundingCells(outerCells, normalMat);
-                    DisableSurroundingCells(adjecentcells, blockedMat, false, true);
+                    // DisableSurroundingCells(outerCells, normalMat);
+                    // DisableSurroundingCells(adjecentcells, blockedMat, false, true);
                     EndBuilding();
                 }
             }
@@ -108,6 +109,7 @@ public class GameManager : MonoBehaviour
     //Button fuction
     private bool isBuilding = false;
     public void StartBulding() {
+        Show();
         isBuilding = true;
     }
     //editor version
@@ -140,33 +142,40 @@ public class GameManager : MonoBehaviour
         selectedTile = null;
         Tile tileComponent = null;
 
-        XRRayInteractor rightRay = rightHand.GetComponent<XRRayInteractor>();
-        XRRayInteractor leftRay = leftHand.GetComponent<XRRayInteractor>();
 
-        RaycastHit? rightRaycastHit = null;
-        RaycastHit? leftRaycastHit = null;
+        RaycastHit rightRaycastHit;
+        RaycastHit leftRaycastHit;
 
         try {
-            if (rightRay.TryGetCurrentRaycast(out rightRaycastHit, out int rightRaycastHitIndex, out RaycastResult? rightUiRaycastHit, out int rightUiRaycastHitIndex, out bool rightIsUIHitClosest) ||
-                leftRay.TryGetCurrentRaycast(out leftRaycastHit, out int leftRaycastHitIndex, out RaycastResult? leftUiRaycastHit, out int leftUiRaycastHitIndex, out bool leftIsUIHitClosest)) {
+            if (rightHand.TryGetCurrent3DRaycastHit(out rightRaycastHit)) {
 
-                if (rightRaycastHit.HasValue) {
-                    try {
-                        tileComponent = rightRaycastHit.Value.collider.GetComponent<Tile>();
-                        //debugText.text = rightRaycastHit.Value.collider.name + tileComponent.name;
-                    }
-                    catch (Exception ex) {
-                        //debugText.text += ex.Message;
-                    }
+                try {
+                    tileComponent = rightRaycastHit.collider.GetComponent<Tile>();
+                    //debugText.text = rightRaycastHit.Value.collider.name + tileComponent.name;
+
                 }
-                else if (leftRaycastHit.HasValue) {
-                    try {
-                        tileComponent = leftRaycastHit.Value.collider.GetComponent<Tile>();
-                        //debugText.text = leftRaycastHit.Value.collider.name + tileComponent.name;
-                    }
-                    catch (Exception ex) {
-                        //debugText.text += ex.Message;
-                    }
+                catch (Exception ex) {
+                    //debugText.text += ex.Message;
+                }
+
+                if (tileComponent != null && tileComponent.enabled == true) {
+                    Debug.Log("Selected a tile within the range.");
+                    selectedTile = tileComponent.gameObject;
+                    return true; // Return true for tile selection within the range
+                }
+                else {
+                    Debug.Log("Selected a tile outside of the range.");
+                    return false; // Return false to indicate tile selection outside of the range
+                }
+
+            }
+            else if (leftHand.TryGetCurrent3DRaycastHit(out leftRaycastHit)) {
+                try {
+                    tileComponent = leftRaycastHit.collider.GetComponent<Tile>();
+                    //debugText.text = rightRaycastHit.Value.collider.name + tileComponent.name;
+                }
+                catch (Exception ex) {
+                    //debugText.text += ex.Message;
                 }
 
                 if (tileComponent != null && tileComponent.enabled == true) {
@@ -179,18 +188,21 @@ public class GameManager : MonoBehaviour
                     return false; // Return false to indicate tile selection outside of the range
                 }
             }
-            else {
-                Debug.Log("Clicked on something other than a tile.");
-                return false; // Return false for non-tile objects
-            }
+            else
+                return false;
+            
         }
         catch (Exception ex) {
             //debugText.text += ex.Message;
+            Debug.Log(ex.Message);
             return false;
         }
-        return false;
     }
 
+    private void OnDrawGizmos() {
+        Gizmos.color = Color.blue;
+        Gizmos.DrawRay(rightHand.transform.position, rightHand.transform.forward * 5f);
+    }
 
 
     public List<GameObject> adjecentcells = new List<GameObject>();
@@ -319,6 +331,10 @@ public class GameManager : MonoBehaviour
             return null;
         }
     }
+    private void DisableCell(GameObject cell) {
+        cell.GetComponent<Tile>().enabled = false;
+    }
+
     private void DisableSurroundingCells(List<GameObject> cells, Material material) {
         if (cells != null) {
             foreach (GameObject cell in cells) {

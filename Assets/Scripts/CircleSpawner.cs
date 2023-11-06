@@ -36,8 +36,10 @@ public class CircleSpawner : MonoBehaviour {
 
     private void Start() {
         waveSize = initialWaveSize;
-        buildButton.SetActive(false);
+        //buildButton.SetActive(false);
         bounds = spawnGround.GetComponent<BoxCollider>().bounds;
+        spawnCoroutine = StartCoroutine(SpawnWaves());
+
     }
 
     public void StartGame()
@@ -69,15 +71,16 @@ public class CircleSpawner : MonoBehaviour {
                     float x = Random.Range(bounds.min.x, bounds.max.x);
                     float z = Random.Range(bounds.min.z, bounds.max.z);
 
-                    Vector3 spawnPosition = new Vector3(x, 0.2f, z);
+                    Vector3 spawnPosition = new Vector3(x, 0.2f, z); // for a spawn field
 
                     if (currentWave >= spawnInfo.enemyType.SpawnableInWave) {
                         GameObject enemyPrefab = spawnInfo.enemyType.Model;
-                        GameObject spawnedEnemy = Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
+                        Quaternion targetRotation = Quaternion.LookRotation(attackPoint.transform.position - transform.position, Vector3.up);
+                        GameObject spawnedEnemy = Instantiate(enemyPrefab, spawnGround.transform.position, targetRotation);
                         spawnedEnemy = LoadData(spawnedEnemy, spawnInfo);
                         spawnedEnemies.Add(spawnedEnemy);
                     }
-                   // yield return new WaitForSeconds(timeBetweenSpawns);
+                    yield return new WaitForSeconds(timeBetweenSpawns);
                 }
             }
 
@@ -108,7 +111,7 @@ public class CircleSpawner : MonoBehaviour {
     private GameObject LoadData(GameObject enemy, EnemySpawnInfo spawnInfo) {
         Enemy enemyInstance = enemy.GetComponent<Enemy>();
         enemyInstance.HealthComponent.GetComponent<Health>().Initialize(spawnInfo.enemyType.Health, spawnInfo.enemyType.Health);
-        enemyInstance.EnemyMovement.GetComponent<EnemyMovement>().SetMovement(attackPoint, spawnInfo.enemyType.MoveSpeed);
+        enemyInstance.Check.GetComponent<EnemyObstacleCheck>().SetMovement(spawnInfo.enemyType.MoveSpeed);
         enemyInstance.PointAmount = spawnInfo.enemyType.PointValue;
         enemyInstance.Damage = spawnInfo.enemyType.DamageValue;
 

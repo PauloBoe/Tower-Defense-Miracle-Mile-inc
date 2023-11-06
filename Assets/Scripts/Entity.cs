@@ -28,6 +28,7 @@ public class Entity : MonoBehaviour, Itransformable {
 
 
     protected virtual void HandleHealthChange(int currentHealth, int maxHealth) {
+
     }
 
     public Transform GetTransfrom() {
