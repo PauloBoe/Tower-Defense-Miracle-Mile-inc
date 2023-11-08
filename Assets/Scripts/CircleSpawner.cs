@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 [System.Serializable]
@@ -14,6 +15,8 @@ public class EnemySpawnInfo {
 
 public class CircleSpawner : MonoBehaviour {
     [SerializeField]private List<GameObject> spawnedEnemies = new List<GameObject>();
+    [SerializeField]private List<Transform> spawnPoints = new List<Transform>();
+
     public GameObject spawnGround;
     private Bounds bounds;
     public List<EnemySpawnInfo> enemySpawnInfoList;
@@ -27,31 +30,38 @@ public class CircleSpawner : MonoBehaviour {
 
     private Coroutine spawnCoroutine;
     private bool isSpawningWave = false;
+    private bool isPaused = false;
     private int currentWave = 1;
 
     [SerializeField] private GameObject attackPoint;
     [SerializeField] private GameObject playButton;
-    [SerializeField] private GameObject buildButton;
+    [SerializeField] private GameObject startWaveButton;
 
 
     private void Start() {
         waveSize = initialWaveSize;
         //buildButton.SetActive(false);
         bounds = spawnGround.GetComponent<BoxCollider>().bounds;
-        spawnCoroutine = StartCoroutine(SpawnWaves());
-
     }
 
     public void StartGame()
     {
         spawnCoroutine = StartCoroutine(SpawnWaves());
         playButton.SetActive(false);
-        buildButton.SetActive(true);
     }
 
-    [SerializeField] private TMP_Text waveText;
+    public void Resume() {
+        startWaveButton.SetActive(false);
+        isPaused = false;
+    }
+
     private IEnumerator SpawnWaves() {
         while (true) {
+
+            while (isPaused) {
+                yield return null;
+            }
+
             isSpawningWave = true;
             yield return new WaitForSeconds(3f);
             foreach (var spawnInfo in enemySpawnInfoList) {
@@ -76,7 +86,8 @@ public class CircleSpawner : MonoBehaviour {
                     if (currentWave >= spawnInfo.enemyType.SpawnableInWave) {
                         GameObject enemyPrefab = spawnInfo.enemyType.Model;
                         Quaternion targetRotation = Quaternion.LookRotation(attackPoint.transform.position - transform.position, Vector3.up);
-                        GameObject spawnedEnemy = Instantiate(enemyPrefab, spawnGround.transform.position, targetRotation);
+                        GameObject spawnedEnemy = Instantiate(enemyPrefab, SpawnPosition(), targetRotation);
+                        spawnedEnemy.transform.rotation = Quaternion.Euler(0, targetRotation.eulerAngles.y, 0);
                         spawnedEnemy = LoadData(spawnedEnemy, spawnInfo);
                         spawnedEnemies.Add(spawnedEnemy);
                     }
@@ -95,7 +106,6 @@ public class CircleSpawner : MonoBehaviour {
             yield return new WaitForSeconds(timeBetweenWaves);
 
             currentWave++; // Increase the current wave
-            waveText.text = "Wave: " + currentWave.ToString();
             foreach (EnemySpawnInfo info in enemySpawnInfoList) {
                 int oldEnemyCount = info.enemyCount;
                 info.enemyCount = Mathf.RoundToInt(info.enemyCount * waveSizeMultiplier);
@@ -108,10 +118,16 @@ public class CircleSpawner : MonoBehaviour {
         }
     }
 
+    private Vector3 SpawnPosition() {
+        int random = Random.Range(0, spawnPoints.Count);
+        Vector3 pos = spawnPoints[random].position;
+        return pos;
+    }
+
     private GameObject LoadData(GameObject enemy, EnemySpawnInfo spawnInfo) {
         Enemy enemyInstance = enemy.GetComponent<Enemy>();
         enemyInstance.HealthComponent.GetComponent<Health>().Initialize(spawnInfo.enemyType.Health, spawnInfo.enemyType.Health);
-        enemyInstance.Check.GetComponent<EnemyObstacleCheck>().SetMovement(spawnInfo.enemyType.MoveSpeed);
+        enemyInstance.EnemySpeed = spawnInfo.enemyType.MoveSpeed;
         enemyInstance.PointAmount = spawnInfo.enemyType.PointValue;
         enemyInstance.Damage = spawnInfo.enemyType.DamageValue;
 
@@ -125,6 +141,8 @@ public class CircleSpawner : MonoBehaviour {
             }
         }
         spawnedEnemies.Clear();
+        isPaused = true;
+        startWaveButton.SetActive(true);
         return true;
     }
 

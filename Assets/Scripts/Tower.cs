@@ -24,8 +24,17 @@ public class Tower : Entity
 
     private Animator animation;
 
-    private void Start() {
+
+    //private void Start() {
+    //    animation = gameObject.GetComponent<Animator>();
+    //   // healthComponent.OnHealthZero += Die;
+    //    healthComponent.Initialize(1, 5);
+    //}    
+    
+    protected override void Start() {
+        base.Start();
         animation = gameObject.GetComponent<Animator>();
+        //TODO set dynamic version for 
         healthComponent.Initialize(5, 5);
     }
 
@@ -98,15 +107,10 @@ public class Tower : Entity
     }
 
     protected override void HandleHealthChange(int currentHealth, int maxHealth) {
-        //base.HandleHealthChange(currentHealth, maxHealth);
-
-        // Check for player death condition
-        if (currentHealth <= 0) {
-            Die();
-        }
+        base.HandleHealthChange(currentHealth, maxHealth);
     }
 
-    private void Die() {
+    protected override void Die() {
         Destroy(gameObject);
     }
 

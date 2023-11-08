@@ -27,9 +27,12 @@ public class Entity : MonoBehaviour, Itransformable {
     }
 
 
-    protected virtual void HandleHealthChange(int currentHealth, int maxHealth) { }
+    protected virtual void HandleHealthChange(int currentHealth, int maxHealth) {
+    }
 
-    protected virtual void Die() { }
+    protected virtual void Die() { 
+        
+    }
     public Transform GetTransfrom() {
         return transform;
     }

@@ -5,15 +5,19 @@ using UnityEngine;
 public class EnemyObstacleCheck : MonoBehaviour
 {
     private Health health;
+    private Enemy enemy;
 
     [SerializeField] ShakeObject shakeTargetObject;
     [SerializeField] float raycastDistance = 5f;
-    [SerializeField] float enemySpeed = 5f;
     [SerializeField] float timeToDoDamage;
     [SerializeField] int doesAmountDamage = 1;
     [SerializeField] float attackInterval = 2f;
 
     private float lastAttackTime = 0f;
+
+    private void Start() {
+        enemy = GetComponent<Enemy>();
+    }
 
     private void Update()
     {
@@ -32,7 +36,7 @@ public class EnemyObstacleCheck : MonoBehaviour
             {
                 if (health != null && shakeTargetObject != null)
                 {
-                    health.TakeDamage(doesAmountDamage);
+                    health.TakeDamage(enemy.Damage);
                     shakeTargetObject.StartShake();
                 }
                 lastAttackTime = Time.time;
@@ -42,12 +46,8 @@ public class EnemyObstacleCheck : MonoBehaviour
         else
         {
             // Moves forward
-            transform.Translate(Vector3.forward * enemySpeed * Time.deltaTime);
+            transform.Translate(Vector3.forward * enemy.EnemySpeed * Time.deltaTime);
         }
-    }
-
-    public void SetMovement(float speed) {
-        enemySpeed = speed;
     }
 
     private IEnumerator WaitForSeconds(float seconds)
