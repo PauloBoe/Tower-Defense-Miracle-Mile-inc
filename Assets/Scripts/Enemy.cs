@@ -8,9 +8,12 @@ public class Enemy : Entity
 {
     //can add more behaviours or further make diffrent types of enemies with diffrent types of behaviours.
     [SerializeField] private int damage = 1;
-    [SerializeField] private EnemyObstacleCheck check;
+    [SerializeField] private EnemyObstacleCheck check; 
+    [SerializeField] private float enemySpeed = 5f;
+
     public int Damage { get => damage; set => damage = value; }
     public EnemyObstacleCheck Check { get => check; set => check = value; }
+    public float EnemySpeed { get => enemySpeed; set => enemySpeed = value; }
 
     public void Awake() {
         base.Awake();

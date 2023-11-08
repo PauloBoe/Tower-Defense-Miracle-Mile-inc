@@ -3844,7 +3844,7 @@ ParticleSystem:
     radiusScale: 1
     collidesWith:
       serializedVersion: 2
-      m_Bits: 247
+      m_Bits: 243
     maxCollisionShapes: 256
     quality: 0
     voxelSize: 0.5
@@ -6978,7 +6978,8 @@ MonoBehaviour:
   healthComponent: {fileID: 0}
   pointManager: {fileID: 0}
   pointAmount: 0
-  fireRate: 1
+  fireRate: 0.5
+  model: {fileID: 0}
   range: 5
   damagePerTick: 1
   gridSize: 3
