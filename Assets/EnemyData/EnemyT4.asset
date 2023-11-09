@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: EnemyT4
   m_EditorClassIdentifier: 
   model: {fileID: 1097072490388940066, guid: cf7f68d460740334a82dd8488bbbddbf, type: 3}
-  health: 1
+  health: 3
   spawnableInWave: 6
   pointValue: 15
   damageValue: 1
-  moveSpeed: 3
+  moveSpeed: 6

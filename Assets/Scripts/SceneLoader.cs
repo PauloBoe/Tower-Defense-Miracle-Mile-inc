@@ -6,18 +6,18 @@ using UnityEngine.UI;
 
 public class SceneLoader : MonoBehaviour
 {
-
-    public GameObject sceneMainArScene;
-
-    public void LoadSceneMainArScene()
-    {
-        sceneMainArScene = GameObject.FindGameObjectWithTag("MainArScene");
-        SceneManager.LoadScene(1);
+    public void Quit() {
+        Application.Quit();
     }
-public void LoadScene()
-    {
-        sceneMainArScene = GameObject.FindGameObjectWithTag("MainArScene");
+
+    public void MainMenu() {
         SceneManager.LoadScene(0);
     }
+
+    public void Restart() {
+        SceneManager.LoadScene(1);
+    }
+
+
 
 }

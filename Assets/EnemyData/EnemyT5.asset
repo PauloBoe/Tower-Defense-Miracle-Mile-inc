@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: EnemyT5
   m_EditorClassIdentifier: 
   model: {fileID: 1097072490388940066, guid: bda743b37f2885d40b7e193c2dbfee3a, type: 3}
-  health: 5
+  health: 15
   spawnableInWave: 8
   pointValue: 25
   damageValue: 3
