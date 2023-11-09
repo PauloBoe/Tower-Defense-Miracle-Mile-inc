@@ -6,18 +6,18 @@ using UnityEngine.UI;
 
 public class SceneLoader : MonoBehaviour
 {
-    public void Quit() {
-        Application.Quit();
-    }
-
-    public void MainMenu() {
+    public void MainMenu()
+    {
         SceneManager.LoadScene(0);
     }
 
-    public void Restart() {
+    public void Restart()
+    {
         SceneManager.LoadScene(1);
     }
 
-
-
+    public void Quit()
+    {
+        Application.Quit();
+    }
 }
