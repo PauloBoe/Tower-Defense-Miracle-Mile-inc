@@ -147,7 +147,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shakeTargetObject: {fileID: 0}
-  raycastDistance: 0.75
+  raycastDistance: 0.3
   timeToDoDamage: 0
   doesAmountDamage: 1
   attackInterval: 2

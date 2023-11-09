@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class Tower : Entity
 {
+    public LayerMask IgnoreMe;
     public float fireRate = 5f;
     private float fireCooldown = 0.0f;
     [SerializeField] private GameObject model;
@@ -45,7 +46,7 @@ public class Tower : Entity
 
     protected virtual void FireForward() {
         RaycastHit hit;
-        if (Physics.Raycast(shootingPoint.position, Vector3.forward, out hit, 80f)) {
+        if (Physics.Raycast(shootingPoint.position, Vector3.forward, out hit, 80f, ~IgnoreMe)) {
             Enemy enemy = hit.collider.GetComponent<Enemy>();
             if (enemy != null) {
                 if (fireCooldown <= 0.0f) {

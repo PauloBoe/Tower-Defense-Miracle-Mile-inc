@@ -133,7 +133,7 @@ MonoBehaviour:
   pointAmount: 0
   damage: 1
   check: {fileID: 0}
-  enemySpeed: 5
+  enemySpeed: 0
 --- !u!114 &8299064633260352466
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -147,7 +147,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shakeTargetObject: {fileID: 0}
-  raycastDistance: 0.75
+  raycastDistance: 0.3
   timeToDoDamage: 1.5
   doesAmountDamage: 1
   attackInterval: 1
