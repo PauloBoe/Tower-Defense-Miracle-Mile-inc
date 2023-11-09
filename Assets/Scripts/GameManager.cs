@@ -22,12 +22,12 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject _prefab;
     [SerializeField] private GameObject _prefabBp;
 
-    [SerializeField] private GameObject currentCell;
-    [SerializeField] private GameObject previousCell;
+    //[SerializeField] private GameObject currentCell;
+    //[SerializeField] private GameObject previousCell;
 
-    [SerializeField] private Material previewMat;
-    [SerializeField] private Material normalMat;
-    [SerializeField] private Material blockedMat;
+    //[SerializeField] private Material previewMat;
+    //[SerializeField] private Material normalMat;
+    //[SerializeField] private Material blockedMat;
 
 
 
@@ -240,7 +240,7 @@ public class GameManager : MonoBehaviour
                     GameObject adjacentCell = GetCellAtPosition(position);
                     if (adjacentCell != null && !adjecentcells.Contains(adjacentCell)) {
                         adjecentcells.Add(adjacentCell); //add new
-                        ColorCell(adjacentCell, previewMat, false);
+                       // ColorCell(adjacentCell, previewMat, false);
                     }
                 }
 
@@ -378,7 +378,7 @@ public class GameManager : MonoBehaviour
     private void RevertState(List<GameObject> cells) {
         if (cells != null) {
             foreach (GameObject cell in cells) {
-                ColorCell(cell, normalMat, false);
+               // ColorCell(cell, normalMat, false);
                 //Renderer renderer = cell.GetComponentInChildren<Renderer>();
                 //if (renderer.material != blockedMat &&  cell.GetComponent<Tile>().enabled != false) {
                 //    renderer.material = normalMat;
