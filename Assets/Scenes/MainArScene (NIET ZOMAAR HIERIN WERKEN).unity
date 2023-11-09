@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: aa78c8d403a8547fe86d1f74239e6b03, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.17276844, g: 0.21589246, b: 0.2978263, a: 1}
+  m_IndirectSpecularColor: {r: 0.018808842, g: 0.05260412, b: 0.14483392, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2462,11 +2462,6 @@ MonoBehaviour:
   rightHand: {fileID: 515305032}
   _prefab: {fileID: 4130895174997440523, guid: eabae392a16fd8d4dba0df18a0530f64, type: 3}
   _prefabBp: {fileID: 210940881}
-  currentCell: {fileID: 0}
-  previousCell: {fileID: 0}
-  previewMat: {fileID: 2100000, guid: 71bfb48d130e49c4e8154aada50ebf1c, type: 2}
-  normalMat: {fileID: 2100000, guid: a88d92708d112224fb80670d19509ca6, type: 2}
-  blockedMat: {fileID: 2100000, guid: ceb1d3afffcf7fa4cb56a9fca52d45bc, type: 2}
   adjecentcells: []
   outerCells: []
 --- !u!4 &2065764349
