@@ -437,7 +437,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5412298231206809634, guid: a8070c054a7370b499b9234e512e8521, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 5.3764977
+      value: 8.556
       objectReference: {fileID: 0}
     - target: {fileID: 5412298231206809634, guid: a8070c054a7370b499b9234e512e8521, type: 3}
       propertyPath: m_LocalRotation.w
@@ -906,6 +906,14 @@ PrefabInstance:
       propertyPath: CollisionModule.collidesWith.m_Bits
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1321647346757376279, guid: 2efbbdff9d5b5e14983dfd8cc50ede91, type: 3}
+      propertyPath: CollisionModule.collidesWithDynamic
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2596651701423353110, guid: 2efbbdff9d5b5e14983dfd8cc50ede91, type: 3}
+      propertyPath: m_IsKinematic
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5560686538701241314, guid: 2efbbdff9d5b5e14983dfd8cc50ede91, type: 3}
       propertyPath: m_Name
       value: Projectile
@@ -1102,6 +1110,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 551358670}
   m_CullTransparentMesh: 1
+--- !u!1 &555185838 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5560686538701241314, guid: 2efbbdff9d5b5e14983dfd8cc50ede91, type: 3}
+  m_PrefabInstance: {fileID: 435477474}
+  m_PrefabAsset: {fileID: 0}
+--- !u!135 &555185842
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 555185838}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.05
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &601547585
 MonoBehaviour:
   m_ObjectHideFlags: 0

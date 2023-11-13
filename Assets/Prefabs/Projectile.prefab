@@ -13,7 +13,8 @@ GameObject:
   - component: {fileID: 1321647346757376278}
   - component: {fileID: 1321647346757376274}
   - component: {fileID: 1321647346757376273}
-  m_Layer: 0
+  - component: {fileID: 173887151489167550}
+  m_Layer: 3
   m_Name: EnergBall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3793,7 +3794,7 @@ ParticleSystem:
     radiusScale: 1
     collidesWith:
       serializedVersion: 2
-      m_Bits: 503
+      m_Bits: 1
     maxCollisionShapes: 256
     quality: 0
     voxelSize: 0.5
@@ -4911,6 +4912,22 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
+--- !u!114 &173887151489167550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1321647346757376277}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5db1a6463aefa5349ba947f7d99e0b45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particleSystem: {fileID: 1321647346757376279}
+  rb: {fileID: 2596651701423353110}
+  damage: 1
+  speed: 1
 --- !u!1 &5560686536983285383
 GameObject:
   m_ObjectHideFlags: 0
@@ -4922,7 +4939,7 @@ GameObject:
   - component: {fileID: 5560686536983285382}
   - component: {fileID: 5560686536983285380}
   - component: {fileID: 5560686536983285381}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Black
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9734,7 +9751,7 @@ GameObject:
   - component: {fileID: 5560686537111572595}
   - component: {fileID: 5560686537111572593}
   - component: {fileID: 5560686537111572594}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Aura
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14546,7 +14563,7 @@ GameObject:
   - component: {fileID: 5560686537142574325}
   - component: {fileID: 5560686537142574283}
   - component: {fileID: 5560686537142574324}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Energy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19358,7 +19375,7 @@ GameObject:
   - component: {fileID: 5560686538246257265}
   - component: {fileID: 5560686538246257271}
   - component: {fileID: 5560686538246257264}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Aura_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24178,8 +24195,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5560686538701241319}
   - component: {fileID: 2596651701423353110}
-  - component: {fileID: 2596651701423353109}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Projectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24217,23 +24233,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 1
---- !u!114 &2596651701423353109
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5560686538701241314}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5db1a6463aefa5349ba947f7d99e0b45, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  particleSystem: {fileID: 1321647346757376279}
-  rb: {fileID: 2596651701423353110}
-  damage: 1
-  speed: 1
+  m_CollisionDetection: 0
 --- !u!1 &5560686538777380789
 GameObject:
   m_ObjectHideFlags: 0
@@ -24245,7 +24245,7 @@ GameObject:
   - component: {fileID: 5560686538777380788}
   - component: {fileID: 5560686538777380746}
   - component: {fileID: 5560686538777380747}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: EdgeCircle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29057,7 +29057,7 @@ GameObject:
   - component: {fileID: 5560686538846689516}
   - component: {fileID: 5560686538846689506}
   - component: {fileID: 5560686538846689507}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: corGlow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
