@@ -10,6 +10,7 @@ public class Tower : Entity
     public float fireRate = 5f;
     private float fireCooldown = 0.0f;
     [SerializeField] private GameObject model;
+    [SerializeField] private GameObject projectilePrefab;
     // set model
     // model = getcomponent<tower>().GetModel();
 
@@ -31,7 +32,7 @@ public class Tower : Entity
     //   // healthComponent.OnHealthZero += Die;
     //    healthComponent.Initialize(1, 5);
     //}    
-    
+
     protected override void Start() {
         base.Start();
         animation = gameObject.GetComponent<Animator>();
@@ -50,6 +51,8 @@ public class Tower : Entity
             Enemy enemy = hit.collider.GetComponent<Enemy>();
             if (enemy != null) {
                 if (fireCooldown <= 0.0f) {
+                    GameObject clone = Instantiate(projectilePrefab, shootingPoint.transform.position, Quaternion.identity);
+                    particleSystem = clone.GetComponentInChildren<ParticleSystem>();
                     particleSystem.Play();
 
                     fireCooldown = 1.0f / fireRate;
