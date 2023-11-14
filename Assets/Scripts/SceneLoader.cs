@@ -11,9 +11,14 @@ public class SceneLoader : MonoBehaviour
         SceneManager.LoadScene(0);
     }
 
-    public void Restart()
+    public void StartTutorial()
     {
         SceneManager.LoadScene(1);
+    }
+
+    public void StartGame()
+    {
+        SceneManager.LoadScene(2);
     }
 
     public void Quit()

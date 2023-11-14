@@ -1782,6 +1782,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 598050722}
+    - target: {fileID: 1507197953968412730, guid: 742fa110da9638f4f96ec7d7008bd732, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: StartTutorial
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6740858594917693373, guid: 742fa110da9638f4f96ec7d7008bd732, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 742fa110da9638f4f96ec7d7008bd732, type: 3}
