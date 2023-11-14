@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 1321647346757376278}
   - component: {fileID: 1321647346757376274}
   - component: {fileID: 1321647346757376273}
-  - component: {fileID: 173887151489167550}
-  m_Layer: 3
+  - component: {fileID: 435477478}
+  m_Layer: 0
   m_Name: EnergBall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4912,7 +4912,7 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
---- !u!114 &173887151489167550
+--- !u!114 &435477478
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -24195,7 +24195,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5560686538701241319}
   - component: {fileID: 2596651701423353110}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Projectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24233,7 +24233,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!1 &5560686538777380789
 GameObject:
   m_ObjectHideFlags: 0

@@ -14,7 +14,7 @@ public class BulletParticle : MonoBehaviour
     void Start() {
         // Get all Particle Systems attached to the GameObject
 
-        rb = GetComponent<Rigidbody>();
+        rb = GetComponentInParent<Rigidbody>();
         rb.velocity = transform.forward * speed;
 
     }
@@ -27,7 +27,7 @@ public class BulletParticle : MonoBehaviour
             health.TakeDamage(damage);
             Debug.Log(health.gameObject.name);
             particleSystem.Stop();
-            Destroy(rb.GetComponent<GameObject>());
+            Destroy(rb.gameObject);
         }
     }
 
