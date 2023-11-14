@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1321647346757376278}
   - component: {fileID: 1321647346757376274}
   - component: {fileID: 1321647346757376273}
+  - component: {fileID: 435477478}
   m_Layer: 0
   m_Name: EnergBall
   m_TagString: Untagged
@@ -3793,7 +3794,7 @@ ParticleSystem:
     radiusScale: 1
     collidesWith:
       serializedVersion: 2
-      m_Bits: 503
+      m_Bits: 1
     maxCollisionShapes: 256
     quality: 0
     voxelSize: 0.5
@@ -4911,6 +4912,22 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
+--- !u!114 &435477478
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1321647346757376277}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5db1a6463aefa5349ba947f7d99e0b45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particleSystem: {fileID: 1321647346757376279}
+  rb: {fileID: 2596651701423353110}
+  damage: 1
+  speed: 1
 --- !u!1 &5560686536983285383
 GameObject:
   m_ObjectHideFlags: 0
@@ -24178,7 +24195,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5560686538701241319}
   - component: {fileID: 2596651701423353110}
-  - component: {fileID: 2596651701423353109}
   m_Layer: 0
   m_Name: Projectile
   m_TagString: Untagged
@@ -24218,22 +24234,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 1
---- !u!114 &2596651701423353109
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5560686538701241314}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5db1a6463aefa5349ba947f7d99e0b45, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  particleSystem: {fileID: 1321647346757376279}
-  rb: {fileID: 2596651701423353110}
-  damage: 1
-  speed: 1
 --- !u!1 &5560686538777380789
 GameObject:
   m_ObjectHideFlags: 0
