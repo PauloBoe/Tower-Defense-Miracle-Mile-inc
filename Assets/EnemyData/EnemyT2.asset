@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a7b6f11a0c482f489950cf000bdc461, type: 3}
   m_Name: EnemyT2
   m_EditorClassIdentifier: 
+  fx: {fileID: 3046579222541601340, guid: c52cb553c18f4cc4aa5fc40041354cbf, type: 3}
   model: {fileID: 1097072490388940066, guid: a4b3618d15d686a439e1bbd289c91682, type: 3}
   health: 6
   spawnableInWave: 3
