@@ -4939,7 +4939,7 @@ GameObject:
   - component: {fileID: 5560686536983285382}
   - component: {fileID: 5560686536983285380}
   - component: {fileID: 5560686536983285381}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Black
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9751,7 +9751,7 @@ GameObject:
   - component: {fileID: 5560686537111572595}
   - component: {fileID: 5560686537111572593}
   - component: {fileID: 5560686537111572594}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Aura
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14563,7 +14563,7 @@ GameObject:
   - component: {fileID: 5560686537142574325}
   - component: {fileID: 5560686537142574283}
   - component: {fileID: 5560686537142574324}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Energy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19375,7 +19375,7 @@ GameObject:
   - component: {fileID: 5560686538246257265}
   - component: {fileID: 5560686538246257271}
   - component: {fileID: 5560686538246257264}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Aura_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24245,7 +24245,7 @@ GameObject:
   - component: {fileID: 5560686538777380788}
   - component: {fileID: 5560686538777380746}
   - component: {fileID: 5560686538777380747}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: EdgeCircle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29057,7 +29057,7 @@ GameObject:
   - component: {fileID: 5560686538846689516}
   - component: {fileID: 5560686538846689506}
   - component: {fileID: 5560686538846689507}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: corGlow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
