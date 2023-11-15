@@ -1988,6 +1988,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3c4d2c1e0d663874e8c9091249e4363f, type: 3}
+--- !u!1 &750925685 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5749415741583908006, guid: 3c4d2c1e0d663874e8c9091249e4363f, type: 3}
+  m_PrefabInstance: {fileID: 750925684}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &785753620
 GameObject:
   m_ObjectHideFlags: 0
@@ -4536,7 +4541,7 @@ MonoBehaviour:
   leftHand: {fileID: 1624779628}
   rightHand: {fileID: 1624779627}
   _prefab: {fileID: 4130895174997440523, guid: eabae392a16fd8d4dba0df18a0530f64, type: 3}
-  _prefabBp: {fileID: 5749415741583908006, guid: 3c4d2c1e0d663874e8c9091249e4363f, type: 3}
+  _prefabBp: {fileID: 750925685}
   adjecentcells: []
   outerCells: []
 --- !u!4 &2061310310
