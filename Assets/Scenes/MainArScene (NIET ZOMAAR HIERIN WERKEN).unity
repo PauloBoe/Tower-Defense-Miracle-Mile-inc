@@ -158,7 +158,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!65 &225780023
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -201,7 +201,6 @@ MonoBehaviour:
   timeBetweenWaves: 1
   timeBetweenSpawns: 1
   waveSizeMultiplier: 1.2
-  isPaused: 0
   attackPoint: {fileID: 1672611893}
   playButton: {fileID: 1402173065}
   startWaveButton: {fileID: 1058051511}
@@ -856,7 +855,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &725323018
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1642,11 +1641,7 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8262048506275868565, guid: 39e2f3ad913ea48409bf4bf839c62e05, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.03
-      objectReference: {fileID: 0}
-    - target: {fileID: 8262048506275868569, guid: 39e2f3ad913ea48409bf4bf839c62e05, type: 3}
+    - target: {fileID: 8262048506112873943, guid: 39e2f3ad913ea48409bf4bf839c62e05, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
@@ -1698,9 +1693,17 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8262048507335152783, guid: 39e2f3ad913ea48409bf4bf839c62e05, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8262048507902946435, guid: 39e2f3ad913ea48409bf4bf839c62e05, type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8311472707772276083, guid: 39e2f3ad913ea48409bf4bf839c62e05, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 39e2f3ad913ea48409bf4bf839c62e05, type: 3}
@@ -1747,6 +1750,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2273786442714052098, guid: ae516dd7221462047aa6b6039e69e393, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2360632144484729422, guid: ae516dd7221462047aa6b6039e69e393, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4251546316978515782, guid: ae516dd7221462047aa6b6039e69e393, type: 3}
       propertyPath: m_RootOrder
       value: 9
@@ -1795,6 +1806,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hand Menu With Button Activation
       objectReference: {fileID: 0}
+    - target: {fileID: 4251546316978515783, guid: ae516dd7221462047aa6b6039e69e393, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6181005619614766489, guid: ae516dd7221462047aa6b6039e69e393, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6829439386403595582, guid: ae516dd7221462047aa6b6039e69e393, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6829439386489021663, guid: ae516dd7221462047aa6b6039e69e393, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6829439386968621475, guid: ae516dd7221462047aa6b6039e69e393, type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
@@ -1806,6 +1833,14 @@ PrefabInstance:
     - target: {fileID: 6829439387207509993, guid: ae516dd7221462047aa6b6039e69e393, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7582010053603088803, guid: ae516dd7221462047aa6b6039e69e393, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7710300179471840744, guid: ae516dd7221462047aa6b6039e69e393, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7984124849290069095, guid: ae516dd7221462047aa6b6039e69e393, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
