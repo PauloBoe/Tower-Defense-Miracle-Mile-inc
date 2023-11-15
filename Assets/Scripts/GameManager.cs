@@ -83,6 +83,7 @@ public class GameManager : MonoBehaviour
                 _prefabBp.SetActive(true);
                 Vector3 intersection = selectedTile.transform.position + offset;
                 _prefabBp.transform.position = intersection;
+                _prefabBp.transform.rotation = selectedTile.transform.rotation; 
                 //ColorSurroundingCells(selectedTile);
 
                 //text = tileSelected.ToString() + " Tile name: " + selectedTile.name;
@@ -95,7 +96,7 @@ public class GameManager : MonoBehaviour
                     }
                     //TODO: future implementation make turret always look down the lane.
                     //Quaternion forwards = Quaternion.LookRotation(selectedTile.transform.position - cam.transform.position, Vector3.up );
-                    GameObject clone = Instantiate(_prefab, selectedTile.transform.position, Quaternion.identity);
+                    GameObject clone = Instantiate(_prefab, selectedTile.transform.position, selectedTile.transform.rotation);
                     DisableCell(selectedTile);
                     //debugText.text = selectedTile.name;
                     // DisableSurroundingCells(outerCells, normalMat);

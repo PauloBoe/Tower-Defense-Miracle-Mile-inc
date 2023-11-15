@@ -15,6 +15,7 @@ EditorBuildSettings:
     path: Assets/Scenes/GameOverScene.unity
     guid: 4390549fc017c8e4facd6ac5da0dbd4c
   m_configObjects:
+    Unity.XR.Oculus.Settings: {fileID: 11400000, guid: a80400bd6e931204e8a33de922ea7a01, type: 2}
     UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: 9d1ed8ef90ca81d4ebf0bbe27272cb5b, type: 2}
     UnityEditor.XR.ARKit.ARKitSettings: {fileID: 11400000, guid: d6e0a7317843b9b4b87bebd22d1a3fea, type: 2}
     com.unity.xr.arfoundation.simulation_settings: {fileID: 11400000, guid: a26714d57c7b5fd488b407cd5c872bad, type: 2}
