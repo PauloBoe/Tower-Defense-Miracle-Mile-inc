@@ -30,7 +30,7 @@ public class CircleSpawner : MonoBehaviour {
 
     private Coroutine spawnCoroutine;
     private bool isSpawningWave = false;
-    private bool isPaused = false;
+    [SerializeField] private bool isPaused = false;
     private int currentWave = 1;
 
     [SerializeField] private GameObject attackPoint;
@@ -85,11 +85,15 @@ public class CircleSpawner : MonoBehaviour {
 
                     if (currentWave >= spawnInfo.enemyType.SpawnableInWave) {
                         GameObject enemyPrefab = spawnInfo.enemyType.Model;
+                        GameObject spawnEffect = spawnInfo.enemyType.FX;
                         Quaternion targetRotation = Quaternion.LookRotation(attackPoint.transform.position - transform.position, Vector3.up);
-                        GameObject spawnedEnemy = Instantiate(enemyPrefab, SpawnPosition(), targetRotation);
+                        GameObject spawnedFX = Instantiate(spawnEffect, SpawnPosition() + new Vector3(0,0.2f,0), targetRotation);
+                        yield return new WaitForSeconds(spawnedFX.GetComponent<ParticleSystem>().main.duration);
+                        GameObject spawnedEnemy = Instantiate(enemyPrefab, spawnedFX.transform.position - new Vector3(0,0.2f,0), targetRotation);
                         spawnedEnemy.transform.rotation = Quaternion.Euler(0, targetRotation.eulerAngles.y, 0);
                         spawnedEnemy = LoadData(spawnedEnemy, spawnInfo);
                         spawnedEnemies.Add(spawnedEnemy);
+                        Destroy(spawnedFX, 1f);
                     }
                     yield return new WaitForSeconds(timeBetweenSpawns);
                 }

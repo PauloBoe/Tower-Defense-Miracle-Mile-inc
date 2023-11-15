@@ -22,12 +22,12 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject _prefab;
     [SerializeField] private GameObject _prefabBp;
 
-    [SerializeField] private GameObject currentCell;
-    [SerializeField] private GameObject previousCell;
+    //[SerializeField] private GameObject currentCell;
+    //[SerializeField] private GameObject previousCell;
 
-    [SerializeField] private Material previewMat;
-    [SerializeField] private Material normalMat;
-    [SerializeField] private Material blockedMat;
+    //[SerializeField] private Material previewMat;
+    //[SerializeField] private Material normalMat;
+    //[SerializeField] private Material blockedMat;
 
 
 
@@ -83,6 +83,7 @@ public class GameManager : MonoBehaviour
                 _prefabBp.SetActive(true);
                 Vector3 intersection = selectedTile.transform.position + offset;
                 _prefabBp.transform.position = intersection;
+                _prefabBp.transform.rotation = selectedTile.transform.rotation; 
                 //ColorSurroundingCells(selectedTile);
 
                 //text = tileSelected.ToString() + " Tile name: " + selectedTile.name;
@@ -95,7 +96,7 @@ public class GameManager : MonoBehaviour
                     }
                     //TODO: future implementation make turret always look down the lane.
                     //Quaternion forwards = Quaternion.LookRotation(selectedTile.transform.position - cam.transform.position, Vector3.up );
-                    GameObject clone = Instantiate(_prefab, selectedTile.transform.position, Quaternion.identity);
+                    GameObject clone = Instantiate(_prefab, selectedTile.transform.position, selectedTile.transform.rotation);
                     DisableCell(selectedTile);
                     //debugText.text = selectedTile.name;
                     // DisableSurroundingCells(outerCells, normalMat);
@@ -240,7 +241,7 @@ public class GameManager : MonoBehaviour
                     GameObject adjacentCell = GetCellAtPosition(position);
                     if (adjacentCell != null && !adjecentcells.Contains(adjacentCell)) {
                         adjecentcells.Add(adjacentCell); //add new
-                        ColorCell(adjacentCell, previewMat, false);
+                       // ColorCell(adjacentCell, previewMat, false);
                     }
                 }
 
@@ -378,7 +379,7 @@ public class GameManager : MonoBehaviour
     private void RevertState(List<GameObject> cells) {
         if (cells != null) {
             foreach (GameObject cell in cells) {
-                ColorCell(cell, normalMat, false);
+               // ColorCell(cell, normalMat, false);
                 //Renderer renderer = cell.GetComponentInChildren<Renderer>();
                 //if (renderer.material != blockedMat &&  cell.GetComponent<Tile>().enabled != false) {
                 //    renderer.material = normalMat;
