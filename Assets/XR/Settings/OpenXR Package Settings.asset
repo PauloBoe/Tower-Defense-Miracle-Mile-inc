@@ -522,14 +522,10 @@ MonoBehaviour:
   features:
   - {fileID: -2873905015258471221}
   - {fileID: -4070052046635038668}
-  - {fileID: -8753490293607646378}
   - {fileID: -9179027171715012354}
-  - {fileID: 5809495689806147126}
-  - {fileID: 8359774860790887745}
   - {fileID: -167352990591891570}
   - {fileID: 6535658657927699027}
   - {fileID: 8783573335162274314}
-  - {fileID: -5020150466571837711}
   - {fileID: 4862922474729937840}
   - {fileID: 3664059059333420983}
   - {fileID: 1836970993563844266}
@@ -542,13 +538,11 @@ MonoBehaviour:
   - {fileID: 3359223031325092512}
   - {fileID: 6106957229714981667}
   - {fileID: -155069696505414829}
-  - {fileID: 6659311760699878714}
   - {fileID: -4428542483140420575}
   - {fileID: -4750021147656896316}
   - {fileID: 6213201782695627767}
   m_renderMode: 0
   m_depthSubmissionMode: 1
-  m_symmetricProjection: 0
 --- !u!114 &1836970993563844266
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -642,10 +636,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   features:
   - {fileID: -500351864943700450}
-  - {fileID: 5146428238629597279}
   - {fileID: -2257582325059507298}
-  - {fileID: -1848585866251643380}
-  - {fileID: 8405355478550370252}
   - {fileID: 459617087488380205}
   - {fileID: -6591160995097618605}
   - {fileID: -6330586391168674427}
@@ -659,11 +650,9 @@ MonoBehaviour:
   - {fileID: 7497136599535035274}
   - {fileID: -8119263784878795196}
   - {fileID: 8958892174338188138}
-  - {fileID: -2730256706141868923}
   - {fileID: -6798983729822265044}
   m_renderMode: 0
   m_depthSubmissionMode: 1
-  m_symmetricProjection: 0
 --- !u!114 &3359223031325092512
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -966,11 +955,6 @@ MonoBehaviour:
   - visibleName: Quest Pro
     manifestName: cambria
     enabled: 1
-  forceRemoveInternetPermission: 0
-  symmetricProjection: 0
-  systemSplashScreen: {fileID: 0}
-  lateLatchingMode: 0
-  lateLatchingDebug: 0
 --- !u!114 &7180366394783116483
 MonoBehaviour:
   m_ObjectHideFlags: 0
