@@ -108,7 +108,7 @@ public class GameManager : MonoBehaviour
                     //TODO: future implementation make turret always look down the lane.
                     //Quaternion forwards = Quaternion.LookRotation(selectedTile.transform.position - cam.transform.position, Vector3.up );
                     GameObject clone = Instantiate(_prefab, selectedTile.transform.position, selectedTile.transform.rotation);
-                    DisableCell(selectedTile);
+                    //DisableCell(selectedTile);
                     //debugText.text = selectedTile.name;
                     // DisableSurroundingCells(outerCells, normalMat);
                     // DisableSurroundingCells(adjecentcells, blockedMat, false, true);
@@ -241,6 +241,11 @@ public class GameManager : MonoBehaviour
     private void DisableCell(GameObject cell)
     {
         cell.GetComponent<Tile>().enabled = false;
+    }
+
+    private void EnableCell(GameObject cell)
+    {
+        cell.GetComponent<Tile>().enabled = enabled;
     }
 
     public void Hide()

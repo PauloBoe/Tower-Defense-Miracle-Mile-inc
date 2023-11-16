@@ -8,7 +8,7 @@ public class PointManager : MonoBehaviour
 {
     // Start is called before the first frame update
 
-    public int points = 150;
+    public int points = 250;
     [SerializeField] private Text pointsText;
     [SerializeField] private Text ErrorText;
     private float counter = 0;
