@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class Tower : Entity
 {
+    public GameManager gameManager;
+
     public LayerMask IgnoreMe;
     public float fireRate = 5f;
     private float fireCooldown = 0.0f;
@@ -116,6 +118,7 @@ public class Tower : Entity
 
     protected override void Die() {
         Destroy(gameObject);
+        
     }
 
 
