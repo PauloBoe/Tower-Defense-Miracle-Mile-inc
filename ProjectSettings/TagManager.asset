@@ -24,6 +24,7 @@ TagManager:
   - MainArScene
   - ActualTable
   - PlaceTable
+  - ProjectileRemover
   layers:
   - Default
   - TransparentFX
