@@ -57,7 +57,7 @@ public class Tower : Entity
                     particleSystem = clone.GetComponentInChildren<ParticleSystem>();
                     particleSystem.Play();
                     animation.Play("Base Layer.Shoot", 0, 0.25f);
-                    Debug.Log("Playing anim");
+                    //Debug.Log("Playing anim");
 
                     fireCooldown = 1.0f / fireRate;
                 }

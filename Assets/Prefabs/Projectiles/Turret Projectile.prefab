@@ -24195,6 +24195,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5560686538701241319}
   - component: {fileID: 2596651701423353110}
+  - component: {fileID: 1204729717504757037}
   m_Layer: 0
   m_Name: Turret Projectile
   m_TagString: Untagged
@@ -24234,6 +24235,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 1
+--- !u!135 &1204729717504757037
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5560686538701241314}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.045
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5560686538777380789
 GameObject:
   m_ObjectHideFlags: 0
