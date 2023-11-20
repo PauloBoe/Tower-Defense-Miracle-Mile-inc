@@ -56,6 +56,8 @@ public class Tower : Entity
                     GameObject clone = Instantiate(projectilePrefab, shootingPoint.transform.position, Quaternion.identity);
                     particleSystem = clone.GetComponentInChildren<ParticleSystem>();
                     particleSystem.Play();
+                    animation.Play("Base Layer.Shoot", 0, 0.25f);
+                    Debug.Log("Playing anim");
 
                     fireCooldown = 1.0f / fireRate;
                 }
