@@ -54,11 +54,11 @@ public class Tower : Entity
 
     protected virtual void FireForward() {
         RaycastHit hit;
-        if (Physics.Raycast(shootingPoint.position, shootingPoint.transform.forward, out hit, 80f, ~IgnoreMe)) {
+        if (Physics.Raycast(shootingPoint.transform.position, shootingPoint.transform.forward, out hit, 80f, ~IgnoreMe)) {
             Enemy enemy = hit.collider.GetComponent<Enemy>();
             if (enemy != null) {
                 if (fireCooldown <= 0.0f) {
-                    GameObject clone = Instantiate(projectilePrefab, shootingPoint.transform.position, Quaternion.identity);
+                    GameObject clone = Instantiate(projectilePrefab, shootingPoint.transform.position, transform.rotation);
                     particleSystem = clone.GetComponentInChildren<ParticleSystem>();
                     particleSystem.Play();
                     animation.Play("Base Layer.Shoot", 0, 0.25f);
