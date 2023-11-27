@@ -54,7 +54,7 @@ public class Tower : Entity
 
     protected virtual void FireForward() {
         RaycastHit hit;
-        if (Physics.Raycast(shootingPoint.position, Vector3.forward, out hit, 80f, ~IgnoreMe)) {
+        if (Physics.Raycast(shootingPoint.position, shootingPoint.transform.forward, out hit, 80f, ~IgnoreMe)) {
             Enemy enemy = hit.collider.GetComponent<Enemy>();
             if (enemy != null) {
                 if (fireCooldown <= 0.0f) {
@@ -150,7 +150,7 @@ public class Tower : Entity
 
     private void OnDrawGizmos() {
         Gizmos.color = Color.blue;
-        Gizmos.DrawRay(transform.position + new Vector3(0, 0.1f, 0), Vector3.down);
+        Gizmos.DrawRay(shootingPoint.transform.position, shootingPoint.transform.forward * 5f);
     }
 
 

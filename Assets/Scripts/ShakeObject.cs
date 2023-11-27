@@ -9,9 +9,13 @@ public class ShakeObject : MonoBehaviour
     private Vector3 originalPosition;
     private bool isShaking = false;
 
+
+    private void Awake() {
+        originalPosition = transform.position;
+        
+    }
     private void Start()
     {
-        originalPosition = transform.position;
     }
 
     public void StartShake()

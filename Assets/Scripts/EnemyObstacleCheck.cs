@@ -19,7 +19,7 @@ public class EnemyObstacleCheck : MonoBehaviour
         enemy = GetComponent<Enemy>();
     }
 
-    private void Update() {
+    private void FixedUpdate() {
         // Cast a ray forward from the enemy's forward position
         Ray ray = new Ray(transform.position, transform.forward);
         RaycastHit hit;

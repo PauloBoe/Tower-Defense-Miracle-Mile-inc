@@ -1124,6 +1124,10 @@ PrefabInstance:
       propertyPath: m_BackGroundColor.r
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9132913291935407762, guid: 5eccbf4be2c00e94689ee8062e4e7276, type: 3}
+      propertyPath: m_RequestedTrackingOriginMode
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5eccbf4be2c00e94689ee8062e4e7276, type: 3}
 --- !u!1 &1432607862
@@ -7516,8 +7520,14 @@ MonoBehaviour:
   healthComponent: {fileID: 0}
   pointManager: {fileID: 0}
   pointAmount: 0
+  gameManager: {fileID: 0}
+  IgnoreMe:
+    serializedVersion: 2
+    m_Bits: 0
   fireRate: 0
   model: {fileID: 0}
+  projectilePrefab: {fileID: 0}
+  occupiedTile: {fileID: 0}
   range: 5
   damagePerTick: 0
   gridSize: 3
