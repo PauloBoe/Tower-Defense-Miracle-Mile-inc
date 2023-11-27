@@ -20,10 +20,6 @@ public class Projectile : MonoBehaviour
         {
             other.gameObject.GetComponent<Health>().TakeDamage(damage);
         }
-        else if (other.gameObject.CompareTag("ProjectileRemover"))
-        {
-            Destroy(gameObject);
-        }
         Destroy(gameObject);
     }
 
