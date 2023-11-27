@@ -6,11 +6,6 @@ public class ProjectileRemover : MonoBehaviour
 {
     private GameObject enteredGameObject;
 
-    private void Update()
-    {
-        
-    }
-
     private void OnTriggerEnter(Collider other)
     {
         enteredGameObject = other.gameObject;
