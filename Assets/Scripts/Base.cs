@@ -15,7 +15,7 @@ public class Base : Entity
         base.Awake();
     }
 
-    private void Start() {
+    protected override void Start() {
         base.Start();
         healthComponent.Initialize(20, 20);
         healthText.text = "Health: " + healthComponent.HealthValue.ToString();
@@ -29,7 +29,7 @@ public class Base : Entity
     }
 
     protected override void Die() {
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(3);
     }
 
     private void ShowGameOverScreen() {

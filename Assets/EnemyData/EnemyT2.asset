@@ -16,6 +16,6 @@ MonoBehaviour:
   model: {fileID: 1097072490388940066, guid: a4b3618d15d686a439e1bbd289c91682, type: 3}
   health: 6
   spawnableInWave: 3
-  pointValue: 8
+  pointValue: 15
   damageValue: 3
   moveSpeed: 0.4

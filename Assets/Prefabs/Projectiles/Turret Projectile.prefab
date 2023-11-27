@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1321647346757376274}
   - component: {fileID: 1321647346757376273}
   - component: {fileID: 435477478}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: EnergBall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24196,7 +24196,7 @@ GameObject:
   - component: {fileID: 5560686538701241319}
   - component: {fileID: 2596651701423353110}
   - component: {fileID: 1204729717504757037}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Turret Projectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}

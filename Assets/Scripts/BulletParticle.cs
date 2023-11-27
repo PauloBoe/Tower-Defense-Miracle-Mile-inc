@@ -7,7 +7,7 @@ public class BulletParticle : MonoBehaviour
     public ParticleSystem particleSystem;
     public Rigidbody rb;
     public int damage;
-    public float speed = 1f;
+    public float speed = 2f;
     List<ParticleCollisionEvent> colEvents = new List<ParticleCollisionEvent>();
 
 

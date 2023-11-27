@@ -5283,12 +5283,14 @@ MonoBehaviour:
   healthComponent: {fileID: 0}
   pointManager: {fileID: 0}
   pointAmount: 0
+  gameManager: {fileID: 0}
   IgnoreMe:
     serializedVersion: 2
     m_Bits: 8
   fireRate: 0.5
   model: {fileID: 0}
   projectilePrefab: {fileID: 5560686538701241314, guid: 2efbbdff9d5b5e14983dfd8cc50ede91, type: 3}
+  occupiedTile: {fileID: 0}
   range: 5
   damagePerTick: 1
   gridSize: 3
@@ -5306,8 +5308,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.05, y: 0.05, z: 0.042783745}
-  m_Center: {x: 0, y: 0, z: -0.0036081343}
+  m_Size: {x: 0.025, y: 0.02, z: 0.025}
+  m_Center: {x: 0, y: 0.008, z: 0}
 --- !u!114 &4130895174997440521
 MonoBehaviour:
   m_ObjectHideFlags: 0

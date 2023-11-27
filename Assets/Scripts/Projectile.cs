@@ -7,7 +7,7 @@ public class Projectile : MonoBehaviour
 {
     public int damage;
     private Transform target;
-    public float speed = 1;
+    public float speed = 2;
 
     public void SetTarget(Transform target)
     {

@@ -1,4 +1,5 @@
 using Assets.Scripts;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
@@ -13,6 +14,7 @@ public class Tower : Entity
     private float fireCooldown = 0.0f;
     [SerializeField] private GameObject model;
     [SerializeField] private GameObject projectilePrefab;
+    [SerializeField] private Tile occupiedTile;
     // set model
     // model = getcomponent<tower>().GetModel();
 
@@ -40,6 +42,9 @@ public class Tower : Entity
         animation = gameObject.GetComponent<Animator>();
         //TODO set dynamic version for 
         healthComponent.Initialize(5, 5);
+
+        occupiedTile = GetCellAtPosition(transform.position).GetComponent<Tile>();
+        occupiedTile.enabled = false;
     }
 
 
@@ -119,8 +124,9 @@ public class Tower : Entity
     }
 
     protected override void Die() {
+        occupiedTile.enabled = true;
+        occupiedTile = null;
         Destroy(gameObject);
-        
     }
 
 
@@ -144,7 +150,33 @@ public class Tower : Entity
 
     private void OnDrawGizmos() {
         Gizmos.color = Color.blue;
-        Gizmos.DrawRay(shootingPoint.transform.position, shootingPoint.transform.forward * 5f);
+        Gizmos.DrawRay(transform.position + new Vector3(0, 0.1f, 0), Vector3.down);
+    }
+
+
+    private GameObject GetCellAtPosition(Vector3 position) {
+        // Perform a raycast or any other method to find the cell at the specified position
+        try {
+            RaycastHit hit;
+            Ray ray = new Ray(position + new Vector3(0, 0.1f, 0), Vector3.down);
+
+            if (Physics.Raycast(ray, out hit, 10f, ~IgnoreMe)) {
+                try {
+                    if (hit.collider.gameObject.GetComponent<Tile>() != null)
+                        return hit.collider.gameObject;
+                    else
+                        return null;
+                }
+                catch (Exception e) {
+                    Debug.LogError(e.Message);
+                }
+            }
+            return null;
+        }
+        catch (Exception e) {
+            //debugText.text = e.ToString();
+            return null;
+        }
     }
 
 }
