@@ -107,7 +107,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5236425496217014306}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f1deb758ef71d0444a9a7d983374110c, type: 3}
   m_Name: 
@@ -115,8 +115,14 @@ MonoBehaviour:
   healthComponent: {fileID: 0}
   pointManager: {fileID: 0}
   pointAmount: 0
+  gameManager: {fileID: 0}
+  IgnoreMe:
+    serializedVersion: 2
+    m_Bits: 0
   fireRate: 5
   model: {fileID: 5236425496217014306}
+  projectilePrefab: {fileID: 0}
+  occupiedTile: {fileID: 0}
   range: 5
   damagePerTick: 1
   gridSize: 3
@@ -130,7 +136,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5236425496217014306}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b32df6563cd22df4197557ef09ff5007, type: 3}
   m_Name: 

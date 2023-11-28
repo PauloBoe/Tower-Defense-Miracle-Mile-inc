@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fx: {fileID: 3046579222541601340, guid: c52cb553c18f4cc4aa5fc40041354cbf, type: 3}
   model: {fileID: 1097072490388940066, guid: cf7f68d460740334a82dd8488bbbddbf, type: 3}
-  health: 3
+  health: 5
   spawnableInWave: 6
   pointValue: 15
   damageValue: 1
-  moveSpeed: 4
+  moveSpeed: 3
