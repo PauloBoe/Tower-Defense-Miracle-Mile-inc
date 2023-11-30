@@ -4927,7 +4927,7 @@ MonoBehaviour:
   particleSystem: {fileID: 1321647346757376279}
   rb: {fileID: 2596651701423353110}
   damage: 1
-  speed: 1
+  speed: 2
 --- !u!1 &5560686536983285383
 GameObject:
   m_ObjectHideFlags: 0

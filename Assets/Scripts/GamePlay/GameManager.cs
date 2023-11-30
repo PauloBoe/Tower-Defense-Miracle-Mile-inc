@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.XR.CoreUtils;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
@@ -12,6 +13,7 @@ using UnityEngine.XR.Interaction.Toolkit;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private Camera cam;
+    [SerializeField] private XROrigin origin;
 
     private PointManager pointManager;
     private CircleSpawner spawner;
@@ -42,6 +44,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         Hide();
+        //StartCoroutine(SwitchOriginMode());
     }
 
     private void Update()
@@ -124,6 +127,15 @@ public class GameManager : MonoBehaviour
     {
         Show();
         isBuilding = true;
+    }
+
+
+    private IEnumerator SwitchOriginMode() {
+        if (SceneManager.GetActiveScene().isLoaded) {
+            yield return new WaitForSeconds(3);
+            origin.RequestedTrackingOriginMode = XROrigin.TrackingOriginMode.Floor;
+        }
+
     }
 
     //editor version
